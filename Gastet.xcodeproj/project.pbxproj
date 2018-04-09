@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07C42E16207BD3C300EF76C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E15207BD3C300EF76C0 /* AppDelegate.swift */; };
+		07C42E18207BD3C300EF76C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E17207BD3C300EF76C0 /* ViewController.swift */; };
+		07C42E1B207BD3C300EF76C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C42E19207BD3C300EF76C0 /* Main.storyboard */; };
+		07C42E1D207BD3C300EF76C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07C42E1C207BD3C300EF76C0 /* Assets.xcassets */; };
+		07C42E20207BD3C300EF76C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C42E1E207BD3C300EF76C0 /* LaunchScreen.storyboard */; };
+		07C42E2B207BD3C300EF76C0 /* GastetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E2A207BD3C300EF76C0 /* GastetTests.swift */; };
+		07C42E36207BD3C300EF76C0 /* GastetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E35207BD3C300EF76C0 /* GastetUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		07C42E27207BD3C300EF76C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07C42E0A207BD3C300EF76C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07C42E11207BD3C300EF76C0;
+			remoteInfo = Gastet;
+		};
+		07C42E32207BD3C300EF76C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07C42E0A207BD3C300EF76C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07C42E11207BD3C300EF76C0;
+			remoteInfo = Gastet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07C42E12207BD3C300EF76C0 /* Gastet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gastet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07C42E15207BD3C300EF76C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		07C42E17207BD3C300EF76C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		07C42E1A207BD3C300EF76C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		07C42E1C207BD3C300EF76C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		07C42E1F207BD3C300EF76C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		07C42E21207BD3C300EF76C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07C42E26207BD3C300EF76C0 /* GastetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GastetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		07C42E2A207BD3C300EF76C0 /* GastetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastetTests.swift; sourceTree = "<group>"; };
+		07C42E2C207BD3C300EF76C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07C42E31207BD3C300EF76C0 /* GastetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GastetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		07C42E35207BD3C300EF76C0 /* GastetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastetUITests.swift; sourceTree = "<group>"; };
+		07C42E37207BD3C300EF76C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07C42E0F207BD3C300EF76C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07C42E23207BD3C300EF76C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07C42E2E207BD3C300EF76C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07C42E09207BD3C300EF76C0 = {
+			isa = PBXGroup;
+			children = (
+				07C42E14207BD3C300EF76C0 /* Gastet */,
+				07C42E29207BD3C300EF76C0 /* GastetTests */,
+				07C42E34207BD3C300EF76C0 /* GastetUITests */,
+				07C42E13207BD3C300EF76C0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07C42E13207BD3C300EF76C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07C42E12207BD3C300EF76C0 /* Gastet.app */,
+				07C42E26207BD3C300EF76C0 /* GastetTests.xctest */,
+				07C42E31207BD3C300EF76C0 /* GastetUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		07C42E14207BD3C300EF76C0 /* Gastet */ = {
+			isa = PBXGroup;
+			children = (
+				07C42E15207BD3C300EF76C0 /* AppDelegate.swift */,
+				07C42E17207BD3C300EF76C0 /* ViewController.swift */,
+				07C42E19207BD3C300EF76C0 /* Main.storyboard */,
+				07C42E1C207BD3C300EF76C0 /* Assets.xcassets */,
+				07C42E1E207BD3C300EF76C0 /* LaunchScreen.storyboard */,
+				07C42E21207BD3C300EF76C0 /* Info.plist */,
+			);
+			path = Gastet;
+			sourceTree = "<group>";
+		};
+		07C42E29207BD3C300EF76C0 /* GastetTests */ = {
+			isa = PBXGroup;
+			children = (
+				07C42E2A207BD3C300EF76C0 /* GastetTests.swift */,
+				07C42E2C207BD3C300EF76C0 /* Info.plist */,
+			);
+			path = GastetTests;
+			sourceTree = "<group>";
+		};
+		07C42E34207BD3C300EF76C0 /* GastetUITests */ = {
+			isa = PBXGroup;
+			children = (
+				07C42E35207BD3C300EF76C0 /* GastetUITests.swift */,
+				07C42E37207BD3C300EF76C0 /* Info.plist */,
+			);
+			path = GastetUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07C42E11207BD3C300EF76C0 /* Gastet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07C42E3A207BD3C300EF76C0 /* Build configuration list for PBXNativeTarget "Gastet" */;
+			buildPhases = (
+				07C42E0E207BD3C300EF76C0 /* Sources */,
+				07C42E0F207BD3C300EF76C0 /* Frameworks */,
+				07C42E10207BD3C300EF76C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gastet;
+			productName = Gastet;
+			productReference = 07C42E12207BD3C300EF76C0 /* Gastet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		07C42E25207BD3C300EF76C0 /* GastetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07C42E3D207BD3C300EF76C0 /* Build configuration list for PBXNativeTarget "GastetTests" */;
+			buildPhases = (
+				07C42E22207BD3C300EF76C0 /* Sources */,
+				07C42E23207BD3C300EF76C0 /* Frameworks */,
+				07C42E24207BD3C300EF76C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07C42E28207BD3C300EF76C0 /* PBXTargetDependency */,
+			);
+			name = GastetTests;
+			productName = GastetTests;
+			productReference = 07C42E26207BD3C300EF76C0 /* GastetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		07C42E30207BD3C300EF76C0 /* GastetUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07C42E40207BD3C300EF76C0 /* Build configuration list for PBXNativeTarget "GastetUITests" */;
+			buildPhases = (
+				07C42E2D207BD3C300EF76C0 /* Sources */,
+				07C42E2E207BD3C300EF76C0 /* Frameworks */,
+				07C42E2F207BD3C300EF76C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07C42E33207BD3C300EF76C0 /* PBXTargetDependency */,
+			);
+			name = GastetUITests;
+			productName = GastetUITests;
+			productReference = 07C42E31207BD3C300EF76C0 /* GastetUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07C42E0A207BD3C300EF76C0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = ximeft29;
+				TargetAttributes = {
+					07C42E11207BD3C300EF76C0 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					07C42E25207BD3C300EF76C0 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 07C42E11207BD3C300EF76C0;
+					};
+					07C42E30207BD3C300EF76C0 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 07C42E11207BD3C300EF76C0;
+					};
+				};
+			};
+			buildConfigurationList = 07C42E0D207BD3C300EF76C0 /* Build configuration list for PBXProject "Gastet" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 07C42E09207BD3C300EF76C0;
+			productRefGroup = 07C42E13207BD3C300EF76C0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07C42E11207BD3C300EF76C0 /* Gastet */,
+				07C42E25207BD3C300EF76C0 /* GastetTests */,
+				07C42E30207BD3C300EF76C0 /* GastetUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07C42E10207BD3C300EF76C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07C42E20207BD3C300EF76C0 /* LaunchScreen.storyboard in Resources */,
+				07C42E1D207BD3C300EF76C0 /* Assets.xcassets in Resources */,
+				07C42E1B207BD3C300EF76C0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07C42E24207BD3C300EF76C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07C42E2F207BD3C300EF76C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07C42E0E207BD3C300EF76C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07C42E18207BD3C300EF76C0 /* ViewController.swift in Sources */,
+				07C42E16207BD3C300EF76C0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07C42E22207BD3C300EF76C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07C42E2B207BD3C300EF76C0 /* GastetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07C42E2D207BD3C300EF76C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07C42E36207BD3C300EF76C0 /* GastetUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		07C42E28207BD3C300EF76C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07C42E11207BD3C300EF76C0 /* Gastet */;
+			targetProxy = 07C42E27207BD3C300EF76C0 /* PBXContainerItemProxy */;
+		};
+		07C42E33207BD3C300EF76C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07C42E11207BD3C300EF76C0 /* Gastet */;
+			targetProxy = 07C42E32207BD3C300EF76C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		07C42E19207BD3C300EF76C0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07C42E1A207BD3C300EF76C0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		07C42E1E207BD3C300EF76C0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07C42E1F207BD3C300EF76C0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		07C42E38207BD3C300EF76C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		07C42E39207BD3C300EF76C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07C42E3B207BD3C300EF76C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Gastet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ximeft29.Gastet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07C42E3C207BD3C300EF76C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Gastet/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ximeft29.Gastet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		07C42E3E207BD3C300EF76C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GastetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ximeft29.GastetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gastet.app/Gastet";
+			};
+			name = Debug;
+		};
+		07C42E3F207BD3C300EF76C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GastetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ximeft29.GastetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gastet.app/Gastet";
+			};
+			name = Release;
+		};
+		07C42E41207BD3C300EF76C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GastetUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ximeft29.GastetUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Gastet;
+			};
+			name = Debug;
+		};
+		07C42E42207BD3C300EF76C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GastetUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ximeft29.GastetUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Gastet;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07C42E0D207BD3C300EF76C0 /* Build configuration list for PBXProject "Gastet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07C42E38207BD3C300EF76C0 /* Debug */,
+				07C42E39207BD3C300EF76C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07C42E3A207BD3C300EF76C0 /* Build configuration list for PBXNativeTarget "Gastet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07C42E3B207BD3C300EF76C0 /* Debug */,
+				07C42E3C207BD3C300EF76C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07C42E3D207BD3C300EF76C0 /* Build configuration list for PBXNativeTarget "GastetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07C42E3E207BD3C300EF76C0 /* Debug */,
+				07C42E3F207BD3C300EF76C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07C42E40207BD3C300EF76C0 /* Build configuration list for PBXNativeTarget "GastetUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07C42E41207BD3C300EF76C0 /* Debug */,
+				07C42E42207BD3C300EF76C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 07C42E0A207BD3C300EF76C0 /* Project object */;
+}
