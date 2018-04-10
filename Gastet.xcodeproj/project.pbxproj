@@ -14,6 +14,7 @@
 		07C42E20207BD3C300EF76C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C42E1E207BD3C300EF76C0 /* LaunchScreen.storyboard */; };
 		07C42E2B207BD3C300EF76C0 /* GastetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E2A207BD3C300EF76C0 /* GastetTests.swift */; };
 		07C42E36207BD3C300EF76C0 /* GastetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E35207BD3C300EF76C0 /* GastetUITests.swift */; };
+		65EB40B2FE9C0BD8EABE1460 /* Pods_Gastet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABEEC0DD4174BCD5E79A596 /* Pods_Gastet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,9 @@
 		07C42E31207BD3C300EF76C0 /* GastetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GastetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C42E35207BD3C300EF76C0 /* GastetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GastetUITests.swift; sourceTree = "<group>"; };
 		07C42E37207BD3C300EF76C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CC22FD0F772EC5803FD9873 /* Pods-Gastet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gastet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gastet/Pods-Gastet.debug.xcconfig"; sourceTree = "<group>"; };
+		CABEEC0DD4174BCD5E79A596 /* Pods_Gastet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gastet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA505BD68B82A47FFB43BCA1 /* Pods-Gastet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gastet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gastet/Pods-Gastet.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EB40B2FE9C0BD8EABE1460 /* Pods_Gastet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 				07C42E29207BD3C300EF76C0 /* GastetTests */,
 				07C42E34207BD3C300EF76C0 /* GastetUITests */,
 				07C42E13207BD3C300EF76C0 /* Products */,
+				DC0CF2284F3ACA06E2234040 /* Pods */,
+				44AA83C8704C60E0A793E50D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,23 @@
 			path = GastetUITests;
 			sourceTree = "<group>";
 		};
+		44AA83C8704C60E0A793E50D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CABEEC0DD4174BCD5E79A596 /* Pods_Gastet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC0CF2284F3ACA06E2234040 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0CC22FD0F772EC5803FD9873 /* Pods-Gastet.debug.xcconfig */,
+				DA505BD68B82A47FFB43BCA1 /* Pods-Gastet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 07C42E3A207BD3C300EF76C0 /* Build configuration list for PBXNativeTarget "Gastet" */;
 			buildPhases = (
+				8D8E36E84AF01AA65CE7B32F /* [CP] Check Pods Manifest.lock */,
 				07C42E0E207BD3C300EF76C0 /* Sources */,
 				07C42E0F207BD3C300EF76C0 /* Frameworks */,
 				07C42E10207BD3C300EF76C0 /* Resources */,
+				E2BB5219B88A279B090AABA9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,6 +279,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8D8E36E84AF01AA65CE7B32F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gastet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2BB5219B88A279B090AABA9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Gastet/Pods-Gastet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gastet/Pods-Gastet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		07C42E0E207BD3C300EF76C0 /* Sources */ = {
@@ -424,6 +491,7 @@
 		};
 		07C42E3B207BD3C300EF76C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CC22FD0F772EC5803FD9873 /* Pods-Gastet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -438,6 +506,7 @@
 		};
 		07C42E3C207BD3C300EF76C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA505BD68B82A47FFB43BCA1 /* Pods-Gastet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
