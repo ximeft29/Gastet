@@ -49,8 +49,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
                 activityIndicator.startAnimating()
                 UIApplication.shared.beginIgnoringInteractionEvents()
             
-            
-            if (signupModeActive) {
                 
             print("Régistrandote....")
             
@@ -83,37 +81,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
                             // Hooray! Let them use the app now.
                         }
                     }
-                
-                                    }
-            
-            else {
-                
-                //CODE FOR LOGIN - gotten from parse server guide for login users
-                
-                PFUser.logInWithUsername(inBackground: email.text!, password: password.text!) { (user, error) in
-                    
-                    //SPINNER
-                    activityIndicator.stopAnimating()
-                    UIApplication.shared.endIgnoringInteractionEvents()
-                    
-                    
-                    if user != nil {
-                        print("Ha iniciado seción exitosamente")
-                    }
-                    else {
-                        
-                        var errorText = "Error desconocido: porfavor intente de nuevo"
-                        
-                        if let error = error {
-                            
-                            errorText = error.localizedDescription
-                        }
-                        self.displayAlert(title: "No hemos podido iniciar seción", message: errorText)
-                    }
-                }
-                
-            }
-            
             }
         
     }
@@ -124,22 +91,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func switchLoginMode(_ sender: Any) {
         //BUTTON TO SWITCH FROM LOGIN TO SIGNUP MODE
-        
-        if (signupModeActive) {
-            
-                signupModeActive = false
-                signupOrLoginLabel.text = "Iniciar Sesión"
-                switchLoginModeLabel.text = "¿No tienes una cuenta?"
-                switchLoginModeButton.setTitle("Régistrate", for: [])
-                              }
-        else {
-            
-            //CHANGES TEXT IN SIGNUP AND LOGIN DEPENDING ON SCREEN
-            signupModeActive = true
-            signupOrLoginLabel.text = "Régistrate"
-            switchLoginModeLabel.text = "¿Ya tienes una cuenta?"
-            switchLoginModeButton.setTitle("Iniciar Sesión", for: [])
-            }
+
+        performSegue(withIdentifier: "toLoginViewController", sender: self)
+    
     }
     
     @IBOutlet weak var switchLoginModeButton: UIButton!

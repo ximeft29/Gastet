@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		072B1620208401DA00E0B812 /* ubuntu in Resources */ = {isa = PBXBuildFile; fileRef = 072B161F208401DA00E0B812 /* ubuntu */; };
+		079F166120922FBD00F78AD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F166020922FBD00F78AD4 /* LoginViewController.swift */; };
+		079F16632092383F00F78AD4 /* InteractionPanToClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F16622092383F00F78AD4 /* InteractionPanToClose.swift */; };
 		07C42E16207BD3C300EF76C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E15207BD3C300EF76C0 /* AppDelegate.swift */; };
 		07C42E18207BD3C300EF76C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E17207BD3C300EF76C0 /* ViewController.swift */; };
 		07C42E1B207BD3C300EF76C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C42E19207BD3C300EF76C0 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		072B161F208401DA00E0B812 /* ubuntu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ubuntu; sourceTree = "<group>"; };
+		079F166020922FBD00F78AD4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		079F16622092383F00F78AD4 /* InteractionPanToClose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionPanToClose.swift; sourceTree = "<group>"; };
 		07C42E12207BD3C300EF76C0 /* Gastet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gastet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C42E15207BD3C300EF76C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07C42E17207BD3C300EF76C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				072B161F208401DA00E0B812 /* ubuntu */,
 				07C42E15207BD3C300EF76C0 /* AppDelegate.swift */,
 				07C42E17207BD3C300EF76C0 /* ViewController.swift */,
+				079F166020922FBD00F78AD4 /* LoginViewController.swift */,
+				079F16622092383F00F78AD4 /* InteractionPanToClose.swift */,
 				07C42E19207BD3C300EF76C0 /* Main.storyboard */,
 				07C42E1C207BD3C300EF76C0 /* Assets.xcassets */,
 				07C42E1E207BD3C300EF76C0 /* LaunchScreen.storyboard */,
@@ -330,7 +336,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079F166120922FBD00F78AD4 /* LoginViewController.swift in Sources */,
 				07C42E18207BD3C300EF76C0 /* ViewController.swift in Sources */,
+				079F16632092383F00F78AD4 /* InteractionPanToClose.swift in Sources */,
 				07C42E16207BD3C300EF76C0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
