@@ -1,19 +1,19 @@
 //
-//  LoginViewController.swift
+//  ChoseUsernameViewController.swift
 //  Gastet
 //
-//  Created by Ximena Flores de la Tijera on 4/26/18.
+//  Created by Ximena Flores de la Tijera on 4/28/18.
 //  Copyright © 2018 ximeft29. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class ChoseUsernameViewController: UIViewController {
+
     
-    
-    //ALERT
-    
+    var currentuser = PFUser.current()
+
     func displayAlert(title:String, message:String) {
         
         //ALERT FOR WHEN NO TEXT IS ENTERED IN EMAIL AND PASSWORD FIELD
@@ -27,42 +27,39 @@ class LoginViewController: UIViewController {
         
     }
     
-
     @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet var panToClose: InteractionPanToClose!
     
-    @IBAction func loginButtonPressed(_ sender: Any) {
-       
-        PFUser.logInWithUsername(inBackground: username.text!, password: password.text!) { (user, error) in
-       
-        //AGREGA AQUI SPINNER - CHECA EN CURSO UDEMY
+    
+    @IBAction func nextTapButton(_ sender: Any) {
+    
+        if currentuser != nil {
+            currentuser?.username = username.text!
             
-        //UIApplication.shared.endIgnoringInteractionEvents()
-            
-            // aqui esta error
-            
-            if user != nil {
-                print("Ha iniciado seción exitosamente")
-            }
-            else {
+            //you have to do a do,try catch
+            do {
                 
-                var errorText = "Error desconocido: porfavor intente de nuevo"
-                
-                if let error = error {
-                    
-                    errorText = error.localizedDescription
-                }
-                self.displayAlert(title: "No hemos podido iniciar seción", message: errorText)
+            try currentuser?.save()
             }
+            //if that try fails you go to the catch
+            catch {
+                
+                 self.displayAlert(title: "No hemos podido asignarte ese usuario", message: error.localizedDescription)
+                
+            }
+        
         }
+        
+        else {
+        
+            self.displayAlert(title: "No hemos podido asignarte ese usuario", message: "No se pudo guardar el usuario.")
+            
+            }
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        panToClose.setGestureRecognizer()
-        
         // Do any additional setup after loading the view.
     }
 
@@ -70,7 +67,6 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
