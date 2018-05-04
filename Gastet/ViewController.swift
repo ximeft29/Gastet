@@ -121,6 +121,15 @@ class ViewController: UIViewController, UITextFieldDelegate{
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if PFUser.current() != nil {
+            
+            self.performSegue(withIdentifier: "signupToHomeSegue", sender: self)
+            
+        }
+    }
+    
                                                 //METHODS OR FUNCTIONS//
     
 

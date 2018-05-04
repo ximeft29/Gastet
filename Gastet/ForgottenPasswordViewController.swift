@@ -1,19 +1,16 @@
 //
-//  LoginViewController.swift
+//  ForgottenPasswordViewController.swift
 //  Gastet
 //
-//  Created by Ximena Flores de la Tijera on 4/26/18.
+//  Created by Ximena Flores de la Tijera on 5/2/18.
 //  Copyright © 2018 ximeft29. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
-    
-    
-    //ALERT
-    
+class ForgottenPasswordViewController: UIViewController {
+
     func displayAlert(title:String, message:String) {
         
         //ALERT FOR WHEN NO TEXT IS ENTERED IN EMAIL AND PASSWORD FIELD
@@ -27,27 +24,23 @@ class LoginViewController: UIViewController {
         
     }
     
-
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var password: UITextField!
     @IBOutlet var panToClose: InteractionPanToClose!
     
-    @IBAction func loginButtonPressed(_ sender: Any) {
-       
-        PFUser.logInWithUsername(inBackground: username.text!, password: password.text!) { (user, error) in
-       
-        //AGREGA AQUI SPINNER - CHECA EN CURSO UDEMY
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBAction func recoverPasswordButton(_ sender: Any) {
+    
+        PFUser.requestPasswordResetForEmail(inBackground: emailTextField.text!, block: { (success, error) in
             
-        //UIApplication.shared.endIgnoringInteractionEvents()
-            
-            // aqui esta error
-            
-            if user != nil {
-                print("Ha iniciado seción exitosamente")
-                self.performSegue(withIdentifier: "successfulLoginSegue", sender: self)
+            if self.emailTextField != nil {
+               
+                //PONER UN SPINNER - CHECA UDEMY
                 
-            }
-            else {
+                self.displayAlert(title: "Revisa tu correo electronico", message: "Se ha mandado un link para recuperar contraseña exitosamente. Sigue las instrucciones.")
+                
+                print("Se ha mandado un link para recuperar contraseña exitosamente")
+                
+            } else {
                 
                 var errorText = "Error desconocido: porfavor intente de nuevo"
                 
@@ -55,13 +48,11 @@ class LoginViewController: UIViewController {
                     
                     errorText = error.localizedDescription
                 }
-                self.displayAlert(title: "No hemos podido iniciar seción", message: errorText)
+                self.displayAlert(title: "El email no es valido", message: errorText)
+                
             }
-        }
-    }
-    
-    @IBAction func forgottenPasswordButton(_ sender: Any) {
-    
+        })
+        
     
     }
     
@@ -70,17 +61,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         panToClose.setGestureRecognizer()
-        
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        if PFUser.current() != nil {
-        
-       performSegue(withIdentifier: "successfulLoginSegue", sender: self)
-            
-        }
     }
 
     override func didReceiveMemoryWarning() {
