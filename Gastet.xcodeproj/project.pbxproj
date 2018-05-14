@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		070D2DA9209554C000B4AC80 /* ChoseUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */; };
+		0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0713C16120A37A1C00B01B79 /* PostViewController.swift */; };
 		072B1620208401DA00E0B812 /* ubuntu in Resources */ = {isa = PBXBuildFile; fileRef = 072B161F208401DA00E0B812 /* ubuntu */; };
 		075F39DD209CE37D00DA4D1B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075F39DC209CE37D00DA4D1B /* HomeViewController.swift */; };
 		079F166120922FBD00F78AD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F166020922FBD00F78AD4 /* LoginViewController.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseUsernameViewController.swift; sourceTree = "<group>"; };
+		0713C16120A37A1C00B01B79 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		072B161F208401DA00E0B812 /* ubuntu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ubuntu; sourceTree = "<group>"; };
 		075F39DC209CE37D00DA4D1B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		079F166020922FBD00F78AD4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				079F16622092383F00F78AD4 /* InteractionPanToClose.swift */,
 				075F39DC209CE37D00DA4D1B /* HomeViewController.swift */,
 				07C42E19207BD3C300EF76C0 /* Main.storyboard */,
+				0713C16120A37A1C00B01B79 /* PostViewController.swift */,
 				07C42E1C207BD3C300EF76C0 /* Assets.xcassets */,
 				07C42E1E207BD3C300EF76C0 /* LaunchScreen.storyboard */,
 				07C42E21207BD3C300EF76C0 /* Info.plist */,
@@ -345,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */,
 				07BA69D7209A2F1300977DD8 /* ForgottenPasswordViewController.swift in Sources */,
 				079F166120922FBD00F78AD4 /* LoginViewController.swift in Sources */,
 				07C42E18207BD3C300EF76C0 /* ViewController.swift in Sources */,
