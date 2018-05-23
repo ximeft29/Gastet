@@ -1009,7 +1009,7 @@
             </objects>
             <point key="canvasLocation" x="990" y="800"/>
         </scene>
-        <!--Publica imagen-->
+        <!--Anuncio-->
         <scene sceneID="ZSU-rD-nkq">
             <objects>
                 <viewController id="ZfB-Wt-Agy" customClass="PostViewController" customModule="Gastet" customModuleProvider="target" sceneMemberID="viewController">
@@ -1036,14 +1036,14 @@
                                                         <rect key="frame" x="37" y="54.5" width="149" height="50.5"/>
                                                         <state key="normal" image="LostButton"/>
                                                         <connections>
-                                                            <action selector="lostPressedButton:" destination="ZfB-Wt-Agy" eventType="touchUpInside" id="aDm-Ga-fdJ"/>
+                                                            <action selector="lostPressedButton:" destination="ZfB-Wt-Agy" eventType="touchUpInside" id="Ie4-X9-N6I"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8o-bp-KIQ">
                                                         <rect key="frame" x="194" y="54.5" width="149" height="50.5"/>
                                                         <state key="normal" image="FoundButton"/>
                                                         <connections>
-                                                            <action selector="foundPressedButton:" destination="ZfB-Wt-Agy" eventType="touchUpInside" id="L3d-rt-Fgp"/>
+                                                            <action selector="foundPressedButton:" destination="ZfB-Wt-Agy" eventType="touchUpInside" id="R62-97-UbV"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1133,7 +1133,20 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgc-Up-RtP">
                                                 <rect key="frame" x="53" y="27" width="268" height="198"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Ip7-2J-vyA">
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkI-qY-mXg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="268" height="199"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" image="placeholder"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="14"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="choseImageButton:" destination="ZfB-Wt-Agy" eventType="touchUpInside" id="2eY-Yg-BUc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ip7-2J-vyA">
                                                         <rect key="frame" x="0.0" y="0.0" width="268" height="200"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1167,6 +1180,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="jgc-Up-RtP" firstAttribute="top" secondItem="THF-oK-RUD" secondAttribute="top" constant="27" id="U6A-Fv-9bD"/>
                                             <constraint firstItem="jgc-Up-RtP" firstAttribute="centerY" secondItem="THF-oK-RUD" secondAttribute="centerY" id="WIu-VQ-GFM"/>
                                             <constraint firstItem="jgc-Up-RtP" firstAttribute="leading" secondItem="THF-oK-RUD" secondAttribute="leading" constant="53" id="YA5-hE-4CL"/>
                                             <constraint firstItem="jgc-Up-RtP" firstAttribute="centerX" secondItem="THF-oK-RUD" secondAttribute="centerX" id="fnb-dm-d0s"/>
@@ -1195,7 +1209,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Eft-U7-85A"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Publica imagen" id="dY1-gq-cH9"/>
+                    <navigationItem key="navigationItem" title="Anuncio" id="dY1-gq-cH9">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="XWD-IO-YIB">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TGM-Vf-KDQ">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Publicar"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="changeImageFoundButton" destination="q8o-bp-KIQ" id="wxc-7C-PCk"/>
+                        <outlet property="changeImageLostButton" destination="ACT-Sz-QeQ" id="iI6-TP-Doy"/>
+                        <outlet property="imagePosted" destination="Ip7-2J-vyA" id="84F-7e-4dZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pa1-Ll-nvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
