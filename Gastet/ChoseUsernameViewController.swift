@@ -46,6 +46,8 @@ class ChoseUsernameViewController: UIViewController {
                  self.displayAlert(title: "No hemos podido asignarte ese usuario", message: error.localizedDescription)
                 
             }
+            
+            performSegue(withIdentifier: "usernameSelectedToHome", sender: self)
         
         }
         

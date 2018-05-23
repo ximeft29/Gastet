@@ -10,6 +10,20 @@ import UIKit
 
 class PostViewController: UIViewController {
 
+    @IBOutlet weak var changeImageLostButton: UIButton!
+    
+    @IBAction func lostPressedButton(_ sender: UIButton) {
+    
+        changeImageLostButton.setImage(UIImage(named:"LostButton-active.png"), for: .normal)
+    }
+    
+    @IBOutlet weak var changeImageFoundButton: UIButton!
+    
+    @IBAction func foundPressedButton(_ sender: UIButton) {
+    
+          changeImageFoundButton.setImage(UIImage(named:"FoundButton-active.png"), for: .normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
