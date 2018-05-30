@@ -27,6 +27,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
     }
     
+    
     @IBOutlet weak var email: UITextField!
     
     @IBOutlet weak var password: UITextField!
@@ -40,7 +41,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
                                                     }
         else {
             
-            //SPINNER PARA CUANDO SE ESTE CARGANDO COSAS
             let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
                 activityIndicator.center = self.view.center
                 activityIndicator.hidesWhenStopped = true

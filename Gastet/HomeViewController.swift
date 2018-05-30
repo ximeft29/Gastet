@@ -8,10 +8,26 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController{
+    
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var lostView: UIView!
+    @IBOutlet weak var foundView: UIView!
+    @IBOutlet weak var lostCollectionView: UICollectionView!
+    @IBOutlet weak var foundCollectionView: UICollectionView!
+    
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        scrollView.delegate = self
+        lostCollectionView.delegate = self
+        lostCollectionView.dataSource = self
+        foundCollectionView.delegate = self
+        foundCollectionView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -21,15 +37,24 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
     }
-    */
 
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        return cell
+    }
+
+}
+
+extension  HomeViewController: UIScrollViewDelegate{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView)
+    }
+    
 }

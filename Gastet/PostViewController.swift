@@ -7,10 +7,56 @@
 //
 
 import UIKit
+import Parse
 
 class PostViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
 
+    //VARS
+    
+    var lost = Bool()
+    
+    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var breed: UITextField!
     @IBOutlet weak var imagePosted: UIImageView!
+    @IBOutlet weak var changeImageLostButton: UIButton!
+    @IBOutlet weak var changeImageFoundButton: UIButton!
+    
+    
+    //BUTTONS PRESSED - LOST & FOUND
+    
+    @IBAction func lostPressedButton(_ sender: UIButton) {
+        
+        changeImageLostButton.setImage(UIImage(named:"LostButton-active.png"), for: .normal)
+        lost = true
+    }
+    
+
+    
+    @IBAction func foundPressedButton(_ sender: Any) {
+        
+        changeImageFoundButton.setImage(UIImage(named:"FoundButton-active.png"), for: .normal)
+        lost = false
+    }
+    
+    // ALERT
+    
+    func displayAlert(title:String, message:String) {
+        
+        //ALERT FOR WHEN NO TEXT IS ENTERED IN EMAIL AND PASSWORD FIELD
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    //SPINNER
+    
+    
+    //CODE TO CHOSE IMAGE
     
     @IBAction func choseImageButton(_ sender: UIButton) {
     
@@ -32,21 +78,60 @@ class PostViewController: UIViewController, UINavigationControllerDelegate, UIIm
         self.dismiss(animated: true, completion: nil)
         
     }
+   
+    //PARSE CODE
     
-    @IBOutlet weak var changeImageLostButton: UIButton!
+    @IBAction func postButtonPressed(_ sender: Any) {
     
-    @IBAction func lostPressedButton(_ sender: UIButton) {
+        if let image = imagePosted.image {
+            
+            let post = PFObject(className: "Post")
+            post["address"] = address.text
+            post["userid"] = PFUser.current()?.objectId
+            post["breed"] = breed.text
+            
+          if lost {
+              post["lostfound"] = "lost"
+           } else {
+              post["lostfound"] = "found"
+          }
+            
+            if let imageData = UIImagePNGRepresentation(image) {
+                
+                //SPINNER
+                
+                let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+                activityIndicator.center = self.view.center
+                activityIndicator.hidesWhenStopped = true
+                activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+                view.addSubview(activityIndicator)
+                activityIndicator.startAnimating()
+                UIApplication.shared.beginIgnoringInteractionEvents()
+                
+                //END
+                
+                let imageFile = PFFile(name: "image.png", data: imageData)
+                post["imageFile"] = imageFile
+                post.saveInBackground { (success, error) in
+                    
+                    activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    
+                    if success {
+                        self.displayAlert(title: "Image Ha Sido Publicada", message: "Tu imagen ha sido publicada!")
+                        self.address.text = ""
+                        self.breed.text = ""
+                        self.imagePosted.image = nil
+                    } else {
+                        self.displayAlert(title: "Imagen No Se Pudo Publicar", message: "Tu imagen no se pudo publicar. Trata más tarde.")
+                    }
+                }
+            }
+            
+        }
     
-    changeImageLostButton.setImage(UIImage(named:"LostButton-active.png"), for: .normal)
     }
     
-    @IBOutlet weak var changeImageFoundButton: UIButton!
-    
-    @IBAction func foundPressedButton(_ sender: Any) {
-    
-        changeImageFoundButton.setImage(UIImage(named:"FoundButton-active.png"), for: .normal)
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
