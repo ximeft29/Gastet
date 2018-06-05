@@ -12,6 +12,8 @@ class FoundCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var postedImage: UIImageView!
-    
+    @IBOutlet weak var adressFoundLabel: UILabel!
+    @IBOutlet weak var breedFoundLabel: UILabel!
+    @IBOutlet weak var phoneFoundLabel: UILabel!
     
 }

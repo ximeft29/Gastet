@@ -69,6 +69,7 @@ class PostViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+       
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             imagePosted.image = image

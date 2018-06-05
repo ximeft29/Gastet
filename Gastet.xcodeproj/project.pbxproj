@@ -10,11 +10,13 @@
 		070D2DA9209554C000B4AC80 /* ChoseUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */; };
 		0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0713C16120A37A1C00B01B79 /* PostViewController.swift */; };
 		072B1620208401DA00E0B812 /* ubuntu in Resources */ = {isa = PBXBuildFile; fileRef = 072B161F208401DA00E0B812 /* ubuntu */; };
+		07364C3820BFB32D0093E5C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07364C3720BFB32D0093E5C0 /* ProfileViewController.swift */; };
 		075F39DD209CE37D00DA4D1B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075F39DC209CE37D00DA4D1B /* HomeViewController.swift */; };
 		077B0FB020BE6366007381BF /* LostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B0FAF20BE6366007381BF /* LostCollectionViewCell.swift */; };
 		077B0FB220BE6C1B007381BF /* FoundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B0FB120BE6C1B007381BF /* FoundCollectionViewCell.swift */; };
 		079F166120922FBD00F78AD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F166020922FBD00F78AD4 /* LoginViewController.swift */; };
 		079F16632092383F00F78AD4 /* InteractionPanToClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F16622092383F00F78AD4 /* InteractionPanToClose.swift */; };
+		07A9006920C24D79008BC63B /* ProfilePictureSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9006820C24D79008BC63B /* ProfilePictureSetupViewController.swift */; };
 		07BA69D7209A2F1300977DD8 /* ForgottenPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BA69D6209A2F1300977DD8 /* ForgottenPasswordViewController.swift */; };
 		07C42E16207BD3C300EF76C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E15207BD3C300EF76C0 /* AppDelegate.swift */; };
 		07C42E18207BD3C300EF76C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E17207BD3C300EF76C0 /* ViewController.swift */; };
@@ -47,11 +49,13 @@
 		070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseUsernameViewController.swift; sourceTree = "<group>"; };
 		0713C16120A37A1C00B01B79 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		072B161F208401DA00E0B812 /* ubuntu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ubuntu; sourceTree = "<group>"; };
+		07364C3720BFB32D0093E5C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		075F39DC209CE37D00DA4D1B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		077B0FAF20BE6366007381BF /* LostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostCollectionViewCell.swift; sourceTree = "<group>"; };
 		077B0FB120BE6C1B007381BF /* FoundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundCollectionViewCell.swift; sourceTree = "<group>"; };
 		079F166020922FBD00F78AD4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		079F16622092383F00F78AD4 /* InteractionPanToClose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionPanToClose.swift; sourceTree = "<group>"; };
+		07A9006820C24D79008BC63B /* ProfilePictureSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSetupViewController.swift; sourceTree = "<group>"; };
 		07BA69D6209A2F1300977DD8 /* ForgottenPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPasswordViewController.swift; sourceTree = "<group>"; };
 		07C42E12207BD3C300EF76C0 /* Gastet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gastet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C42E15207BD3C300EF76C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				077B0FAF20BE6366007381BF /* LostCollectionViewCell.swift */,
 				0713C16120A37A1C00B01B79 /* PostViewController.swift */,
 				07C42E19207BD3C300EF76C0 /* Main.storyboard */,
+				07A9006820C24D79008BC63B /* ProfilePictureSetupViewController.swift */,
+				07364C3720BFB32D0093E5C0 /* ProfileViewController.swift */,
 				07C42E1C207BD3C300EF76C0 /* Assets.xcassets */,
 				07C42E1E207BD3C300EF76C0 /* LaunchScreen.storyboard */,
 				07C42E21207BD3C300EF76C0 /* Info.plist */,
@@ -357,9 +363,11 @@
 				0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */,
 				07BA69D7209A2F1300977DD8 /* ForgottenPasswordViewController.swift in Sources */,
 				079F166120922FBD00F78AD4 /* LoginViewController.swift in Sources */,
+				07A9006920C24D79008BC63B /* ProfilePictureSetupViewController.swift in Sources */,
 				07C42E18207BD3C300EF76C0 /* ViewController.swift in Sources */,
 				079F16632092383F00F78AD4 /* InteractionPanToClose.swift in Sources */,
 				077B0FB020BE6366007381BF /* LostCollectionViewCell.swift in Sources */,
+				07364C3820BFB32D0093E5C0 /* ProfileViewController.swift in Sources */,
 				070D2DA9209554C000B4AC80 /* ChoseUsernameViewController.swift in Sources */,
 				075F39DD209CE37D00DA4D1B /* HomeViewController.swift in Sources */,
 				07C42E16207BD3C300EF76C0 /* AppDelegate.swift in Sources */,

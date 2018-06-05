@@ -47,7 +47,7 @@ class ChoseUsernameViewController: UIViewController {
                 
             }
             
-            performSegue(withIdentifier: "usernameSelectedToHome", sender: self)
+            performSegue(withIdentifier: "toProfilePicture", sender: self)
         
         }
         

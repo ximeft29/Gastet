@@ -17,8 +17,6 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var lostCollectionView: UICollectionView!
     @IBOutlet weak var foundCollectionView: UICollectionView!
     
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

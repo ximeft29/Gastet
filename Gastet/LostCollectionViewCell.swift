@@ -12,8 +12,11 @@ class LostCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIView! 
     @IBOutlet weak var postedImage: UIImageView!
+    @IBOutlet weak var adressLostLabel: UILabel!
+    @IBOutlet weak var breedLostLabel: UILabel!
+    @IBOutlet weak var phoneLostLabel: UILabel!
     
-    
+    //ROUNDED CORNERS
     
 //    func roundedCorners(corners: UIRectCorner, radius: CGFloat, viewBounds: CGRect) {
 //
