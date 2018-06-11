@@ -17,10 +17,11 @@ class PostViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var breed: UITextField!
+    @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var imagePosted: UIImageView!
     @IBOutlet weak var changeImageLostButton: UIButton!
     @IBOutlet weak var changeImageFoundButton: UIButton!
-    
+
     
     //BUTTONS PRESSED - LOST & FOUND
     
@@ -90,6 +91,7 @@ class PostViewController: UIViewController, UINavigationControllerDelegate, UIIm
             post["address"] = address.text
             post["userid"] = PFUser.current()?.objectId
             post["breed"] = breed.text
+            post["phone"] = phone.text
             
           if lost {
               post["lostfound"] = "lost"

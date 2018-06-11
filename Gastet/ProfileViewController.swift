@@ -13,15 +13,33 @@ class ProfileViewController: UIViewController {
 
     var currentUser = PFUser.current()
 
+    //@IBOUTLETS
     @IBOutlet weak var profilePictureImage: UIImageView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
     
+    //@IBACTIONS
     @IBAction func logoutButton(_ sender: UIButton) {
     
         PFUser.logOut()
         performSegue(withIdentifier: "logout", sender: self)
     
+    }
+    
+    @IBAction func editUsernameButton(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "editUsername", sender: self)
+    }
+    
+    @IBAction func editEmailButton(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "editEmail", sender: self)
+        
+    }
+    
+    @IBAction func editProfilePictureButton(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "editProfilePicture", sender: self)
     }
     
     override func viewDidLoad() {

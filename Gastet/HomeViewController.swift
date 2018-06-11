@@ -7,10 +7,27 @@
 //
 
 import UIKit
+import Parse
 
 class HomeViewController: UIViewController{
     
+    //VAR ARRAYS - LOST
+    var userslost = [String: String]()
+    var addresslost = [String]()
+    var breedlost = [String]()
+     var phonelost = [String]()
+    var usernameslost = [String]()
+    var imageFileslost = [PFFile]()
     
+    //VAR ARRAYS - FOUND
+    var usersfound = [String: String]()
+    var addressfound = [String]()
+    var breedfound = [String]()
+    var phonefound = [String]()
+    var usernamesfound = [String]()
+    var imageFilesfound = [PFFile]()
+    
+    //@IBOUTLETS
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var lostView: UIView!
     @IBOutlet weak var foundView: UIView!
@@ -21,6 +38,53 @@ class HomeViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //QUERY LOST
+        
+        let querylost = PFQuery(className: "Post")
+        querylost.whereKey("lostfound", equalTo: "lost")
+        querylost.findObjectsInBackground { (objects, error) in
+            
+            if let posts = objects {
+                
+                for post in posts {
+                    
+                    self.addresslost.append(post["address"] as! String)
+                    self.breedlost.append(post["breed"] as! String)
+                    self.phonelost.append(post["phone"] as! String)
+//                    self.usernameslost.append(self.userslost[post["userid"] as! String]!)
+                    self.imageFileslost.append(post["imageFile"] as! PFFile)
+                    self.lostCollectionView.reloadData()
+
+                }
+            }
+        }
+        
+        // QUERY FOUND
+        
+        let queryfound = PFQuery(className: "Post")
+        queryfound.whereKey("lostfound", equalTo: "found")
+        queryfound.findObjectsInBackground { (objects, error) in
+            
+            if let posts = objects {
+                
+                for post in posts {
+                    
+                    self.addressfound.append(post["address"] as! String)
+                    self.breedfound.append(post["breed"] as! String)
+                    self.phonefound.append(post["phone"] as! String)
+//                  self.usernamesfound.append(self.userslost[post["userid"] as! String]!)
+                    self.imageFilesfound.append(post["imageFile"] as! PFFile)
+                    self.foundCollectionView.reloadData()
+                    
+                }
+            }
+            
+
+            }
+        
+        
+        //TO SHOW DATA
+        
         scrollView.delegate = self
         lostCollectionView.delegate = self
         lostCollectionView.dataSource = self
@@ -37,17 +101,79 @@ class HomeViewController: UIViewController{
     
 }
 
+// START OF EXTENSIONS FOR COLLECTION VIEWS
+
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if collectionView == self.lostCollectionView {
+            return addresslost.count
+            //DUDA #2
+        }
+            
+        else {
+            return addressfound.count
+            //DUDA #2
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        return cell
+        
+        if collectionView == self.lostCollectionView {
+          
+            let cell: LostCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Lostcell", for: indexPath) as! LostCollectionViewCell
+            
+            //TIENES QUE IGUALAR LOS @IBOUTLETS DEL CELL (SPECIFICOS A LOST) Y IGUALARLOS CON EL ARRAY DE PARSE QUE PUEDES ENCONTRAR EN VARS ARRIBA
+            
+            cell.adressLostLabel.text = addresslost[indexPath.row]
+            cell.breedLostLabel.text = breedlost[indexPath.row]
+            cell.phoneLostLabel.text = phonelost[indexPath.row]
+            
+            imageFileslost[indexPath.row].getDataInBackground { (data, error) in
+                
+                if let imageData = data {
+                    
+                    if let imageToDisplay = UIImage(data: imageData) {
+                        
+                         cell.postedImage.image = imageToDisplay
+                        
+                    }
+                }
+            }
+
+            
+            return cell
+        }
+        
+        else {
+            
+            let cell: FoundCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Foundcell", for: indexPath) as! FoundCollectionViewCell
+            
+            cell.adressFoundLabel.text = addressfound[indexPath.row]
+            cell.breedFoundLabel.text = breedfound[indexPath.row]
+//            cell.phoneFoundLabel.text = phonefound[indexPath.row]
+            
+            imageFilesfound[indexPath.row].getDataInBackground { (data, error) in
+                
+                if let imageData = data {
+                    
+                    if let imageToDisplay = UIImage(data: imageData) {
+                        
+                        cell.postedImage.image = imageToDisplay
+                        
+                    }
+                    
+                }
+                
+            }
+
+            return cell
+        }
+
     }
 
 }
+
+//SCROLL
 
 extension  HomeViewController: UIScrollViewDelegate{
     
@@ -56,3 +182,8 @@ extension  HomeViewController: UIScrollViewDelegate{
     }
     
 }
+
+//DUDAS A RESOLVER
+// 1 --> EN CELL --> ERROR IMAGEN
+// 2 --> EN NUMBEROFITEMS -> ES RETURN _____.COUNT --> QUE PONGO AQUI?
+// 3 --> HICE 2 QUERIES, SE PUEDE? SIRVE? , NO ENTENDI LO DE IF THEN

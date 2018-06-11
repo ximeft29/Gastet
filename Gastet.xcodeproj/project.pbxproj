@@ -11,6 +11,9 @@
 		0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0713C16120A37A1C00B01B79 /* PostViewController.swift */; };
 		072B1620208401DA00E0B812 /* ubuntu in Resources */ = {isa = PBXBuildFile; fileRef = 072B161F208401DA00E0B812 /* ubuntu */; };
 		07364C3820BFB32D0093E5C0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07364C3720BFB32D0093E5C0 /* ProfileViewController.swift */; };
+		0739A5FE20CA44D2000869D5 /* EditProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739A5FD20CA44D2000869D5 /* EditProfilePictureViewController.swift */; };
+		0739A60020CA450B000869D5 /* EditUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739A5FF20CA450B000869D5 /* EditUsernameViewController.swift */; };
+		0739A60220CA453D000869D5 /* EditEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739A60120CA453D000869D5 /* EditEmailViewController.swift */; };
 		075F39DD209CE37D00DA4D1B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075F39DC209CE37D00DA4D1B /* HomeViewController.swift */; };
 		077B0FB020BE6366007381BF /* LostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B0FAF20BE6366007381BF /* LostCollectionViewCell.swift */; };
 		077B0FB220BE6C1B007381BF /* FoundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B0FB120BE6C1B007381BF /* FoundCollectionViewCell.swift */; };
@@ -50,6 +53,9 @@
 		0713C16120A37A1C00B01B79 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		072B161F208401DA00E0B812 /* ubuntu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ubuntu; sourceTree = "<group>"; };
 		07364C3720BFB32D0093E5C0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0739A5FD20CA44D2000869D5 /* EditProfilePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePictureViewController.swift; sourceTree = "<group>"; };
+		0739A5FF20CA450B000869D5 /* EditUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUsernameViewController.swift; sourceTree = "<group>"; };
+		0739A60120CA453D000869D5 /* EditEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailViewController.swift; sourceTree = "<group>"; };
 		075F39DC209CE37D00DA4D1B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		077B0FAF20BE6366007381BF /* LostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostCollectionViewCell.swift; sourceTree = "<group>"; };
 		077B0FB120BE6C1B007381BF /* FoundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -138,6 +144,9 @@
 				077B0FAF20BE6366007381BF /* LostCollectionViewCell.swift */,
 				0713C16120A37A1C00B01B79 /* PostViewController.swift */,
 				07C42E19207BD3C300EF76C0 /* Main.storyboard */,
+				0739A60120CA453D000869D5 /* EditEmailViewController.swift */,
+				0739A5FF20CA450B000869D5 /* EditUsernameViewController.swift */,
+				0739A5FD20CA44D2000869D5 /* EditProfilePictureViewController.swift */,
 				07A9006820C24D79008BC63B /* ProfilePictureSetupViewController.swift */,
 				07364C3720BFB32D0093E5C0 /* ProfileViewController.swift */,
 				07C42E1C207BD3C300EF76C0 /* Assets.xcassets */,
@@ -360,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0739A5FE20CA44D2000869D5 /* EditProfilePictureViewController.swift in Sources */,
 				0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */,
 				07BA69D7209A2F1300977DD8 /* ForgottenPasswordViewController.swift in Sources */,
 				079F166120922FBD00F78AD4 /* LoginViewController.swift in Sources */,
@@ -369,9 +379,11 @@
 				077B0FB020BE6366007381BF /* LostCollectionViewCell.swift in Sources */,
 				07364C3820BFB32D0093E5C0 /* ProfileViewController.swift in Sources */,
 				070D2DA9209554C000B4AC80 /* ChoseUsernameViewController.swift in Sources */,
+				0739A60020CA450B000869D5 /* EditUsernameViewController.swift in Sources */,
 				075F39DD209CE37D00DA4D1B /* HomeViewController.swift in Sources */,
 				07C42E16207BD3C300EF76C0 /* AppDelegate.swift in Sources */,
 				077B0FB220BE6C1B007381BF /* FoundCollectionViewCell.swift in Sources */,
+				0739A60220CA453D000869D5 /* EditEmailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
