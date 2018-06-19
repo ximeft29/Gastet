@@ -10,13 +10,17 @@ import UIKit
 import Parse
 
 class ChoseUsernameViewController: UIViewController {
-
     
-    var currentuser = PFUser.current()
+  
 
+    //@IBOUTLET
+    
+    @IBOutlet weak var userTextField: UITextField!
+    
+    //FUNCTION ALERT
+    
     func displayAlert(title:String, message:String) {
         
-        //ALERT FOR WHEN NO TEXT IS ENTERED IN EMAIL AND PASSWORD FIELD
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
@@ -27,41 +31,50 @@ class ChoseUsernameViewController: UIViewController {
         
     }
     
-    @IBOutlet weak var username: UITextField!
-    
-    
+    //@IBACTION
     @IBAction func nextTapButton(_ sender: Any) {
     
-        if currentuser != nil {
-            currentuser?.username = username.text!
-            
+         let username = userTextField.text
+//          var currentUser = PFUser.current()
+        
+        var currentUser = PFUser.current()!
+        currentUser["username"] = username
+        currentUser.saveInBackground()
+        
+//        if currentUser != nil {
+//
+//            currentUser?.username = userTextField.text!
+            // currentUser?.username = userTextField.text!
             //you have to do a do,try catch
-            do {
-                
-            try currentuser?.save()
-            }
-            //if that try fails you go to the catch
-            catch {
-                
-                 self.displayAlert(title: "No hemos podido asignarte ese usuario", message: error.localizedDescription)
-                
-            }
+//            do {
+//
+//            try currentUser?.save()
+//
+//            }
+//            //if that try fails you go to the catch
+//
+//            catch {
+//
+//                 self.displayAlert(title: "No hemos podido asignarte ese usuario", message: error.localizedDescription)
+//
+//            }
             
-            performSegue(withIdentifier: "toProfilePicture", sender: self)
+            performSegue(withIdentifier: "toHome", sender: self)
         
-        }
+//        }
         
-        else {
-        
-            self.displayAlert(title: "No hemos podido asignarte ese usuario", message: "No se pudo guardar el usuario.")
-            
-            }
-
+//        else {
+//
+//            self.displayAlert(title: "No hemos podido asignarte ese usuario", message: "No se pudo guardar el usuario.")
+//
+//            }
+ 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
     }
 

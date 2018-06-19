@@ -11,21 +11,29 @@ import Parse
 
 class HomeViewController: UIViewController{
     
+    //VARS
+ 
+    var queryusers = [String: String]()
+    var usernames = [String]()
+    
+
     //VAR ARRAYS - LOST
-    var userslost = [String: String]()
+//    var userslost = [String: String]()
     var addresslost = [String]()
     var breedlost = [String]()
      var phonelost = [String]()
-    var usernameslost = [String]()
+//    var usernameslost = [String]()
     var imageFileslost = [PFFile]()
+    var refresherLost: UIRefreshControl = UIRefreshControl()
     
     //VAR ARRAYS - FOUND
-    var usersfound = [String: String]()
+//    var usersfound = [String: String]()
     var addressfound = [String]()
     var breedfound = [String]()
     var phonefound = [String]()
-    var usernamesfound = [String]()
+//    var usernamesfound = [String]()
     var imageFilesfound = [PFFile]()
+    var refresherFound: UIRefreshControl = UIRefreshControl()
     
     //@IBOUTLETS
     @IBOutlet weak var scrollView: UIScrollView!
@@ -34,30 +42,75 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var lostCollectionView: UICollectionView!
     @IBOutlet weak var foundCollectionView: UICollectionView!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+ 
+    @objc func updateCollectionViewLost() {
+        
+        
+        //FUNCTION QUERY FOR USERS
+        
+        let queryuserlost = PFUser.query()
+        queryuserlost?.whereKey("username", notEqualTo: PFUser.current()?.username)
+        queryuserlost?.findObjectsInBackground(block: { (objects, error) in
 
+            if let users = objects {
+
+                for object in users {
+
+                    if let user = object as? PFUser {
+
+                        self.queryusers[user.objectId!] = user.username!
+
+                    }
+
+                }
+
+            }
+        })
+        
+        
+        
         //QUERY LOST
         
         let querylost = PFQuery(className: "Post")
+        querylost.order(byDescending: "createdAt")
         querylost.whereKey("lostfound", equalTo: "lost")
         querylost.findObjectsInBackground { (objects, error) in
             
             if let posts = objects {
                 
                 for post in posts {
-                    
-                    self.addresslost.append(post["address"] as! String)
-                    self.breedlost.append(post["breed"] as! String)
-                    self.phonelost.append(post["phone"] as! String)
-//                    self.usernameslost.append(self.userslost[post["userid"] as! String]!)
-                    self.imageFileslost.append(post["imageFile"] as! PFFile)
-                    self.lostCollectionView.reloadData()
 
+
+                    self.addresslost.append(post["address"] as! String)
+                    
+                    self.breedlost.append(post["breed"] as! String)
+                    
+                    self.phonelost.append(post["phone"] as! String)
+                    
+                    self.imageFileslost.append(post["imageFile"] as! PFFile)
+                    
+//                   self.usernames.append(self.queryusers[post["userid"] as! String]!)
+                    
+                    self.lostCollectionView.reloadData()
+                    
+                    self.refresherLost.endRefreshing()
+
+                    
                 }
             }
         }
+
+        //TO SHOW DATA
+        
+        scrollView.delegate = self
+        lostCollectionView.delegate = self
+        lostCollectionView.dataSource = self
+
+    }
+    
+    //FUNCTION QUERY FOUND
+    
+    @objc func updateCollectionViewFound() {
         
         // QUERY FOUND
         
@@ -70,28 +123,46 @@ class HomeViewController: UIViewController{
                 for post in posts {
                     
                     self.addressfound.append(post["address"] as! String)
+                    
                     self.breedfound.append(post["breed"] as! String)
+                    
                     self.phonefound.append(post["phone"] as! String)
-//                  self.usernamesfound.append(self.userslost[post["userid"] as! String]!)
+                   
+//                    self.usernames.append(self.queryusers[post["userid"] as! String]!)
+
                     self.imageFilesfound.append(post["imageFile"] as! PFFile)
+                    
                     self.foundCollectionView.reloadData()
+
+                    self.refresherFound.endRefreshing()
                     
                 }
+                
             }
             
-
-            }
-        
-        
-        //TO SHOW DATA
-        
+            
+        }
         scrollView.delegate = self
-        lostCollectionView.delegate = self
-        lostCollectionView.dataSource = self
         foundCollectionView.delegate = self
         foundCollectionView.dataSource = self
+        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateCollectionViewLost()
+        updateCollectionViewFound()
+        
+        refresherLost.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refresherLost.addTarget(self, action: #selector(lostCollectionView.reloadData), for: UIControlEvents.valueChanged)
+        lostCollectionView.addSubview(refresherLost)
+        
+        refresherFound.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refresherFound.addTarget(self, action: #selector(foundCollectionView.reloadData), for: UIControlEvents.valueChanged)
+        foundCollectionView.addSubview(refresherFound)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,7 +198,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.adressLostLabel.text = addresslost[indexPath.row]
             cell.breedLostLabel.text = breedlost[indexPath.row]
             cell.phoneLostLabel.text = phonelost[indexPath.row]
+//            cell.usernameLostLabel.text = usernames[indexPath.row]
             
+
             imageFileslost[indexPath.row].getDataInBackground { (data, error) in
                 
                 if let imageData = data {
@@ -150,7 +223,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             cell.adressFoundLabel.text = addressfound[indexPath.row]
             cell.breedFoundLabel.text = breedfound[indexPath.row]
-//            cell.phoneFoundLabel.text = phonefound[indexPath.row]
+            cell.phoneFoundLabel.text = phonefound[indexPath.row]
+//            cell.usernameFoundLabel.text = usernames[indexPath.row]
             
             imageFilesfound[indexPath.row].getDataInBackground { (data, error) in
                 

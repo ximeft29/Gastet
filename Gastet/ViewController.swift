@@ -77,6 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
                             
                         } else {
                             print("Has sigo régistrado!")
+                            self.performSegue(withIdentifier: "toChoseUsername", sender: self)
                             
                             // Hooray! Let them use the app now.
                         }
@@ -170,6 +171,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
             
             view.frame.origin.y = 0
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func didReceiveMemoryWarning() {

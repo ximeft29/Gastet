@@ -60,10 +60,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func forgottenPasswordButton(_ sender: Any) {
-    
-    
-    }
+
     
     
     override func viewDidLoad() {

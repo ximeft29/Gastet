@@ -15,5 +15,6 @@ class FoundCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var adressFoundLabel: UILabel!
     @IBOutlet weak var breedFoundLabel: UILabel!
     @IBOutlet weak var phoneFoundLabel: UILabel!
+    @IBOutlet weak var usernameFoundLabel: UILabel!
     
 }

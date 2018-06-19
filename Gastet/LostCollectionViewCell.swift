@@ -15,6 +15,8 @@ class LostCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var adressLostLabel: UILabel!
     @IBOutlet weak var breedLostLabel: UILabel!
     @IBOutlet weak var phoneLostLabel: UILabel!
+    @IBOutlet weak var usernameLostLabel: UILabel!
+    
     
     //ROUNDED CORNERS
     
