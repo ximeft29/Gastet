@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     var currentUser = PFUser.current()
 
     //@IBOUTLETS
-    @IBOutlet weak var profilePictureImage: UIImageView!
+
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
     
@@ -101,13 +101,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
            
             username.text = currentUser?["username"] as? String
             email.text = currentUser?["email"] as? String
-            profilePictureImage.image = currentUser?["profilepicture"] as? UIImage
+//            profilePictureImage.image = currentUser?["profilepicture"] as? UIImage
             
         }
 
         
       //Rounded Profile Image
-        profilePictureImage.layer.cornerRadius = profilePictureImage.frame.size.width/2
+//        profilePictureImage.layer.cornerRadius = profilePictureImage.frame.size.width/2
         
     }
 

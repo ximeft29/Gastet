@@ -68,7 +68,6 @@ class HomeViewController: UIViewController{
         })
         
         
-        
         //QUERY LOST
         
         let querylost = PFQuery(className: "Post")
@@ -90,6 +89,7 @@ class HomeViewController: UIViewController{
                     self.imageFileslost.append(post["imageFile"] as! PFFile)
                     
 //                   self.usernames.append(self.queryusers[post["userid"] as! String]!)
+
                     
                     self.lostCollectionView.reloadData()
                     
@@ -115,6 +115,7 @@ class HomeViewController: UIViewController{
         // QUERY FOUND
         
         let queryfound = PFQuery(className: "Post")
+        queryfound.order(byDescending: "createdAt")
         queryfound.whereKey("lostfound", equalTo: "found")
         queryfound.findObjectsInBackground { (objects, error) in
             

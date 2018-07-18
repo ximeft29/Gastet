@@ -27,8 +27,10 @@ class PostViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     @IBAction func lostPressedButton(_ sender: UIButton) {
         
+        changeImageFoundButton.setImage(UIImage(named:"FoundButton.png"), for: .normal)
         changeImageLostButton.setImage(UIImage(named:"LostButton-active.png"), for: .normal)
         lost = true
+       
     }
     
 
@@ -36,6 +38,7 @@ class PostViewController: UIViewController, UINavigationControllerDelegate, UIIm
     @IBAction func foundPressedButton(_ sender: Any) {
         
         changeImageFoundButton.setImage(UIImage(named:"FoundButton-active.png"), for: .normal)
+        changeImageLostButton.setImage(UIImage(named:"LostButton.png"), for: .normal)
         lost = false
     }
     

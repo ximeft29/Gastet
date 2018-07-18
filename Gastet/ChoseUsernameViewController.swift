@@ -31,66 +31,30 @@ class ChoseUsernameViewController: UIViewController {
         
     }
     
-    //@IBACTION
-    @IBAction func nextTapButton(_ sender: Any) {
+    //@IBACTION - NEED TO PUT IF LET STATEMENTS FOR WHEN USERNAME IS TAKEN
     
-         let username = userTextField.text
-//          var currentUser = PFUser.current()
-        
-        var currentUser = PFUser.current()!
+    @IBAction func nextTapButton(_ sender: Any) {
+ 
+        let currentUser = PFUser.current()!
+        let username = userTextField.text
         currentUser["username"] = username
         currentUser.saveInBackground()
-        
-//        if currentUser != nil {
-//
-//            currentUser?.username = userTextField.text!
-            // currentUser?.username = userTextField.text!
-            //you have to do a do,try catch
-//            do {
-//
-//            try currentUser?.save()
-//
-//            }
-//            //if that try fails you go to the catch
-//
-//            catch {
-//
-//                 self.displayAlert(title: "No hemos podido asignarte ese usuario", message: error.localizedDescription)
-//
-//            }
             
-            performSegue(withIdentifier: "toHome", sender: self)
+        performSegue(withIdentifier: "toHome", sender: self)
         
-//        }
-        
-//        else {
-//
-//            self.displayAlert(title: "No hemos podido asignarte ese usuario", message: "No se pudo guardar el usuario.")
-//
-//            }
  
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
