@@ -110,9 +110,9 @@ class PostViewController: UIViewController, UIScrollViewDelegate{
             self.address.text = ""
             self.breed.text = ""
             self.phone.text = ""
-            self.imagePosted.image = nil
+            self.imagePosted.image = UIImage(named: "placeholder.png")
             self.changeImageLostButton.setImage(UIImage(named:"LostButton.png"), for: .normal)
-            self.changeImageLostButton.setImage(UIImage(named:"FoundButton.png"), for: .normal)
+            self.changeImageFoundButton.setImage(UIImage(named:"FoundButton.png"), for: .normal)
             //TO HOME VIEW CONTROLLER
             self.tabBarController?.selectedIndex = 0
         }
@@ -138,9 +138,9 @@ class PostViewController: UIViewController, UIScrollViewDelegate{
             self.address.text = ""
             self.breed.text = ""
             self.phone.text = ""
-            self.imagePosted.image = nil
+            self.imagePosted.image = UIImage(named: "placeholder.png")
             self.changeImageLostButton.setImage(UIImage(named:"LostButton.png"), for: .normal)
-            self.changeImageLostButton.setImage(UIImage(named:"FoundButton.png"), for: .normal)
+            self.changeImageFoundButton.setImage(UIImage(named:"FoundButton.png"), for: .normal)
             //TO HOME VIEW CONTROLLER
             self.tabBarController?.selectedIndex = 0
         }
