@@ -30,9 +30,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate{
         }
         else {
             AuthService.signUp(username: userTextField.text!, email: email.text!, password: password.text!, onSuccess: {
-             self.performSegue(withIdentifier: "signUpToHomeView", sender: self)
+             self.performSegue(withIdentifier: "toProfileSelectImage", sender: self)
             }, onError: { error in
                 print(error!)
+                ProgressHUD.showError(error)
+                
             })
         }
     }
@@ -66,18 +68,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate{
     }
     
                                                 //METHODS OR FUNCTIONS//
-    
-    //SPINNER CODE
-//    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//    activityIndicator.center = self.view.center
-//    activityIndicator.hidesWhenStopped = true
-//    activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-//    view.addSubview(activityIndicator)
-//    activityIndicator.startAnimating()
-//    UIApplication.shared.beginIgnoringInteractionEvents()
-//
-//    activityIndicator.stopAnimating()
-//    UIApplication.shared.endIgnoringInteractionEvents()
     
     
     // ALERTAS - FUNC hecho para utilizar Alertas dependindo del caso

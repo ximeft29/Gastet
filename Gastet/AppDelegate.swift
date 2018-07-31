@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,14 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let configuration = ParseClientConfiguration {
-            $0.applicationId = "d1030edd041d9b41f80c0c87fc321be7a42d58df"
-            $0.clientKey = "31110b379a3e17db01f7c825188f69cc1ef2f1d9"
-            $0.server = "http://ec2-13-58-200-46.us-east-2.compute.amazonaws.com/parse"
-        }
-        Parse.initialize(with: configuration)
+        FirebaseApp.configure()
+//        return true
         
+        let authListener = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            if user != nil {
+                UserService.observeUserProfile(user!.uid){userProfile in
+                    UserService.currentUserProfile = userProfile
+                    
+                }
+
+            }
+            
+            else {
+                UserService.currentUserProfile = nil
+            }
+        }
         return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -8,11 +8,11 @@
 
 import UIKit
 import Parse
+import FirebaseDatabase
+import FirebaseAuth
 
 class ChoseUsernameViewController: UIViewController {
     
-  
-
     //@IBOUTLET
     
     @IBOutlet weak var userTextField: UITextField!
@@ -35,11 +35,27 @@ class ChoseUsernameViewController: UIViewController {
     
     @IBAction func nextTapButton(_ sender: Any) {
  
-        let currentUser = PFUser.current()!
-        let username = userTextField.text
-        currentUser["username"] = username
-        currentUser.saveInBackground()
-            
+//PARSE
+//let currentUser = PFUser.current()!
+//let username = userTextField.text
+//currentUser["username"] = username
+//currentUser.saveInBackground()
+      
+        //FIREBASE
+
+        let user = Auth.auth().currentUser
+    
+        if (user) != nil {
+            let reference = Database.database().reference()
+            let userReference = reference.child("users")
+            let uid = user?.uid
+            let newUserReference = reference.child(uid!)
+            newUserReference.setValue(["username": self.userTextField.text!])
+        }
+        
+
+
+        
         performSegue(withIdentifier: "toHome", sender: self)
         
  
