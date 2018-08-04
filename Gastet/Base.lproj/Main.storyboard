@@ -400,13 +400,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background Log In" translatesAutoresizingMaskIntoConstraints="NO" id="T7t-fH-vtq">
-                                <rect key="frame" x="0.0" y="0.0" width="382" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDA-Qa-Ywd">
-                                <rect key="frame" x="53.666666666666657" y="56.999999999999986" width="274.33333333333337" height="202.66666666666663"/>
+                                <rect key="frame" x="53" y="57.000000000000014" width="307" height="227.33333333333337"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gku-BN-jEp">
-                                        <rect key="frame" x="0.0" y="0.0" width="274.33333333333331" height="202.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="307" height="227.33333333333334"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="14"/>
@@ -438,7 +438,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escoge una foto de perfil" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf7-ae-Nvg">
-                                <rect key="frame" x="34.666666666666657" y="284" width="313.33333333333337" height="71.333333333333314"/>
+                                <rect key="frame" x="34" y="284" width="346" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bf7-ae-Nvg" secondAttribute="height" multiplier="307:70" id="7jU-vs-hJx"/>
                                 </constraints>
@@ -447,11 +447,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqP-iW-I5i">
-                                <rect key="frame" x="20" y="431" width="343" height="50"/>
+                                <rect key="frame" x="20" y="431" width="374" height="50"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49.5" id="4gz-db-pLY"/>
-                                    <constraint firstAttribute="width" constant="343" id="K6K-VO-2w2"/>
                                 </constraints>
                                 <color key="tintColor" red="0.70980392160000005" green="0.46274509800000002" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Terminar"/>
@@ -477,25 +476,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="T7t-fH-vtq" firstAttribute="top" secondItem="Z6C-zm-9ye" secondAttribute="top" id="0xX-20-7PL"/>
                             <constraint firstItem="CqP-iW-I5i" firstAttribute="leading" secondItem="Z6C-zm-9ye" secondAttribute="leadingMargin" id="21d-6H-e2G"/>
-                            <constraint firstItem="T7t-fH-vtq" firstAttribute="trailing" secondItem="CFs-NZ-D81" secondAttribute="trailing" id="3vl-JA-nL3"/>
                             <constraint firstItem="oDA-Qa-Ywd" firstAttribute="leading" secondItem="CFs-NZ-D81" secondAttribute="leading" constant="53" id="3yr-gz-JTi"/>
                             <constraint firstItem="CFs-NZ-D81" firstAttribute="trailing" secondItem="bf7-ae-Nvg" secondAttribute="trailing" constant="34" id="6qE-AT-bWe"/>
                             <constraint firstItem="bf7-ae-Nvg" firstAttribute="top" secondItem="CFs-NZ-D81" secondAttribute="top" constant="264" id="8eg-H5-nIZ"/>
-                            <constraint firstItem="T7t-fH-vtq" firstAttribute="leading" secondItem="Z6C-zm-9ye" secondAttribute="leading" id="BHm-JM-1iw"/>
                             <constraint firstItem="oDA-Qa-Ywd" firstAttribute="leading" secondItem="CFs-NZ-D81" secondAttribute="leading" constant="53" id="BxC-1h-4pi"/>
                             <constraint firstItem="CFs-NZ-D81" firstAttribute="bottom" secondItem="CqP-iW-I5i" secondAttribute="bottom" constant="255" id="DnR-Df-p4f"/>
                             <constraint firstItem="CFs-NZ-D81" firstAttribute="trailing" secondItem="oDA-Qa-Ywd" secondAttribute="trailing" constant="54" id="EEh-g6-A0h"/>
-                            <constraint firstItem="T7t-fH-vtq" firstAttribute="bottom" secondItem="CFs-NZ-D81" secondAttribute="bottom" id="G1a-ep-Oyf"/>
-                            <constraint firstItem="T7t-fH-vtq" firstAttribute="top" secondItem="Z6C-zm-9ye" secondAttribute="top" id="XBc-9d-8ec"/>
+                            <constraint firstItem="T7t-fH-vtq" firstAttribute="top" secondItem="Z6C-zm-9ye" secondAttribute="top" id="K8P-7H-Yq7"/>
+                            <constraint firstItem="T7t-fH-vtq" firstAttribute="leading" secondItem="Z6C-zm-9ye" secondAttribute="leading" id="O4y-Sw-KLq"/>
+                            <constraint firstItem="T7t-fH-vtq" firstAttribute="bottom" secondItem="CFs-NZ-D81" secondAttribute="bottom" id="R9w-jy-Ivu"/>
                             <constraint firstItem="bf7-ae-Nvg" firstAttribute="leading" secondItem="CFs-NZ-D81" secondAttribute="leading" constant="34" id="aht-lp-RQS"/>
-                            <constraint firstItem="T7t-fH-vtq" firstAttribute="leading" secondItem="CFs-NZ-D81" secondAttribute="leading" id="brX-d0-ThA"/>
-                            <constraint firstItem="T7t-fH-vtq" firstAttribute="bottom" secondItem="CFs-NZ-D81" secondAttribute="bottom" id="jbX-VJ-s4O"/>
                             <constraint firstItem="oDA-Qa-Ywd" firstAttribute="top" secondItem="CFs-NZ-D81" secondAttribute="top" constant="37" id="pTJ-zX-5wo"/>
+                            <constraint firstItem="T7t-fH-vtq" firstAttribute="centerX" secondItem="bf7-ae-Nvg" secondAttribute="centerX" id="qT7-j5-Bdb"/>
                             <constraint firstItem="CFs-NZ-D81" firstAttribute="trailing" secondItem="oDA-Qa-Ywd" secondAttribute="trailing" constant="54" id="s5I-LS-bnb"/>
                             <constraint firstItem="CqP-iW-I5i" firstAttribute="centerX" secondItem="Z6C-zm-9ye" secondAttribute="centerX" id="soE-We-EWM"/>
-                            <constraint firstItem="CqP-iW-I5i" firstAttribute="centerX" secondItem="T7t-fH-vtq" secondAttribute="centerX" id="vhm-AC-bWE"/>
+                            <constraint firstItem="T7t-fH-vtq" firstAttribute="centerY" secondItem="Z6C-zm-9ye" secondAttribute="centerY" id="wrb-4G-Cep"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CFs-NZ-D81"/>
                     </view>
@@ -506,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4n-Xp-QxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245.59999999999999" y="903.59820089955031"/>
+            <point key="canvasLocation" x="244.92753623188409" y="903.26086956521749"/>
         </scene>
         <!--Login-->
         <scene sceneID="9IR-k5-wGq">
@@ -1920,6 +1916,6 @@
         <image name="user-activated" width="17" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TOn-W1-kcL"/>
+        <segue reference="zbq-Kn-Cyf"/>
     </inferredMetricsTieBreakers>
 </document>
