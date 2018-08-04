@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
 
-class PostViewController: UIViewController, UIScrollViewDelegate{
+class PostViewController: UIViewController{
 
     //VARS
     
@@ -156,9 +156,9 @@ class PostViewController: UIViewController, UIScrollViewDelegate{
         self.present(alert, animated: true, completion: nil)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView)
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print(scrollView)
+//    }
     
     @objc func handleSelectPhoto() {
         let pickerController = UIImagePickerController()
@@ -173,6 +173,8 @@ class PostViewController: UIViewController, UIScrollViewDelegate{
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleSelectPhoto))
         imagePosted.addGestureRecognizer(tapGesture)
         imagePosted.isUserInteractionEnabled = true
+        self.view.backgroundColor = UIColor.white
+        scrollView.delegate = self
 
     }
     
@@ -203,6 +205,14 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
+    }
+    
+}
+
+extension  PostViewController: UIScrollViewDelegate{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView)
     }
     
 }

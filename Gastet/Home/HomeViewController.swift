@@ -95,28 +95,6 @@ class HomeViewController: UIViewController{
                 self.foundCollectionView.reloadData()
             }
         }
-
-        //intento para ordenar x timestamp
-//        postsRef.queryOrdered(byChild: "timestamp").observe(.value) { (snapshot) in
-//
-//            var tempPost = [PostsFound]()
-//            for child in snapshot.children {
-//                if let childSnapshot = child as? DataSnapshot {
-//
-//                                        let dict = childSnapshot.value as? [String: Any]
-//                                        let addressfound = dict!["address"] as? String
-//                                        let breedfound = dict!["breed"] as? String
-//                                        let phoneuserfound = dict!["phone"] as? String
-//                                        let photoUrlfound = dict!["photoUrl"] as? String
-//                                        let url = URL(string: photoUrlfound!)
-//                                        let post = PostsFound(addressfound: addressfound!, breedfound: breedfound!, phonefound: phoneuserfound!, photoUrlfound: url!)
-//                                        tempPost.append(post)
-//                                    }
-//
-//                                    self.postsfound = tempPost
-//                                    self.foundCollectionView.reloadData()
-//                                }
-//            }
         
     }
 
@@ -182,15 +160,3 @@ extension  HomeViewController: UIScrollViewDelegate{
     
 }
 
-//DUDAS A RESOLVER
-// 1 --> EN CELL --> ERROR IMAGEN
-// 2 --> EN NUMBEROFITEMS -> ES RETURN _____.COUNT --> QUE PONGO AQUI?
-// 3 --> HICE 2 QUERIES, SE PUEDE? SIRVE? , NO ENTENDI LO DE IF THEN
-
-
-//PASS TO NEW FILE
-
-//var addresslost = [String]()
-//var breedlost = [String]()
-//var phonelost = [String]()
-////    var imageFileslost = [PFFile]()
