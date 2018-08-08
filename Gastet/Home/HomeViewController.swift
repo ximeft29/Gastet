@@ -48,33 +48,34 @@ class HomeViewController: UIViewController{
     
     func observePostsLost() {
         let postsRef = Database.database().reference().child("posts").child("lost")
-        postsRef.observe(.value) { (snapshot) in
+//CAMBIO EMPIEZA AQUI
+        postsRef.queryOrdered(byChild: "timestamp").observe(.value) { (snapshot) in
+         
+                        var tempPost = [Posts]()
             
-            var tempPost = [Posts]()
+                        for child in snapshot.children {
+                            if let childSnapshot = child as? DataSnapshot {
             
-            for child in snapshot.children {
-                if let childSnapshot = child as? DataSnapshot {
-                    
-                    let dict = childSnapshot.value as? [String: Any]
-                    let address = dict!["address"] as? String
-                    let breed = dict!["breed"] as? String
-                    let phoneuser = dict!["phone"] as? String
-                    let photoUrl = dict!["photoUrl"] as? String
-                    let url = URL(string: photoUrl!)
-                    let post = Posts(address: address!, breed: breed!, phone: phoneuser!, photoUrl: url!)
-                    tempPost.append(post)
-                }
-                
-                self.posts = tempPost
-                self.lostCollectionView.reloadData()
-                
-            }
+                                let dict = childSnapshot.value as? [String: Any]
+                                let address = dict!["address"] as? String
+                                let breed = dict!["breed"] as? String
+                                let phoneuser = dict!["phone"] as? String
+                                let photoUrl = dict!["photoUrl"] as? String
+                                let url = URL(string: photoUrl!)
+                                let post = Posts(address: address!, breed: breed!, phone: phoneuser!, photoUrl: url!)
+                                tempPost.insert(post, at: 0)
+                            }
+            
+                            self.posts = tempPost
+                            self.lostCollectionView.reloadData()
+            
         }
+    }
     }
 
     func observePostsFound() {
         let postsRef = Database.database().reference().child("posts").child("found")
-        postsRef.observe(.value) { (snapshot) in
+        postsRef.queryOrdered(byChild: "timestamp").observe(.value) { (snapshot) in
             
             var tempPost = [PostsFound]()
             
@@ -88,7 +89,7 @@ class HomeViewController: UIViewController{
                     let photoUrlfound = dict!["photoUrl"] as? String
                     let url = URL(string: photoUrlfound!)
                     let post = PostsFound(addressfound: addressfound!, breedfound: breedfound!, phonefound: phoneuserfound!, photoUrlfound: url!)
-                    tempPost.append(post)
+                    tempPost.insert(post, at: 0)
                 }
                 
                 self.postsfound = tempPost
