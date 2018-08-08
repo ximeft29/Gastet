@@ -133,6 +133,7 @@
 				071CEB3E21028FA10080DBD3 /* AuthService.swift */,
 				07C42E17207BD3C300EF76C0 /* SignupViewController.swift */,
 				079F166020922FBD00F78AD4 /* LoginViewController.swift */,
+				07A9006820C24D79008BC63B /* ProfilePictureSetupViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -176,7 +177,6 @@
 			children = (
 				070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */,
 				07BA69D6209A2F1300977DD8 /* ForgottenPasswordViewController.swift */,
-				07A9006820C24D79008BC63B /* ProfilePictureSetupViewController.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";

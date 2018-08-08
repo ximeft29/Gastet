@@ -1021,6 +1021,7 @@
                         <outlet property="changeImageLostButton" destination="ACT-Sz-QeQ" id="iI6-TP-Doy"/>
                         <outlet property="imagePosted" destination="Ip7-2J-vyA" id="84F-7e-4dZ"/>
                         <outlet property="phone" destination="2tx-pt-IT2" id="3P5-hw-ddR"/>
+                        <outlet property="postButton" destination="TGM-Vf-KDQ" id="BE2-1x-p7K"/>
                         <outlet property="scrollView" destination="Mbt-mm-PPd" id="AzM-ZQ-7uY"/>
                     </connections>
                 </viewController>
@@ -1037,7 +1038,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHH-wM-UYt">
-                                <rect key="frame" x="16" y="530" width="382" height="48"/>
+                                <rect key="frame" x="16" y="530" width="348" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="s9Y-vj-BMs"/>
                                     <constraint firstAttribute="width" constant="343" id="z78-Ww-V2v"/>
@@ -1049,13 +1050,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerrar Sesión" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC6-B1-Nk0">
-                                <rect key="frame" x="20" y="531" width="374" height="47"/>
+                                <rect key="frame" x="20" y="531" width="340" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Rj-3d-M1w" userLabel="Profile View">
-                                <rect key="frame" x="20" y="93" width="374" height="340"/>
+                                <rect key="frame" x="20" y="93" width="340" height="340"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmp-SL-ya0" userLabel="Inner View" customClass="DesignableView" customModule="Spring">
                                         <rect key="frame" x="0.0" y="0.0" width="340" height="340"/>

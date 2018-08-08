@@ -79,32 +79,7 @@ class ProfilePictureSetupViewController: UIViewController,UIImagePickerControlle
                     self.performSegue(withIdentifier: "toHomeVC", sender: self)
                 }
         
-        
-//        var ref: DatabaseReference!
-//        ref = Database.database().reference()
-//        let usersReference = ref.child("users")
-//        let uid = Auth.auth().currentUser?.uid
-//        let newUserReference = usersReference.child(uid!)
-//        newUserReference.setValue(["photoUrl": photoUrl]) { (error, ref) in
-//            if error != nil {
-//                ProgressHUD.showError(error!.localizedDescription)
-//                return
-//            }
-//            ProgressHUD.showSuccess("Tu imagen ha sido publicada!")
-//            self.performSegue(withIdentifier: "toHomeView", sender: self)
-//        }
-        
-        //TRY #3
-//        var rootRef = Database.database().reference()
-//        let uid = Auth.auth().currentUser?.uid
-//        rootRef.ref("users/\(uid)/photoUrl").setValue(photoUrl) { (error, ref) in
-//            if error != nil {
-//                ProgressHUD.showError(error!.localizedDescription)
-//                return
-//            }
-//            ProgressHUD.showSuccess("Tu imagen ha sido publicada!")
-//            self.performSegue(withIdentifier: "toHomeView", sender: self)
-//        }
+
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
@@ -121,7 +96,7 @@ class ProfilePictureSetupViewController: UIViewController,UIImagePickerControlle
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        pickerController.allowsEditing = false
+        pickerController.allowsEditing = true
         self.present(pickerController, animated: true, completion: nil)
     }
  

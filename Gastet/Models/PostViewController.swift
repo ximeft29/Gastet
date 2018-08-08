@@ -26,7 +26,8 @@ class PostViewController: UIViewController{
     @IBOutlet weak var imagePosted: UIImageView!
     @IBOutlet weak var changeImageLostButton: UIButton!
     @IBOutlet weak var changeImageFoundButton: UIButton!
-
+    @IBOutlet weak var postButton: UIButton!
+    
     //BUTTONS PRESSED - LOST & FOUND
     
     @IBAction func lostPressedButton(_ sender: UIButton) {
@@ -81,7 +82,6 @@ class PostViewController: UIViewController{
                 })
                                                 }
         }
-    
             else {
             ProgressHUD.showError("Tienes que subir una foto...")
         }
@@ -120,8 +120,6 @@ class PostViewController: UIViewController{
     }
     
     func sendDataToDatabaseFound(address: String, breed: String, phone: String, photoUrl: String, timestamp: String) {
-        //por the time being photoUrl:String - wasn't added because I can't get the downloadURL
-        //         func sendDataToDatabase(address: String, breed: String, phone: String, lostfound: String, photoUrl: String)
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let postsReference = ref.child("posts").child("found")
@@ -146,7 +144,22 @@ class PostViewController: UIViewController{
         }
     }
     
-
+    func handleBlancInformation(){
+        address.addTarget(self, action: #selector(PostViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        breed.addTarget(self, action: #selector(PostViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        phone.addTarget(self, action: #selector(PostViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        guard let address = address.text, !address.isEmpty, let breed = breed.text, !breed.isEmpty, let phone = phone.text, !phone.isEmpty
+            else {
+            postButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+                postButton.isEnabled = false
+                return
+        }
+        postButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        postButton.isEnabled = true
+    }
     
     func displayAlert(title:String, message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
@@ -155,10 +168,7 @@ class PostViewController: UIViewController{
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView)
-//    }
+
     
     @objc func handleSelectPhoto() {
         let pickerController = UIImagePickerController()
@@ -175,7 +185,7 @@ class PostViewController: UIViewController{
         imagePosted.isUserInteractionEnabled = true
         self.view.backgroundColor = UIColor.white
         scrollView.delegate = self
-
+        handleBlancInformation()
     }
     
     override func didReceiveMemoryWarning() {
