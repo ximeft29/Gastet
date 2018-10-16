@@ -23,6 +23,7 @@ class ProfileUserPosts: NSObject {
         self.phone = phone
         self.photoUrl = photoUrl
         
+        
     }
 
 }

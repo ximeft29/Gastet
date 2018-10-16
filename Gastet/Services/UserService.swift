@@ -30,6 +30,7 @@ class UserService {
                 
             }
             completion(userProfile)
+            
         }
     }
 

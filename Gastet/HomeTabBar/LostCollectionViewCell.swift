@@ -24,6 +24,7 @@ class LostCollectionViewCell: UICollectionViewCell {
         adressLostLabel.text = post.address
         breedLostLabel.text = post.breed
         phoneLostTextView.text = post.phone
+        
     }
     
     

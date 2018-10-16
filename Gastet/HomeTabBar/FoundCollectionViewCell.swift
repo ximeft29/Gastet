@@ -24,5 +24,6 @@ class FoundCollectionViewCell: UICollectionViewCell {
         adressFoundLabel.text = postfound.addressfound
         breedFoundLabel.text = postfound.breedfound
         phoneFoundTextView.text = postfound.phonefound
+        
     }
 }

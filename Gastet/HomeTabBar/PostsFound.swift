@@ -22,6 +22,7 @@ class PostsFound: NSObject {
         self.phonefound = phonefound
         self.photoUrlfound = photoUrlfound
         
+        
     }
 
     

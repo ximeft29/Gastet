@@ -22,6 +22,5 @@ class Posts: NSObject {
         self.breed = breed
         self.phone = phone
         self.photoUrl = photoUrl
-        
     }
    }

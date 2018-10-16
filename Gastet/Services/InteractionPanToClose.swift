@@ -141,6 +141,7 @@ extension InteractionPanToClose : UIGestureRecognizerDelegate {
         }
         
         return true
+        
     }
     
     

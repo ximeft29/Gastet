@@ -27,5 +27,6 @@ class PostsCollectionViewCell: UICollectionViewCell {
         breedLabel.text = post.breed
         phoneLabel.text = post.phone
 
+        
     }
 }

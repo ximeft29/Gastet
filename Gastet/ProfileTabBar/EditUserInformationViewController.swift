@@ -123,6 +123,7 @@ class EditUserInformationViewController: UIViewController,UIImagePickerControlle
         
         self.dismiss(animated: true, completion: {
             self.saveButton.isHidden = false
+            
         })
     }
     

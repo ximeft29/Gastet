@@ -437,6 +437,7 @@ class PostViewController: UIViewController{
         
         self.view.backgroundColor = UIColor.white
         scrollView.delegate = self
+        enablePostButton()
 //        handleBlancInformation()
 //        postButton.isHidden = true
 

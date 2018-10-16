@@ -35,12 +35,6 @@ class ChoseUsernameViewController: UIViewController {
     
     @IBAction func nextTapButton(_ sender: Any) {
  
-//PARSE
-//let currentUser = PFUser.current()!
-//let username = userTextField.text
-//currentUser["username"] = username
-//currentUser.saveInBackground()
-      
         //FIREBASE
 
         let user = Auth.auth().currentUser

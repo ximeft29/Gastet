@@ -34,7 +34,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate{
             }, onError: { error in
                 print(error!)
                 ProgressHUD.showError(error)
-                
             })
         }
     }

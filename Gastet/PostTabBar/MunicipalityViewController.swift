@@ -46,6 +46,7 @@ extension MunicipalityViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectMunicipalityHandler(municipalities[indexPath.row])
         self.navigationController?.popViewController(animated: true)
+        
     }
     
 

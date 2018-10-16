@@ -40,6 +40,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func editUserInformationButton(_ sender: UIButton) {
         
         performSegue(withIdentifier: "editUserInformation", sender: self)
+        
     }
     
     

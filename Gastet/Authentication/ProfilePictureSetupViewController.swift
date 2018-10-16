@@ -119,6 +119,7 @@ class ProfilePictureSetupViewController: UIViewController,UIImagePickerControlle
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
     }
 
 }

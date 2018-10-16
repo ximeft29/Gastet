@@ -38,6 +38,7 @@ class ImageService {
         } else {
             
             downloadImage(withUrl: url, completion: completion)
+            
         }
     }
     

@@ -44,6 +44,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        self.selectCityHandler(cities[indexPath.row])
         self.navigationController?.popViewController(animated: true)
+        
     }
     
 }
