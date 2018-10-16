@@ -20,6 +20,8 @@ class ProfilePictureSetupViewController: UIViewController,UIImagePickerControlle
     
     @IBOutlet weak var profilePictureImage: UIImageView!
     
+    @IBOutlet weak var finishButton: UIButton!
+    
     //IBACTIONS
     @IBAction func choseImageButton(_ sender: UIButton) {
     
@@ -39,7 +41,7 @@ class ProfilePictureSetupViewController: UIViewController,UIImagePickerControlle
             //photo idstring gives us a unique string for any given time of the day. Garantied unique string
             let photoIdString = "\(NSUUID().uuidString).jpg"
             let imageReference = storageRef.child("profileImages").child(photoIdString)
-            if let imageData = UIImageJPEGRepresentation(selectedProfileImage, 0.7) {
+            if let imageData = UIImageJPEGRepresentation(selectedProfileImage, 0.4) {
                 imageReference.putData(imageData).observe(.success) { (snapshot) in
                     imageReference.downloadURL(completion: { (url, error) in
                         
@@ -88,8 +90,13 @@ class ProfilePictureSetupViewController: UIViewController,UIImagePickerControlle
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             selectedProfileImage = image
             profilePictureImage.image = image
+            
         }
-        self.dismiss(animated: true, completion: nil)
+        
+        self.dismiss(animated: true, completion: {
+            self.finishButton.isHidden = false
+            
+        })
     }
 
     @objc func handleSelectPhoto() {
@@ -107,6 +114,7 @@ class ProfilePictureSetupViewController: UIViewController,UIImagePickerControlle
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleSelectPhoto))
         profilePictureImage.addGestureRecognizer(tapGesture)
         profilePictureImage.isUserInteractionEnabled = true
+        finishButton.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
