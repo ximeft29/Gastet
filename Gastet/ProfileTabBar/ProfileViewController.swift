@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     //VARS
     var postsuser = [ProfileUserPosts]()
     
+    //Refresher
+    var refresher: UIRefreshControl = UIRefreshControl()
 
     //@IBOUTLETS
     
@@ -67,11 +69,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         postsCollectionView.dataSource = self
         
         //functions
-        observeUserPosts()
         displayUserInformation()
 
         setupNavigationBarItems()
 
+//        observeUserPosts()
+        
+        //Refresher
+        refresher.addTarget(self, action: #selector(postsCollectionView.reloadData), for: UIControlEvents.valueChanged)
+        postsCollectionView.addSubview(refresher)
         
     }
     
@@ -139,39 +145,49 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }}, withCancel: nil)
         
     }
-    
-    //func observeUserPosts - display user's uploaded pictures
-    
-    func observeUserPosts() {
 
+    @objc func observeUserPosts() {
         let uid = Auth.auth().currentUser?.uid
-        let postRef = Database.database().reference().child("posts")
-        postRef.child("lost").child(uid!).queryOrdered(byChild: "timestamp").observe(.value) { (snapshot) in
-            
+        let postsRef = Database.database().reference().child("posts").queryOrdered(byChild: "author/userid")
+        postsRef.queryEqual(toValue: uid!).observe(.value) { (snapshot) in
+
             var tempPost = [ProfileUserPosts]()
-            
+
             for child in snapshot.children {
-                
                 if let childSnapshot = child as? DataSnapshot {
+
                     let dict = childSnapshot.value as? [String: Any]
-                    let address = dict!["address"] as? String
-                    let breed = dict!["breed"] as? String
-                    let phoneuser = dict!["phone"] as? String
+
+                    //Post Picture
                     let photoUrl = dict!["photoUrl"] as? String
                     let url = URL(string: photoUrl!)
-                    let post = ProfileUserPosts(address: address!, breed: breed!, phone: phoneuser!, photoUrl: url!)
+
+                    //Info Post
+                    let comments = dict!["comments"] as? String
+                    let city = dict!["city"] as? String
+                    let municipality = dict!["municipality"] as? String
+                    let breed = dict!["breed"] as? String
+                    let phoneuser = dict!["phone"] as? String
+                    let postType = dict!["postType"] as? String
+                    let petType = dict!["petType"] as? String
+                    let gender = dict!["gender"] as? String
+                    let timestampadoption = dict!["timestamp"] as? Double
+                    let date = Date(timeIntervalSince1970: timestampadoption!/1000)
+
+                    let post = ProfileUserPosts(breed: breed!, phone: phoneuser!, photoUrl: url!, city: city!, municipality: municipality!, petType: petType!, gender: gender!, timestamp: date, postType: postType!, comments: comments!)
+
                     tempPost.insert(post, at: 0)
-                    
                 }
-                
-                self.postsuser = tempPost
-                self.postsCollectionView.reloadData()
-                
+
+                DispatchQueue.main.async {
+                    self.postsuser = tempPost
+                    self.postsCollectionView.reloadData()
+                    self.refresher.endRefreshing()
+                }
             }
         }
-        
-        
     }
+
     
     
     //ALERTS

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07048C3E21790F58000AB821 /* PostsAdoption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07048C3D21790F58000AB821 /* PostsAdoption.swift */; };
+		07048C4021791025000AB821 /* AdoptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07048C3F21791025000AB821 /* AdoptionCollectionViewCell.swift */; };
+		07056F7B218114EE00A91FA2 /* AdoptionSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07056F7A218114EE00A91FA2 /* AdoptionSelectedViewController.swift */; };
 		070CC3F720FFF5B7008B2596 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070CC3F620FFF5B7008B2596 /* GoogleService-Info.plist */; };
 		070D2DA9209554C000B4AC80 /* ChoseUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */; };
 		0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0713C16120A37A1C00B01B79 /* PostViewController.swift */; };
@@ -40,6 +43,7 @@
 		07626ABC213B412D003248D4 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07626AA9213B412D003248D4 /* Montserrat-Italic.ttf */; };
 		07626ABD213B412D003248D4 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07626AAA213B412D003248D4 /* Montserrat-SemiBoldItalic.ttf */; };
 		07626ABE213B412D003248D4 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07626AAB213B412D003248D4 /* Montserrat-ExtraBoldItalic.ttf */; };
+		0769CC51217FCC7F00CE6DFE /* LostSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0769CC50217FCC7F00CE6DFE /* LostSelectedViewController.swift */; };
 		076B52D72103A39100B36EA7 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 076B52D42103A38F00B36EA7 /* ProgressHUD.m */; };
 		076B52D82103A39100B36EA7 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 076B52D62103A39000B36EA7 /* ProgressHUD.bundle */; };
 		077B0FB020BE6366007381BF /* LostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077B0FAF20BE6366007381BF /* LostCollectionViewCell.swift */; };
@@ -49,6 +53,7 @@
 		07A26F30212384B300CAD46F /* PostsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A26F2F212384B300CAD46F /* PostsCollectionViewCell.swift */; };
 		07A9006920C24D79008BC63B /* ProfilePictureSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9006820C24D79008BC63B /* ProfilePictureSetupViewController.swift */; };
 		07A9F0632105977900C4D914 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9F0622105977900C4D914 /* Posts.swift */; };
+		07B017B42180053E003DE12B /* FoundSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B017B32180053E003DE12B /* FoundSelectedViewController.swift */; };
 		07BA69D7209A2F1300977DD8 /* ForgottenPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BA69D6209A2F1300977DD8 /* ForgottenPasswordViewController.swift */; };
 		07C42E16207BD3C300EF76C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E15207BD3C300EF76C0 /* AppDelegate.swift */; };
 		07C42E18207BD3C300EF76C0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C42E17207BD3C300EF76C0 /* SignupViewController.swift */; };
@@ -83,6 +88,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07048C3D21790F58000AB821 /* PostsAdoption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAdoption.swift; sourceTree = "<group>"; };
+		07048C3F21791025000AB821 /* AdoptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		07056F7A218114EE00A91FA2 /* AdoptionSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionSelectedViewController.swift; sourceTree = "<group>"; };
 		070CC3F620FFF5B7008B2596 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseUsernameViewController.swift; sourceTree = "<group>"; };
 		0713C16120A37A1C00B01B79 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +124,7 @@
 		07626AA9213B412D003248D4 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		07626AAA213B412D003248D4 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		07626AAB213B412D003248D4 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		0769CC50217FCC7F00CE6DFE /* LostSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostSelectedViewController.swift; sourceTree = "<group>"; };
 		076B52D32103A38E00B36EA7 /* Gastet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gastet-Bridging-Header.h"; sourceTree = "<group>"; };
 		076B52D42103A38F00B36EA7 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		076B52D52103A39000B36EA7 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
@@ -127,6 +136,7 @@
 		07A26F2F212384B300CAD46F /* PostsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCollectionViewCell.swift; sourceTree = "<group>"; };
 		07A9006820C24D79008BC63B /* ProfilePictureSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSetupViewController.swift; sourceTree = "<group>"; };
 		07A9F0622105977900C4D914 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		07B017B32180053E003DE12B /* FoundSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSelectedViewController.swift; sourceTree = "<group>"; };
 		07BA69D6209A2F1300977DD8 /* ForgottenPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgottenPasswordViewController.swift; sourceTree = "<group>"; };
 		07C42E12207BD3C300EF76C0 /* Gastet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gastet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C42E15207BD3C300EF76C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,8 +216,14 @@
 				075F39DC209CE37D00DA4D1B /* HomeViewController.swift */,
 				07A9F0622105977900C4D914 /* Posts.swift */,
 				07215B50210A49D600BEDAD5 /* PostsFound.swift */,
+				07048C3D21790F58000AB821 /* PostsAdoption.swift */,
 				077B0FAF20BE6366007381BF /* LostCollectionViewCell.swift */,
 				077B0FB120BE6C1B007381BF /* FoundCollectionViewCell.swift */,
+				07048C3F21791025000AB821 /* AdoptionCollectionViewCell.swift */,
+				07269B18210AEF19000C2C8A /* UserProfile.swift */,
+				0769CC50217FCC7F00CE6DFE /* LostSelectedViewController.swift */,
+				07B017B32180053E003DE12B /* FoundSelectedViewController.swift */,
+				07056F7A218114EE00A91FA2 /* AdoptionSelectedViewController.swift */,
 			);
 			path = HomeTabBar;
 			sourceTree = "<group>";
@@ -327,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				0713C16120A37A1C00B01B79 /* PostViewController.swift */,
-				07269B18210AEF19000C2C8A /* UserProfile.swift */,
 				07E4682D21714EF20047DC38 /* CitiesViewController.swift */,
 				07E4682B21714E8C0047DC38 /* CityCellTableViewCell.swift */,
 				07E46832217153820047DC38 /* MunicipalityViewController.swift */,
@@ -567,6 +582,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B017B42180053E003DE12B /* FoundSelectedViewController.swift in Sources */,
+				07048C4021791025000AB821 /* AdoptionCollectionViewCell.swift in Sources */,
 				07A9F0632105977900C4D914 /* Posts.swift in Sources */,
 				0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */,
 				07269B19210AEF19000C2C8A /* UserProfile.swift in Sources */,
@@ -583,6 +600,7 @@
 				07A26F30212384B300CAD46F /* PostsCollectionViewCell.swift in Sources */,
 				075F39DD209CE37D00DA4D1B /* HomeViewController.swift in Sources */,
 				07215B4F2109234200BEDAD5 /* ImageService.swift in Sources */,
+				07048C3E21790F58000AB821 /* PostsAdoption.swift in Sources */,
 				07E46833217153820047DC38 /* MunicipalityViewController.swift in Sources */,
 				0731A89A20CF800600DE8A25 /* EditUserInformationViewController.swift in Sources */,
 				07269B17210AD7B1000C2C8A /* IntroScreenViewController.swift in Sources */,
@@ -595,6 +613,8 @@
 				076B52D72103A39100B36EA7 /* ProgressHUD.m in Sources */,
 				071CEB3F21028FA10080DBD3 /* AuthService.swift in Sources */,
 				07E4682E21714EF20047DC38 /* CitiesViewController.swift in Sources */,
+				07056F7B218114EE00A91FA2 /* AdoptionSelectedViewController.swift in Sources */,
+				0769CC51217FCC7F00CE6DFE /* LostSelectedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

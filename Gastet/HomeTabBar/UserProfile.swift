@@ -18,8 +18,7 @@ class UserProfile {
         self.uid = uid
         self.username = username
         self.photoUrl = photoUrl
-        
-        
+    
     }
     
 }

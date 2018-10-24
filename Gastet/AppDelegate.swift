@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UserService.currentUserProfile = nil
             }
         }
+        Database.database().reference().keepSynced(false)
         return true
         
     }

@@ -10,11 +10,12 @@ import UIKit
 
 class CitiesViewController: UIViewController {
 
-    var cities = ["Monterrey", "Cuidad de Mexico", "Guadalajara"]
+    var cities = ["Monterrey"]
     var selectCityHandler: (String)->() = { _ in }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-       self.navigationController?.dismiss(animated: true, completion: nil)
+
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {

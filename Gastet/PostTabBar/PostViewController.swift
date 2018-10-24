@@ -27,7 +27,7 @@ enum Gender: String {
     case male, female
 }
 
-class PostViewController: UIViewController{
+class PostViewController: UIViewController, UITextViewDelegate{
  
     //VARS
     var lost = Bool()
@@ -83,7 +83,8 @@ class PostViewController: UIViewController{
     @IBOutlet weak var phone: UITextField!
     
     //comments
-    @IBOutlet weak var commentsTextField: UITextField!
+    @IBOutlet weak var commentsTextView: UITextView!
+    
 
     //post whole ad
     @IBOutlet weak var postButton: UIButton!
@@ -99,6 +100,7 @@ class PostViewController: UIViewController{
         otherPetStackView.isHidden = false
         nameView.isHidden = false
         addressView.isHidden = false
+        enablePostButton()
     }
     
     @IBAction func foundPressedButton(_ sender: Any) {
@@ -110,6 +112,7 @@ class PostViewController: UIViewController{
         otherPetStackView.isHidden = false
         nameView.isHidden = true
         addressView.isHidden = false
+        enablePostButton()
     }
     
     @IBAction func adoptPressedButton(_ sender: UIButton) {
@@ -120,6 +123,7 @@ class PostViewController: UIViewController{
         otherPetStackView.isHidden = true
         nameView.isHidden = true
         addressView.isHidden = true
+        enablePostButton()
     
     }
     
@@ -131,6 +135,7 @@ class PostViewController: UIViewController{
         dogButton.setImage(UIImage(named: "icon_dog_active.png"), for: .normal)
         catButton.setImage(UIImage(named: "icon_cat_inactive.png"), for: .normal)
         otherPetButton.setImage(UIImage(named: "icon_otherpet_inactive.png"), for: .normal)
+        enablePostButton()
     }
     
     @IBAction func catPressedButton(_ sender: UIButton) {
@@ -138,6 +143,7 @@ class PostViewController: UIViewController{
         dogButton.setImage(UIImage(named: "icon_dog_inactive.png"), for: .normal)
           catButton.setImage(UIImage(named: "icon_cat_active.png"), for: .normal)
           otherPetButton.setImage(UIImage(named: "icon_otherpet_inactive.png"), for: .normal)
+        enablePostButton()
     }
 
     @IBAction func otherPetPressedButton(_ sender: UIButton) {
@@ -145,6 +151,7 @@ class PostViewController: UIViewController{
         dogButton.setImage(UIImage(named: "icon_dog_inactive.png"), for: .normal)
           catButton.setImage(UIImage(named: "icon_cat_inactive.png"), for: .normal)
           otherPetButton.setImage(UIImage(named: "icon_otherpet_active.png"), for: .normal)
+        enablePostButton()
     }
     
     //@IBACTIONS - gender
@@ -153,25 +160,36 @@ class PostViewController: UIViewController{
         selectedGender = .male
         maleButton.setImage(UIImage(named: "icon_male_active.png"), for: .normal)
         femaleButton.setImage(UIImage(named: "icon_female_inactive.png"), for: .normal)
-        
+        enablePostButton()
     }
     
     @IBAction func femaleButtonPressed(_ sender: UIButton) {
         selectedGender = .female
         maleButton.setImage(UIImage(named: "icon_male_inactive.png"), for: .normal)
         femaleButton.setImage(UIImage(named: "icon_female_active.png"), for: .normal)
-        
+        enablePostButton()
     }
     
     
     //IBActions - City
     
     @IBAction func cityButtonPressed(_ sender: UIButton) {
-        
+        enablePostButton()
     }
     
     @IBAction func municipalityButtonPressed(_ sender: UIButton) {
+        
+        enablePostButton()
     }
+    
+    //IBAction - textFieldEditing for enable Button
+    
+    @IBAction func textFieldEditing(_ sender: UITextField) {
+   
+    enablePostButton()
+        
+    }
+    
     
     
     //FIREBASE CODE
@@ -191,9 +209,7 @@ class PostViewController: UIViewController{
             imageReference.putData(imageData).observe(.success) { (snapshot) in
                 imageReference.downloadURL(completion: { (url, error) in
                     
-                    let timestampSince = NSDate().timeIntervalSince1970
-                    let timestamp = snapshot.metadata?.timeCreated
-                    let stringTimestamp = timestamp?.toString(dateFormat: "dd-MM-yyyy'T'HH:mm:ss.SSSZ")
+                    
                     if let downloadUrl = url {
                         let directoryURL : NSURL = downloadUrl as NSURL
                         let urlString:String = directoryURL.absoluteString!
@@ -218,8 +234,8 @@ class PostViewController: UIViewController{
                                 "municipality": self.muncipalityButton.currentTitle! ,
                                 "address": self.address.text!,
                                 "phone": self.phone.text!,
-                                "timestamp": timestampSince,
-                                "comments": self.commentsTextField.text!
+                                "timestamp": ServerValue.timestamp(),
+                                "comments": self.commentsTextView.text!
                             ]
                             
                             break
@@ -241,8 +257,8 @@ class PostViewController: UIViewController{
                                 "municipality": self.muncipalityButton.currentTitle! ,
                                 "address": self.address.text!,
                                 "phone": self.phone.text!,
-                                "timestamp": timestampSince,
-                                "comments": self.commentsTextField.text!
+                                "timestamp": ServerValue.timestamp(),
+                                "comments": self.commentsTextView.text!
                             ]
                             break
                             
@@ -255,15 +271,15 @@ class PostViewController: UIViewController{
                                     "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
                                 ],
                                 "photoUrl": urlString,
-                                "postType": self.selectedPostCategory!,
+                                "postType": self.selectedPostCategory!.rawValue,
                                 "petType": self.selectedPet!.rawValue,
                                 "gender": self.selectedGender!.rawValue,
                                 "breed": self.breed.text!,
                                 "city" : self.cityButton.currentTitle! ,
                                 "municipality": self.muncipalityButton.currentTitle! ,
                                 "phone": self.phone.text!,
-                                "timestamp": timestampSince,
-                                "comments": self.commentsTextField.text!
+                                "timestamp": ServerValue.timestamp(),
+                                "comments": self.commentsTextView.text!
                             ]
                             break
                             
@@ -320,7 +336,7 @@ class PostViewController: UIViewController{
             self.address.text = ""
             self.breed.text = ""
             self.phone.text = ""
-            self.commentsTextField.text = ""
+            self.commentsTextView.text = ""
             
             //TO HOME VIEW CONTROLLER
             self.tabBarController?.selectedIndex = 0
@@ -353,7 +369,12 @@ class PostViewController: UIViewController{
             hideButton = true
         }
         
-        if (address.text?.count)! < 1 {
+        
+        if selectedPostCategory == .lost, (address.text?.count)!  < 1 {
+            hideButton = true
+        }
+        
+        if selectedPostCategory == .found, (address.text?.count)!  < 1 {
             hideButton = true
         }
         
@@ -365,7 +386,7 @@ class PostViewController: UIViewController{
             hideButton = true
         }
         
-        if commentsTextField.text!.count < 1 {
+        if commentsTextView.text!.count < 1 {
                hideButton = true
         }
         
@@ -374,7 +395,7 @@ class PostViewController: UIViewController{
         }
         
         if muncipalityButton.currentTitle! == "Municipio" {
-            
+            hideButton = true
         }
         
         if selectedPostCategory == .lost, (nameTextField.text?.count)!  < 1 {
@@ -392,6 +413,21 @@ class PostViewController: UIViewController{
         pickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
         pickerController.allowsEditing = true
         self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    
+    func commentsTextViewIsEdited() {
+        
+        
+        if commentsTextView.text! != "Commentarios Adicinales"   {
+            commentsTextView.text = ""
+            commentsTextView.textColor = UIColor.black
+            
+        }
+        
+        else {
+            commentsTextView.textColor = UIColor.lightGray
+        }
     }
     
     
@@ -437,17 +473,26 @@ class PostViewController: UIViewController{
         
         self.view.backgroundColor = UIColor.white
         scrollView.delegate = self
+        
+        commentsTextView.delegate = self
+        
         enablePostButton()
-//        handleBlancInformation()
-//        postButton.isHidden = true
-
+        commentsTextViewIsEdited()
+    
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        commentsTextView.text = ""
+        commentsTextView.textColor? = UIColor.black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        enablePostButton()
+    }
 }
 
 //EXTENSION
@@ -470,13 +515,11 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
             
         }
         
-        self.dismiss(animated: true, completion: nil)
         
-//        self.dismiss(animated: true, completion: {
-//            nil
-////            self.handleBlancInformation()
-//
-//        })
+        self.dismiss(animated: true) {
+            self.enablePostButton()
+        }
+        
     }
 }
 

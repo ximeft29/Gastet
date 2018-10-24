@@ -10,13 +10,13 @@ import UIKit
 
 class MunicipalityViewController: UIViewController {
 
-    var municipalities = ["San Pedro"]
+    var municipalities = ["Apodaca", "Escobedo","Guadalupe","Juárez", "Monterrey", "San Nicolás", "San Pedro", "Santa Catarina"]
     var selectMunicipalityHandler: (String)->() = { _ in}
     
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {

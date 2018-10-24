@@ -10,12 +10,18 @@ import UIKit
 
 class PostsCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var postUIImage: UIImageView!
-    @IBOutlet weak var addressLabel: UILabel!
+    
     @IBOutlet weak var breedLabel: UILabel!
     @IBOutlet weak var phoneLabel: UITextView!
-
+    @IBOutlet weak var cityFoundLabel: UILabel!
+    @IBOutlet weak var municipalityFoundLabel: UILabel!
+    @IBOutlet weak var commentsLabel: UILabel!
+    
+    
+    //PostInformation PetType/Gender Pictures
+    @IBOutlet weak var petTypeFoundImage: UIImageView!
+    @IBOutlet weak var genderTypeFoundImage: UIImageView!
     
     func set(post: ProfileUserPosts) {
 
@@ -23,10 +29,8 @@ class PostsCollectionViewCell: UICollectionViewCell {
             self.postUIImage.image = image
         }
         
-        addressLabel.text = post.address
         breedLabel.text = post.breed
         phoneLabel.text = post.phone
-
         
     }
 }
