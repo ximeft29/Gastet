@@ -50,15 +50,25 @@ class LostSelectedViewController: UIViewController {
     
     
     @IBAction func callMeButtonTapped(_ sender: UIButton) {
+      
         
-//        let phoneNumber = posts?.phone
-//        let phoneURL = NSURL(string: "tel:\(phoneNumber)")
-//
-////        let phoneNumber = "123-456-789"
-////        let phoneURL = NSURL(string: "tel:\(phoneNumber)")!
-////        if UIApplication.sharedApplication().canOpenURL(phoneURL) {
-////            UIApplication.sharedApplication().openURL(phoneURL)
-////        }
+        let phoneNumber = posts?.phone
+        if let callNumber = phoneNumber, let aURL = NSURL(string: "telprompt://\(callNumber)") {
+            
+            
+            if UIApplication.shared.canOpenURL(aURL as URL) {
+                UIApplication.shared.openURL(aURL as URL)
+            } else {
+                print("error")
+            }
+        }
+        else {
+            
+            ProgressHUD.showSuccess("Ha hábido un error, intenta más tarde")
+            print("error")
+            
+        }
+        
         
     }
     

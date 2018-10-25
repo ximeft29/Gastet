@@ -28,6 +28,7 @@ class FoundSelectedViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
     
+    
     //User
     @IBOutlet weak var userProfilePicture: UIImageView!
     @IBOutlet weak var userLabel: UILabel!
@@ -42,6 +43,48 @@ class FoundSelectedViewController: UIViewController {
         
          self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    @IBAction func contactmeButtonTapped(_ sender: UIButton) {
+        let phoneNumber = postsfound?.phonefound
+        if let callNumber = phoneNumber, let aURL = NSURL(string: "telprompt://\(callNumber)") {
+            
+            
+            if UIApplication.shared.canOpenURL(aURL as URL) {
+                UIApplication.shared.openURL(aURL as URL)
+            } else {
+                print("error")
+            }
+        }
+        else {
+            ProgressHUD.showSuccess("Ha hábido un error, intenta más tarde")
+            print("error")
+            
+        }
+    }
+    
+    
+    @IBAction func shareWhattsappButtonTapped(_ sender: UIButton) {
+        
+        let shareMessage = "Hola! Encontre a este \(postsfound?.petTypeFound) de raza \(postsfound?.breedfound). Ayudenme a encontrar su dueño porfavor! Subi la foto con toda la información en Gastet. Pueden verlo aquí : https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+        
+        shareWhatssapp(message: shareMessage)
+    }
+    
+    func shareWhatssapp(message: String) {
+        
+        let msg = message
+        let urlWhats = "whatsapp://send?text=\(msg)"
+        if  let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            if let whatsappURL = NSURL(string: urlString) {
+                if  UIApplication.shared.canOpenURL(whatsappURL as URL ) {
+                    UIApplication.shared.open(whatsappURL as URL)
+                }
+            }
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,7 +171,6 @@ class FoundSelectedViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
 }
 

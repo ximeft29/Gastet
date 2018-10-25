@@ -41,6 +41,26 @@ class AdoptionSelectedViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    @IBAction func contactmeButtonTapped(_ sender: UIButton) {
+        
+        let phoneNumber = postsadoption?.phoneadoption
+        if let callNumber = phoneNumber, let aURL = NSURL(string: "telprompt://\(callNumber)") {
+            
+            
+            if UIApplication.shared.canOpenURL(aURL as URL) {
+                UIApplication.shared.openURL(aURL as URL)
+            } else {
+                print("error")
+            }
+        }
+        else {
+            ProgressHUD.showSuccess("Ha hábido un error, intenta más tarde")
+            print("error")
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
