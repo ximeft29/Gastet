@@ -10,6 +10,7 @@
 		07048C3E21790F58000AB821 /* PostsAdoption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07048C3D21790F58000AB821 /* PostsAdoption.swift */; };
 		07048C4021791025000AB821 /* AdoptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07048C3F21791025000AB821 /* AdoptionCollectionViewCell.swift */; };
 		07056F7B218114EE00A91FA2 /* AdoptionSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07056F7A218114EE00A91FA2 /* AdoptionSelectedViewController.swift */; };
+		07056F7D21837F8100A91FA2 /* ProfileUsersSelectedPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07056F7C21837F8100A91FA2 /* ProfileUsersSelectedPostViewController.swift */; };
 		070CC3F720FFF5B7008B2596 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070CC3F620FFF5B7008B2596 /* GoogleService-Info.plist */; };
 		070D2DA9209554C000B4AC80 /* ChoseUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */; };
 		0713C16220A37A1C00B01B79 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0713C16120A37A1C00B01B79 /* PostViewController.swift */; };
@@ -91,6 +92,7 @@
 		07048C3D21790F58000AB821 /* PostsAdoption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAdoption.swift; sourceTree = "<group>"; };
 		07048C3F21791025000AB821 /* AdoptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		07056F7A218114EE00A91FA2 /* AdoptionSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptionSelectedViewController.swift; sourceTree = "<group>"; };
+		07056F7C21837F8100A91FA2 /* ProfileUsersSelectedPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUsersSelectedPostViewController.swift; sourceTree = "<group>"; };
 		070CC3F620FFF5B7008B2596 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		070D2DA8209554C000B4AC80 /* ChoseUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseUsernameViewController.swift; sourceTree = "<group>"; };
 		0713C16120A37A1C00B01B79 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				07D639B120D9A584004F9DA8 /* ProfileViewController.swift */,
 				075B1FB32124EC5300557322 /* ProfileUserPosts.swift */,
 				07A26F2F212384B300CAD46F /* PostsCollectionViewCell.swift */,
+				07056F7C21837F8100A91FA2 /* ProfileUsersSelectedPostViewController.swift */,
 				0731A89920CF800600DE8A25 /* EditUserInformationViewController.swift */,
 			);
 			path = ProfileTabBar;
@@ -596,6 +599,7 @@
 				079F16632092383F00F78AD4 /* InteractionPanToClose.swift in Sources */,
 				077B0FB020BE6366007381BF /* LostCollectionViewCell.swift in Sources */,
 				070D2DA9209554C000B4AC80 /* ChoseUsernameViewController.swift in Sources */,
+				07056F7D21837F8100A91FA2 /* ProfileUsersSelectedPostViewController.swift in Sources */,
 				07E4682C21714E8D0047DC38 /* CityCellTableViewCell.swift in Sources */,
 				07A26F30212384B300CAD46F /* PostsCollectionViewCell.swift in Sources */,
 				075F39DD209CE37D00DA4D1B /* HomeViewController.swift in Sources */,

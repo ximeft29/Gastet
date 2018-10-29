@@ -13,6 +13,7 @@ class FoundSelectedViewController: UIViewController {
     //Vars
     var postsfound: PostsFound?
     
+    
     //@IBOUTLETS
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -26,7 +27,7 @@ class FoundSelectedViewController: UIViewController {
     @IBOutlet weak var genderImage: UIImageView!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var commentsTextView: UITextView!
     
     
     //User
@@ -66,9 +67,25 @@ class FoundSelectedViewController: UIViewController {
     
     @IBAction func shareWhattsappButtonTapped(_ sender: UIButton) {
         
-        let shareMessage = "Hola! Encontre a este \(postsfound?.petTypeFound) de raza \(postsfound?.breedfound). Ayudenme a encontrar su dueño porfavor! Subi la foto con toda la información en Gastet. Pueden verlo aquí : https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
-        
-        shareWhatssapp(message: shareMessage)
+        switch postsfound?.petTypeFound {
+        case "dog":
+            let shareMessage = "Hola! Encontre a un perro que es de raza \(postsfound!.breedfound!). La ultima vez que lo vimos fue en \(postsfound!.addressfound!). Ayudenme a encontrar su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            
+            break
+            
+        case "cat":
+            let shareMessage = "Hola! Encontre a un gato que es de raza \(postsfound!.breedfound!). La ultima vez que lo vimos fue en \(postsfound!.addressfound!). Ayudenme a encontrar a su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            break
+            
+        case "other":
+            let shareMessage = "Hola! Encontre a una mascota que es de raza \(postsfound!.breedfound!). La ultima vez que lo vimos fue en \(postsfound!.addressfound!). Ayudenme a encontrar a su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            break
+        default:
+            break
+        }
     }
     
     func shareWhatssapp(message: String) {
@@ -163,7 +180,7 @@ class FoundSelectedViewController: UIViewController {
         self.addressLabel.text = postsfound?.addressfound
         
         //Comments
-        self.commentsLabel.text = postsfound?.comments
+        self.commentsTextView.text = postsfound?.comments
         
     }
 

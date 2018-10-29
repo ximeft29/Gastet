@@ -44,8 +44,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         performSegue(withIdentifier: "editUserInformation", sender: self)
         
     }
-    
-    
+
         //logout @ibaction
     @IBAction func logoutButtonTapped(_ sender: UIButton) {
         
@@ -58,6 +57,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //nav bar
+        
         
         if Auth.auth().currentUser?.uid == nil {
             logout()
@@ -74,12 +76,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         setupNavigationBarItems()
 
 //        observeUserPosts()
+        observeUserPosts()
         
         //Refresher
         refresher.addTarget(self, action: #selector(postsCollectionView.reloadData), for: UIControlEvents.valueChanged)
         postsCollectionView.addSubview(refresher)
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     
     //funcs
     
@@ -151,6 +159,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let postsRef = Database.database().reference().child("posts").queryOrdered(byChild: "author/userid")
         postsRef.queryEqual(toValue: uid!).observe(.value) { (snapshot) in
 
+            print("Hola")
+            print(snapshot)
             var tempPost = [ProfileUserPosts]()
 
             for child in snapshot.children {
@@ -164,6 +174,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
                     //Info Post
                     let comments = dict!["comments"] as? String
+                    let name = dict!["name"] as? String
+                    let address = dict!["address"] as? String
                     let city = dict!["city"] as? String
                     let municipality = dict!["municipality"] as? String
                     let breed = dict!["breed"] as? String
@@ -174,7 +186,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                     let timestampadoption = dict!["timestamp"] as? Double
                     let date = Date(timeIntervalSince1970: timestampadoption!/1000)
 
-                    let post = ProfileUserPosts(breed: breed!, phone: phoneuser!, photoUrl: url!, city: city!, municipality: municipality!, petType: petType!, gender: gender!, timestamp: date, postType: postType!, comments: comments!)
+                    let post = ProfileUserPosts(name: name ?? "", address: address ?? "", breed: breed!, phone: phoneuser!, photoUrl: url!, city: city!, municipality: municipality!, petType: petType!, gender: gender!, timestamp: date, postType: postType!, comments: comments!)
 
                     tempPost.insert(post, at: 0)
                 }
@@ -211,7 +223,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
 }
 
-
 //extension - UICollectionView for user's posts
 
 extension ProfileViewController: UICollectionViewDataSource,UICollectionViewDelegate {
@@ -229,6 +240,14 @@ extension ProfileViewController: UICollectionViewDataSource,UICollectionViewDele
         cell.set(post: postsuser[indexPath.row])
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "profileUsersSelectedPostViewController") as? ProfileUsersSelectedPostViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
+        vc?.selectedpostsuser = postsuser[indexPath.row]
+        
     }
     
 }

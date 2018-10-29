@@ -26,7 +26,7 @@ class AdoptionSelectedViewController: UIViewController {
     @IBOutlet weak var breedLabel: UILabel!
     @IBOutlet weak var genderImage: UIImageView!
     @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var commentsTextView: UITextView!
     
     //User
     @IBOutlet weak var userProfilePicture: UIImageView!
@@ -61,6 +61,43 @@ class AdoptionSelectedViewController: UIViewController {
         }
     }
     
+    @IBAction func shareWhattsappButtonTapped(_ sender: UIButton) {
+        
+        switch postsadoption?.petTypeAdoption {
+        case "dog":
+            let shareMessage = "Hola! Tenemos un perro en adopción que es de raza \(postsadoption!.breedadoption!). Ayudenme a encontrarle una casa! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            
+            break
+            
+        case "cat":
+            let shareMessage = "Hola! Encontre a un gato en adopción que es de raza \(postsadoption!.breedadoption!). Ayudenme a encontrarle una casa! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            break
+            
+        case "other":
+            let shareMessage = "Hola! Encontre a una mascota en adopción que es de raza \(postsadoption!.breedadoption!). Ayudenme a encontrarle una casa!Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            break
+        default:
+            break
+        }
+        
+    }
+    
+    func shareWhatssapp(message: String) {
+        
+        let msg = message
+        let urlWhats = "whatsapp://send?text=\(msg)"
+        if  let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            if let whatsappURL = NSURL(string: urlString) {
+                if  UIApplication.shared.canOpenURL(whatsappURL as URL ) {
+                    UIApplication.shared.open(whatsappURL as URL)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,8 +122,8 @@ class AdoptionSelectedViewController: UIViewController {
         
         
         //Post Data
-        self.postTypeLabel.text = "Encontrado"
-        self.postTypeImage.image = UIImage.init(named: "postType_found.png")
+        self.postTypeLabel.text = "Adopción"
+        self.postTypeImage.image = UIImage.init(named: "postType_adoption.png")
         
         //PetType
         switch postsadoption?.petTypeAdoption{
@@ -139,7 +176,7 @@ class AdoptionSelectedViewController: UIViewController {
         self.municipalityLabel.text = postsadoption?.municipalityadoption
         
         //Comments
-        self.commentsLabel.text = postsadoption?.commentsadoption
+        self.commentsTextView.text = postsadoption?.commentsadoption
 
         // Do any additional setup after loading the view.
     }

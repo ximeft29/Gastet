@@ -10,7 +10,24 @@ import UIKit
 import FirebaseDatabase
 
 class ProfileUserPosts: NSObject {
+    
+    //Image
+    var photoUrl: URL
+    
+    //PostInformation View
+    var name: String?
+    var address: String?
+    var breed : String?
+    var phone : String?
+    var city: String?
+    var municipality: String
 
+    var petType: String!
+    var postType: String!
+    var genderType: String?
+    var comments: String!
+    
+    //Timestamp
     var timestamp: Date
     
     func getDateFormattedString() -> String {
@@ -19,20 +36,7 @@ class ProfileUserPosts: NSObject {
         return formatter.string(from: self.timestamp)
     }
     
-    //Image
-    var photoUrl: URL
-    
-    //PostInformation View
-    var city: String?
-    var municipality: String
-    var breed : String?
-    var phone : String?
-    var postType: String!
-    var petType: String!
-    var genderType: String?
-    var comments: String!
-    
-    init(breed: String, phone: String, photoUrl: URL, city: String, municipality: String, petType: String, gender: String, timestamp: Date, postType: String, comments: String) {
+    init(name: String, address: String, breed: String, phone: String, photoUrl: URL, city: String, municipality: String, petType: String, gender: String, timestamp: Date, postType: String, comments: String) {
         
         self.breed = breed
         self.phone = phone
@@ -44,7 +48,8 @@ class ProfileUserPosts: NSObject {
         self.timestamp = timestamp
         self.postType = postType
         self.comments = comments
+        self.name = name
+        self.address = address
         
     }
-
 }

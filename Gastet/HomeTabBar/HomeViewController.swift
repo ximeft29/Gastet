@@ -67,6 +67,10 @@ class HomeViewController: UIViewController{
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     
     @objc func observePostsLost() {
         let postsRef = Database.database().reference().child("posts")
@@ -291,6 +295,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         default:
             return UICollectionViewCell()
         }
+    
         }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -321,8 +326,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             break
         }
     }
-    
-
     
 }
 

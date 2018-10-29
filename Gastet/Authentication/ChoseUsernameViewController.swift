@@ -47,9 +47,6 @@ class ChoseUsernameViewController: UIViewController {
             newUserReference.setValue(["username": self.userTextField.text!])
         }
         
-
-
-        
         performSegue(withIdentifier: "toHome", sender: self)
         
  

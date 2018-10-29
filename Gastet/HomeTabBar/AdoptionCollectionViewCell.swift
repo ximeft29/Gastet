@@ -16,7 +16,6 @@ class AdoptionCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var userAdoptionImage: UIImageView!
     @IBOutlet weak var timestampAdoptionLabel: UILabel!
     
-    
     //Image
     @IBOutlet weak var postedAdoptionUIImage: UIImageView!
     

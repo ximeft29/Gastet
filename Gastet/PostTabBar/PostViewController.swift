@@ -197,108 +197,114 @@ class PostViewController: UIViewController, UITextViewDelegate{
     @IBAction func postButtonPressed(_ sender: Any) {
        
 
-        postButton.isHidden = false
-        ProgressHUD.show("En Proceso...")
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-       
-        //photo idstring gives us a unique string for any given time of the day. Garantied unique string
-        let photoIdString = "\(NSUUID().uuidString).jpg"
-        let imageReference = storageRef.child("posts").child(photoIdString)
-        if let imageData = UIImageJPEGRepresentation(selectedImage, 0.4) {
-            imageReference.putData(imageData).observe(.success) { (snapshot) in
-                imageReference.downloadURL(completion: { (url, error) in
-                    
-                    
-                    if let downloadUrl = url {
-                        let directoryURL : NSURL = downloadUrl as NSURL
-                        let urlString:String = directoryURL.absoluteString!
-                        let toId = Auth.auth().currentUser?.uid
-                        var dataToSend: [String: Any]
-                        switch self.selectedPostCategory! {
-                        case .lost:
-                            dataToSend = [
-                                
-                                "author": [
-                                    "userid": toId,
-                                    "username": UserService.currentUserProfile?.username,
-                                    "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
-                                ],
-                                "photoUrl": urlString,
-                                "postType": self.selectedPostCategory!.rawValue,
-                                "petType": self.selectedPet!.rawValue,
-                                "name": self.nameTextField.text!,
-                                "gender": self.selectedGender!.rawValue,
-                                "breed": self.breed.text!,
-                                "city" : self.cityButton.currentTitle! ,
-                                "municipality": self.muncipalityButton.currentTitle! ,
-                                "address": self.address.text!,
-                                "phone": self.phone.text!,
-                                "timestamp": ServerValue.timestamp(),
-                                "comments": self.commentsTextView.text!
-                            ]
-                            
-                            break
-                            
-                        case .found:
-                            dataToSend = [
-                                
-                                "author": [
-                                    "userid": toId,
-                                    "username": UserService.currentUserProfile?.username,
-                                    "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
-                                ],
-                                "photoUrl": urlString,
-                                "postType": self.selectedPostCategory!.rawValue,
-                                "petType": self.selectedPet!.rawValue,
-                                "gender": self.selectedGender!.rawValue,
-                                "breed": self.breed.text!,
-                                "city" : self.cityButton.currentTitle! ,
-                                "municipality": self.muncipalityButton.currentTitle! ,
-                                "address": self.address.text!,
-                                "phone": self.phone.text!,
-                                "timestamp": ServerValue.timestamp(),
-                                "comments": self.commentsTextView.text!
-                            ]
-                            break
-                            
-                        case .adopt:
-                            dataToSend = [
-                                
-                                "author": [
-                                    "userid": toId,
-                                    "username": UserService.currentUserProfile?.username,
-                                    "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
-                                ],
-                                "photoUrl": urlString,
-                                "postType": self.selectedPostCategory!.rawValue,
-                                "petType": self.selectedPet!.rawValue,
-                                "gender": self.selectedGender!.rawValue,
-                                "breed": self.breed.text!,
-                                "city" : self.cityButton.currentTitle! ,
-                                "municipality": self.muncipalityButton.currentTitle! ,
-                                "phone": self.phone.text!,
-                                "timestamp": ServerValue.timestamp(),
-                                "comments": self.commentsTextView.text!
-                            ]
-                            break
-                            
-                        }
+
+            postButton.setTitle("Publicar", for: .normal)
+            postButton.isHidden = false
+            ProgressHUD.show("En Proceso...")
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            
+            //photo idstring gives us a unique string for any given time of the day. Garantied unique string
+            let photoIdString = "\(NSUUID().uuidString).jpg"
+            let imageReference = storageRef.child("posts").child(photoIdString)
+            if let imageData = UIImageJPEGRepresentation(selectedImage, 0.4) {
+                imageReference.putData(imageData).observe(.success) { (snapshot) in
+                    imageReference.downloadURL(completion: { (url, error) in
                         
-                        self.sendDataToDatabase(data: dataToSend)
-                    }
-                    else {
-                        ProgressHUD.showError("No has escogido una imagen")
-                        print("couldn't get profile image url")
-                        return
-                    }
-                })
-            }
-        }
-        else {
-            ProgressHUD.showError("Tienes que subir una foto...")
-        }
+                        
+                        if let downloadUrl = url {
+                            let directoryURL : NSURL = downloadUrl as NSURL
+                            let urlString:String = directoryURL.absoluteString!
+                            let toId = Auth.auth().currentUser?.uid
+                            var dataToSend: [String: Any]
+                            switch self.selectedPostCategory! {
+                            case .lost:
+                                dataToSend = [
+                                    
+                                    "author": [
+                                        "userid": toId,
+                                        "username": UserService.currentUserProfile?.username,
+                                        "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
+                                    ],
+                                    "photoUrl": urlString,
+                                    "postType": self.selectedPostCategory!.rawValue,
+                                    "petType": self.selectedPet!.rawValue,
+                                    "name": self.nameTextField.text!,
+                                    "gender": self.selectedGender!.rawValue,
+                                    "breed": self.breed.text!,
+                                    "city" : self.cityButton.currentTitle! ,
+                                    "municipality": self.muncipalityButton.currentTitle! ,
+                                    "address": self.address.text!,
+                                    "phone": self.phone.text!,
+                                    "timestamp": ServerValue.timestamp(),
+                                    "comments": self.commentsTextView.text!
+                                ]
+                                
+                                break
+                                
+                            case .found:
+                                dataToSend = [
+                                    
+                                    "author": [
+                                        "userid": toId,
+                                        "username": UserService.currentUserProfile?.username,
+                                        "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
+                                    ],
+                                    "photoUrl": urlString,
+                                    "postType": self.selectedPostCategory!.rawValue,
+                                    "petType": self.selectedPet!.rawValue,
+                                    "gender": self.selectedGender!.rawValue,
+                                    "breed": self.breed.text!,
+                                    "city" : self.cityButton.currentTitle! ,
+                                    "municipality": self.muncipalityButton.currentTitle! ,
+                                    "address": self.address.text!,
+                                    "phone": self.phone.text!,
+                                    "timestamp": ServerValue.timestamp(),
+                                    "comments": self.commentsTextView.text!
+                                ]
+                                break
+                                
+                            case .adopt:
+                                dataToSend = [
+                                    
+                                    "author": [
+                                        "userid": toId,
+                                        "username": UserService.currentUserProfile?.username,
+                                        "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
+                                    ],
+                                    "photoUrl": urlString,
+                                    "postType": self.selectedPostCategory!.rawValue,
+                                    "petType": self.selectedPet!.rawValue,
+                                    "gender": self.selectedGender!.rawValue,
+                                    "breed": self.breed.text!,
+                                    "city" : self.cityButton.currentTitle! ,
+                                    "municipality": self.muncipalityButton.currentTitle! ,
+                                    "phone": self.phone.text!,
+                                    "timestamp": ServerValue.timestamp(),
+                                    "comments": self.commentsTextView.text!
+                                ]
+                                break
+                                
+                            }
+                            
+                            self.sendDataToDatabase(data: dataToSend)
+                        }
+                        else {
+                            ProgressHUD.showError("No has escogido una imagen")
+                            print("couldn't get profile image url")
+                            return
+                        }
+                    })
                 }
+            }
+            else {
+                ProgressHUD.showError("Tienes que subir una foto...")
+            }
+            
+        
+        
+
+    }
     
 // FUNCTION - ALERT
 

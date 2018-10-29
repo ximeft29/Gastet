@@ -38,7 +38,8 @@ class LostSelectedViewController: UIViewController {
     //Address View
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var municipalityLabel: UILabel!
-    @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var commentsTextView: UITextView!
+    
     
     
     //@IBACTIONS
@@ -46,6 +47,44 @@ class LostSelectedViewController: UIViewController {
 
     self.navigationController?.popViewController(animated: true)
         
+    }
+    
+    
+    @IBAction func shareWhattsappButtonTapped(_ sender: UIButton) {
+        
+        switch posts?.petType {
+        case "dog":
+            let shareMessage = "Hola! Estoy buscando a mi perro que es de raza \(posts!.breed!)). La ultima vez que lo vimos fue en \(posts!.address!)). Ayudenme a encontrarlo porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            break
+        
+        case "cat":
+            let shareMessage = "Hola! Estoy buscando a mi gato que es de raza \(posts!.breed!). La ultima vez que lo vimos fue en \(posts!.address!). Ayudenme a encontrarlo porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            break
+        
+        case "other":
+            let shareMessage = "Hola! Estoy buscando a mi mascota que es de raza \(posts!.breed!). La ultima vez que lo vimos fue en \(posts!.address!). Ayudenme a encontrarlo porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            shareWhatssapp(message: shareMessage)
+            break
+        default:
+            break
+        }
+        
+
+    }
+    
+    func shareWhatssapp(message: String) {
+        
+        let msg = message
+        let urlWhats = "whatsapp://send?text=\(msg)"
+        if  let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            if let whatsappURL = NSURL(string: urlString) {
+                if  UIApplication.shared.canOpenURL(whatsappURL as URL ) {
+                    UIApplication.shared.open(whatsappURL as URL)
+                }
+            }
+        }
     }
     
     
@@ -148,7 +187,7 @@ class LostSelectedViewController: UIViewController {
         self.addressLabel.text = posts?.address
         
         //Comments
-        self.commentsLabel.text = posts?.comments
+        self.commentsTextView.text = posts?.comments
         
     }
 
