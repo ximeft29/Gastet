@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Social
+import FBSDKShareKit
 
 class LostSelectedViewController: UIViewController {
 
@@ -70,9 +72,55 @@ class LostSelectedViewController: UIViewController {
         default:
             break
         }
-        
-
     }
+    
+    @IBAction func shareFacebookButtonTapped(_ sender: UIButton) {
+        shareFacebook()
+    }
+    
+    func shareFacebook() {
+
+        let photoToShare : FBSDKSharePhoto = FBSDKSharePhoto()
+        photoToShare.image = postTypeImage.image
+        photoToShare.isUserGenerated = true
+        
+        let contentToShare : FBSDKShareLinkContent = FBSDKShareLinkContent()
+        contentToShare.contentURL = NSURL(string: "https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8") as! URL
+        
+    }
+    
+    
+//    func shareFacebook(message: String) {
+
+    //UIACTIVITY INDICATOR
+    
+    //        let shareMessage = "Hola! Estoy buscando a mi mascota que es de raza \(posts!.breed!). La ultima vez que lo vimos fue en \(posts!.address!). Ayudenme a encontrarlo porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+
+    
+    //        let share = [lostImage, shareMessage] as [Any]
+    //        let activityViewController = UIActivityViewController(activityItems: share, applicationActivities: nil)
+    //        activityViewController.popoverPresentationController?.sourceView = self.view
+    //        self.present(activityViewController, animated: true, completion: nil)
+    
+    
+    
+    
+//        let initialText = message
+//        let facebookShareAction = UIAlertAction(title: "Facebook", style: .default) { (action) in
+//            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+//                let facebookComposer = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+//                facebookComposer?.setInitialText(initialText)
+//                facebookComposer?.add(self.posts?.photoUrl)
+//
+//                self.present(facebookComposer!, animated: true, completion: nil)
+//            }
+//
+//            else {
+//                ProgressHUD.showError("Hubo un error... intentalo más tarde")
+//            }
+//        }
+//
+//    }
     
     func shareWhatssapp(message: String) {
         

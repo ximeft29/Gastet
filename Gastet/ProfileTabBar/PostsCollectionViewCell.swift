@@ -10,19 +10,18 @@ import UIKit
 
 class PostsCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var postUIImage: UIImageView!
     @IBOutlet weak var breedLabel: UILabel!
     @IBOutlet weak var phoneLabel: UITextView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var municipalityLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var deletePostButton: UIButton!
     
     
     //PostInformation PetType/Gender Pictures
     @IBOutlet weak var postTypeImage: UIImageView!
     @IBOutlet weak var genderImage: UIImageView!
-    
     
     
     func set(post: ProfileUserPosts) {

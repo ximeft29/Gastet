@@ -39,11 +39,15 @@ class FoundCollectionViewCell: UICollectionViewCell {
             self.postedFoundUIImage.image = image
         }
         
+            
         self.userFoundImage.image = nil
-        ImageService.getImage(withUrl: postfound.authorfound.photoUrl) { (image) in
+        
+        if let photourl = postfound.authorfound.photoUrl {
             
+            ImageService.getImage(withUrl: photourl) { (image) in
+                self.userFoundImage.image = image
+            }
             
-            self.userFoundImage.image = image
         }
         
         adressFoundLabel.text = "Se encontro en " + postfound.addressfound!

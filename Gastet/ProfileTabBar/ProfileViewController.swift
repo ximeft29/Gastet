@@ -58,9 +58,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //nav bar
-        
-        
         if Auth.auth().currentUser?.uid == nil {
             logout()
         }
@@ -81,6 +78,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         //Refresher
         refresher.addTarget(self, action: #selector(postsCollectionView.reloadData), for: UIControlEvents.valueChanged)
         postsCollectionView.addSubview(refresher)
+    
         
     }
     
@@ -186,7 +184,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                     let timestampadoption = dict!["timestamp"] as? Double
                     let date = Date(timeIntervalSince1970: timestampadoption!/1000)
 
-                    let post = ProfileUserPosts(name: name ?? "", address: address ?? "", breed: breed!, phone: phoneuser!, photoUrl: url!, city: city!, municipality: municipality!, petType: petType!, gender: gender!, timestamp: date, postType: postType!, comments: comments!)
+                    let post = ProfileUserPosts(name: name ?? "", address: address ?? "", breed: breed!, phone: phoneuser!, photoUrl: url!, city: city!, municipality: municipality!, petType: petType!, gender: gender!, timestamp: date, postType: postType!, comments: comments!, timestampDouble: timestampadoption!)
 
                     tempPost.insert(post, at: 0)
                 }
@@ -238,18 +236,42 @@ extension ProfileViewController: UICollectionViewDataSource,UICollectionViewDele
         let cell: PostsCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "postsCell", for: indexPath) as! PostsCollectionViewCell
 
         cell.set(post: postsuser[indexPath.row])
-
+        cell.deletePostButton.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
+        cell.deletePostButton.tag = indexPath.row
         return cell
     }
     
+    @objc func buttonAction(sender: UIButton) {
+    
+       ProgressHUD.show("Un momento", interaction: true)
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("posts").queryOrdered(byChild: "author/userid").queryEqual(toValue: uid!).observe(.value) { (snapshot) in
+            if let posts = snapshot.value as? [String: AnyObject] {
+                if let posts = snapshot.value as? [String: AnyObject] {
+                    for (key, postReference) in posts {
+                        if let post = postReference as? [String: Any], let timestamp = post["timestamp"] as? TimeInterval, timestamp == self.postsuser[sender.tag].timestampDouble {
+                            
+                            Database.database().reference().child("posts").child(key).removeValue(completionBlock: { (error, _) in
+                                DispatchQueue.main.async {
+                                    ProgressHUD.showSuccess("Tu imagen ha sido borrada...")
+                                    self.postsuser.remove(at: sender.tag)
+                                    self.postsCollectionView.reloadData()
+                                    self.refresher.endRefreshing()
+                                }
+                            })
+                        }
+                    }
+            }
+        }
+    }
+}
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let vc = storyboard?.instantiateViewController(withIdentifier: "profileUsersSelectedPostViewController") as? ProfileUsersSelectedPostViewController
         self.navigationController?.pushViewController(vc!, animated: true)
         vc?.selectedpostsuser = postsuser[indexPath.row]
-        
     }
-    
 }
 
 //extension - scroll view
@@ -261,5 +283,4 @@ extension  ProfileViewController: UIScrollViewDelegate{
         print(scrollView)
     }
 }
-
 

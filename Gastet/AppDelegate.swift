@@ -9,16 +9,24 @@
 import UIKit
 import Parse
 import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-//        return true
+        
+        //Facebook SKD
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+       
         
         let authListener = Auth.auth().addStateDidChangeListener { (auth, user) in
             
@@ -37,8 +45,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         Database.database().reference().keepSynced(false)
-        return true
         
+        
+        return true
+ 
+    }
+    
+    //Facebook SDK
+    
+    private func application(application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: Any?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

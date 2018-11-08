@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import FBSDKShareKit
 
 class LostCollectionViewCell: UICollectionViewCell {
     
-    
+
     // UserView
     @IBOutlet weak var usernameLostLabel: UILabel!
     @IBOutlet weak var userLostImage: UIImageView!
@@ -44,15 +45,22 @@ class LostCollectionViewCell: UICollectionViewCell {
             return formatter.string(from: post.timestamp)
         }
         
+        self.postedLostUIImage.image = nil
         ImageService.getImage(withUrl: post.photoUrl) { (image) in
             self.postedLostUIImage.image = image
         }
         
-        ImageService.getImage(withUrl: post.author.photoUrl) { (image) in
+        self.userLostImage.image = nil
+        
+        if let photoUrl = post.author.photoUrl {
             
-            self.userLostImage.image = image
+            ImageService.getImage(withUrl: photoUrl) { (image) in
+                self.userLostImage.image = image
+            }
             
         }
+        
+
         
         adressLostLabel.text = "Ultima vez visto en " + post.address!
         nameLostLabel.text = post.name

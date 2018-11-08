@@ -28,6 +28,7 @@ class AdoptionSelectedViewController: UIViewController {
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var commentsTextView: UITextView!
     
+    
     //User
     @IBOutlet weak var userProfilePicture: UIImageView!
     @IBOutlet weak var userLabel: UILabel!
@@ -177,6 +178,7 @@ class AdoptionSelectedViewController: UIViewController {
         
         //Comments
         self.commentsTextView.text = postsadoption?.commentsadoption
+
 
         // Do any additional setup after loading the view.
     }

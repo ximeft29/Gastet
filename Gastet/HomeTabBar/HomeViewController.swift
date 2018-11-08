@@ -50,11 +50,7 @@ class HomeViewController: UIViewController{
         scrollView.delegate = self
         adoptionCollectionView.delegate = self
         adoptionCollectionView.dataSource = self
-        
-        observePostsLost()
-        observePostsFound()
-        observePostsAdoption()
-        
+
         //Refresher
         refresherLost.addTarget(self, action: #selector(lostCollectionView.reloadData), for: UIControlEvents.valueChanged)
         lostCollectionView.addSubview(refresherLost)
@@ -64,11 +60,23 @@ class HomeViewController: UIViewController{
         
         refresherAdoption.addTarget(self, action: #selector(adoptionCollectionView.reloadData), for: UIControlEvents.valueChanged)
         adoptionCollectionView.addSubview(refresherLost)
+        
+        //Posts Functions
+        observePostsLost()
+        observePostsFound()
+        observePostsAdoption()
 
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        //Posts Functions
+        observePostsLost()
+        observePostsFound()
+        observePostsAdoption()
+        
     }
     
     
@@ -88,7 +96,7 @@ class HomeViewController: UIViewController{
                     let uid = author!["userid"] as? String
                     let username = author!["username"] as? String
                     let userphotoUrl = author!["profilePhotoUrl"] as? String
-                    let userurl = URL(string: userphotoUrl!)
+                    let userurl = URL(string: userphotoUrl ?? "")
                     let userProfile = UserProfile(uid: uid!, username: username!, photoUrl: userurl!)
                     
                     //Post Picture
@@ -137,7 +145,7 @@ class HomeViewController: UIViewController{
                     let uid = author!["userid"] as? String
                     let username = author!["username"] as? String
                     let photoUrl = author!["profilePhotoUrl"] as? String
-                    let userurl = URL(string: photoUrl!)
+                    let userurl = URL(string: photoUrl ?? "")
                     let userProfile = UserProfile(uid: uid!, username: username!, photoUrl: userurl!)
                     
                     //Post Picture
@@ -189,7 +197,7 @@ class HomeViewController: UIViewController{
                     let uid = author!["userid"] as? String
                     let username = author!["username"] as? String
                     let userphotoUrl = author!["profilePhotoUrl"] as? String
-                    let userurl = URL(string: userphotoUrl!)
+                    let userurl = URL(string: userphotoUrl ?? "")
                     let userProfile = UserProfile(uid: uid!, username: username!, photoUrl: userurl!)
                     
                     //Post Picture

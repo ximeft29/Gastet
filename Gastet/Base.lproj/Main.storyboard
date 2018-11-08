@@ -765,16 +765,16 @@
                                                                 <rect key="frame" x="0.0" y="45" width="315" height="181"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RxU-hH-EnZ" userLabel="PostType">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="244" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="244" height="51"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zrm-YL-9OX">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="51"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="50" id="G47-FV-iz3"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEW-lY-Nb2">
-                                                                                <rect key="frame" x="70" y="0.0" width="174" height="50"/>
+                                                                                <rect key="frame" x="70" y="0.0" width="174" height="51"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -782,20 +782,20 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GyH-N2-MEA" userLabel="PetType">
-                                                                        <rect key="frame" x="0.0" y="65" width="315" height="51"/>
+                                                                        <rect key="frame" x="0.0" y="66" width="315" height="50"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tfk-Ik-OAj">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="51"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="50" id="NSM-WI-y2Q"/>
                                                                                     <constraint firstAttribute="height" constant="50" id="qhX-gJ-WYX"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="xri-4l-UnR">
-                                                                                <rect key="frame" x="70" y="0.0" width="245" height="51"/>
+                                                                                <rect key="frame" x="70" y="0.0" width="245" height="50"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDL-C0-HlP">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="50"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="QDL-C0-HlP" secondAttribute="height" multiplier="139:50" id="ZYb-Bb-0lO"/>
                                                                                         </constraints>
@@ -804,7 +804,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRg-OY-Vhy">
-                                                                                        <rect key="frame" x="145" y="0.0" width="100" height="51"/>
+                                                                                        <rect key="frame" x="145" y="0.0" width="100" height="50"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" constant="100" id="DVp-V8-KSa"/>
                                                                                         </constraints>
@@ -852,22 +852,22 @@
                                                                     <constraint firstItem="GyH-N2-MEA" firstAttribute="leading" secondItem="tW7-NG-AET" secondAttribute="leading" id="y3i-mc-X0V"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sOc-R5-5VI" userLabel="Share">
-                                                                <rect key="frame" x="0.0" y="241" width="304" height="50"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="sOc-R5-5VI" userLabel="Share">
+                                                                <rect key="frame" x="0.0" y="241" width="315" height="50"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compartelo en Whatsapp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0M-l2-0eb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="234" height="50"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compartelo!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0M-l2-0eb">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="225" height="50"/>
                                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N31-xH-bHY">
-                                                                        <rect key="frame" x="254" y="0.0" width="50" height="50"/>
+                                                                        <rect key="frame" x="265" y="0.0" width="50" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="50" id="3OI-id-sQB"/>
                                                                             <constraint firstAttribute="height" constant="50" id="boJ-hP-g5v"/>
                                                                         </constraints>
-                                                                        <state key="normal" image="share_whatssapp"/>
+                                                                        <state key="normal" image="icon_whatsapp"/>
                                                                         <connections>
                                                                             <action selector="shareWhattsappButtonTapped:" destination="76R-Sq-iAm" eventType="touchUpInside" id="A05-m2-xv1"/>
                                                                         </connections>
@@ -881,6 +881,7 @@
                                                             <constraint firstItem="tW7-NG-AET" firstAttribute="leading" secondItem="AF8-Ts-zTK" secondAttribute="leading" id="Gx2-Fp-dw7"/>
                                                             <constraint firstAttribute="trailing" secondItem="tW7-NG-AET" secondAttribute="trailing" id="HC3-lP-CcU"/>
                                                             <constraint firstItem="tW7-NG-AET" firstAttribute="top" secondItem="7Sk-Dp-0G4" secondAttribute="bottom" constant="15" id="MPF-MI-vCC"/>
+                                                            <constraint firstAttribute="trailing" secondItem="sOc-R5-5VI" secondAttribute="trailing" id="MWP-Y3-Xmg"/>
                                                             <constraint firstItem="tW7-NG-AET" firstAttribute="leading" secondItem="AF8-Ts-zTK" secondAttribute="leading" id="Op3-nd-0uU"/>
                                                             <constraint firstItem="sOc-R5-5VI" firstAttribute="top" secondItem="tW7-NG-AET" secondAttribute="bottom" constant="15" id="bD0-jo-2pP"/>
                                                             <constraint firstItem="tW7-NG-AET" firstAttribute="top" secondItem="7Sk-Dp-0G4" secondAttribute="bottom" constant="15" id="cel-p7-Zy6"/>
@@ -1396,7 +1397,7 @@
                                                                                 <rect key="frame" x="21" y="0.0" width="322" height="72"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                                                 <connections>
                                                                                     <action selector="textFieldEditing:" destination="ZfB-Wt-Agy" eventType="editingDidEnd" id="2qc-gT-4di"/>
                                                                                 </connections>
@@ -1499,7 +1500,7 @@
                                                                                 <rect key="frame" x="21" y="0.0" width="322" height="72"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                                                 <connections>
                                                                                     <action selector="textFieldEditing:" destination="ZfB-Wt-Agy" eventType="editingDidEnd" id="Dco-Dk-I3n"/>
                                                                                 </connections>
@@ -1618,7 +1619,7 @@
                                                                                 <rect key="frame" x="21" y="0.0" width="322" height="110"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                                                 <connections>
                                                                                     <action selector="textFieldEditing:" destination="ZfB-Wt-Agy" eventType="editingDidEnd" id="rQM-La-78Q"/>
                                                                                 </connections>
@@ -1658,7 +1659,7 @@
                                                                                 </constraints>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
-                                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                                                                         <color key="value" red="0.70980392160000005" green="0.46274509800000002" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2094,7 +2095,7 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jp9-zq-Toe" userLabel="PhotoView">
                                                                             <rect key="frame" x="0.0" y="0.0" width="304" height="400"/>
                                                                             <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nk8-qU-CiN">
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nk8-qU-CiN">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="304" height="245"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <userDefinedRuntimeAttributes>
@@ -2218,8 +2219,17 @@
                                                                                         </userDefinedRuntimeAttribute>
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </view>
+                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0j-2A-9uf">
+                                                                                    <rect key="frame" x="249" y="15" width="34" height="34"/>
+                                                                                    <state key="normal" image="btn_deletePost"/>
+                                                                                </button>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <constraints>
+                                                                                <constraint firstItem="s0j-2A-9uf" firstAttribute="leading" secondItem="jp9-zq-Toe" secondAttribute="leading" constant="249" id="7a4-Tx-otj"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="s0j-2A-9uf" secondAttribute="trailing" constant="21" id="WkI-Pu-fzP"/>
+                                                                                <constraint firstItem="s0j-2A-9uf" firstAttribute="top" secondItem="jp9-zq-Toe" secondAttribute="top" constant="15" id="wwB-Lw-Vhv"/>
+                                                                            </constraints>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                                     <integer key="value" value="14"/>
@@ -2258,6 +2268,7 @@
                                                             <outlet property="breedLabel" destination="SRo-XO-3EP" id="sD0-QU-0Mg"/>
                                                             <outlet property="cityLabel" destination="gX9-gO-HH7" id="aB0-08-mT7"/>
                                                             <outlet property="commentsLabel" destination="Mfe-bv-EOU" id="AkD-fQ-SOi"/>
+                                                            <outlet property="deletePostButton" destination="s0j-2A-9uf" id="77F-aD-CrB"/>
                                                             <outlet property="genderImage" destination="kHC-GF-Jj6" id="dGQ-5c-Sbb"/>
                                                             <outlet property="municipalityLabel" destination="uLI-mA-ddt" id="XTo-4j-aJi"/>
                                                             <outlet property="phoneLabel" destination="gnY-Xb-Owm" id="9p6-ky-iDC"/>
@@ -3530,10 +3541,10 @@
                                         <rect key="frame" x="0.0" y="424" width="375" height="804"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdZ-iw-ecL" userLabel="Data">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="331"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gg1-hU-zSh">
-                                                        <rect key="frame" x="30" y="20" width="315" height="291"/>
+                                                        <rect key="frame" x="30" y="20" width="315" height="290"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oq9-Es-GmN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60.5" height="30"/>
@@ -3545,7 +3556,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="CiN-XH-xQG">
-                                                                <rect key="frame" x="0.0" y="45" width="305" height="246"/>
+                                                                <rect key="frame" x="0.0" y="45" width="304" height="245"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hwq-Ar-Aey" userLabel="PostType">
                                                                         <rect key="frame" x="0.0" y="0.0" width="116.5" height="50"/>
@@ -3609,17 +3620,21 @@
                                                                         <viewLayoutGuide key="safeArea" id="2Wc-3P-luT"/>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rPf-sP-8zb" userLabel="Share">
-                                                                        <rect key="frame" x="0.0" y="195" width="305" height="51"/>
+                                                                        <rect key="frame" x="0.0" y="195" width="304" height="50"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compartelo en Whatsapp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyg-qW-LaH">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="234" height="51"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="234" height="50"/>
                                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFe-qC-mVi">
-                                                                                <rect key="frame" x="254" y="0.0" width="51" height="51"/>
-                                                                                <state key="normal" image="share_whatssapp"/>
+                                                                                <rect key="frame" x="254" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="XkF-Xn-HT2"/>
+                                                                                    <constraint firstAttribute="width" constant="50" id="dAH-mM-rNA"/>
+                                                                                </constraints>
+                                                                                <state key="normal" image="icon_whatsapp"/>
                                                                                 <connections>
                                                                                     <action selector="shareWhattsappButtonTapped:" destination="P2c-84-uOn" eventType="touchUpInside" id="eKd-Gm-L3p"/>
                                                                                 </connections>
@@ -3641,7 +3656,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZZ-Pc-eHa" userLabel="User">
-                                                <rect key="frame" x="0.0" y="331" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="330" width="375" height="100"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IVI-gd-8FA">
                                                         <rect key="frame" x="30" y="20" width="315" height="60"/>
@@ -3677,7 +3692,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-l5-1dn" userLabel="Address">
-                                                <rect key="frame" x="0.0" y="431" width="375" height="126"/>
+                                                <rect key="frame" x="0.0" y="430" width="375" height="127"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gR7-Bc-7MH">
                                                         <rect key="frame" x="30" y="20" width="315" height="81.5"/>
@@ -3886,7 +3901,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBd-SL-gJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1383.2" y="4286.3568215892055"/>
+            <point key="canvasLocation" x="-1519" y="4173"/>
         </scene>
         <!--Adoption Selected View Controller-->
         <scene sceneID="k13-yP-BNX">
@@ -3993,10 +4008,12 @@
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiG-kF-F2d">
                                                                                 <rect key="frame" x="254" y="0.0" width="50" height="50"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="1RD-Yj-xzh"/>
                                                                                     <constraint firstAttribute="width" constant="50" id="FBe-ED-91q"/>
+                                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="N1Y-Yu-WxR"/>
                                                                                     <constraint firstAttribute="height" constant="50" id="wkk-XS-6oa"/>
                                                                                 </constraints>
-                                                                                <state key="normal" image="share_whatssapp"/>
+                                                                                <state key="normal" image="icon_whatsapp"/>
                                                                                 <connections>
                                                                                     <action selector="shareWhattsappButtonTapped:" destination="Ydc-Bu-G96" eventType="touchUpInside" id="J7g-5q-2uC"/>
                                                                                 </connections>
@@ -4087,16 +4104,22 @@
                                                                     </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="czU-qI-1Gn">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jku-dx-A0Z">
                                                                 <rect key="frame" x="0.0" y="65.5" width="315" height="85"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="85" id="pAP-8R-LbZ"/>
+                                                                    <constraint firstAttribute="height" constant="85" id="XK6-hX-yFp"/>
+                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="uMn-DP-syQ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="jku-dx-A0Z" secondAttribute="bottom" id="CWd-rb-C6J"/>
+                                                            <constraint firstItem="jku-dx-A0Z" firstAttribute="leading" secondItem="o8O-Cd-rUg" secondAttribute="leading" id="F0R-Rf-TOb"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jku-dx-A0Z" secondAttribute="trailing" id="QKd-9H-Pox"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4159,6 +4182,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="700" id="22C-VG-zwP"/>
+                                            <constraint firstAttribute="bottom" secondItem="7Gh-9D-yth" secondAttribute="bottom" id="ln2-mf-rCa"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="700" id="yf3-ib-ctn"/>
                                         </constraints>
                                     </stackView>
@@ -4206,7 +4230,7 @@
                         <outlet property="adoptionImage" destination="3uc-YA-nYH" id="MWI-Zk-Mem"/>
                         <outlet property="breedLabel" destination="gfh-Xz-1LV" id="Umz-Tp-JLq"/>
                         <outlet property="cityLabel" destination="uvr-yH-eJ1" id="3Pw-eT-6yK"/>
-                        <outlet property="commentsTextView" destination="czU-qI-1Gn" id="0Xq-xi-1gu"/>
+                        <outlet property="commentsTextView" destination="jku-dx-A0Z" id="L8l-Ux-gQh"/>
                         <outlet property="genderImage" destination="sYy-LC-wQF" id="xfa-PU-nRQ"/>
                         <outlet property="genderLabel" destination="Hwa-y5-93Q" id="7w6-Uu-j4s"/>
                         <outlet property="municipalityLabel" destination="mqy-nm-XWQ" id="fEf-tT-Ggf"/>
@@ -4221,7 +4245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMN-jX-ibh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1383.2" y="5664.4677661169417"/>
+            <point key="canvasLocation" x="-1519" y="5342"/>
         </scene>
         <!--Profile Users Selected Post View Controller-->
         <scene sceneID="CHe-1V-xvi">
@@ -4296,7 +4320,7 @@
                                                                                 <rect key="frame" x="70" y="0.0" width="245" height="50"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a49-be-pqh">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="139" height="50"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="50"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" secondItem="a49-be-pqh" secondAttribute="height" multiplier="139:50" id="AfP-qp-1AJ"/>
                                                                                         </constraints>
@@ -4305,7 +4329,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMa-RV-8jz">
-                                                                                        <rect key="frame" x="129" y="0.0" width="116" height="50"/>
+                                                                                        <rect key="frame" x="145" y="0.0" width="100" height="50"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" constant="100" id="gHK-h6-PcJ"/>
                                                                                         </constraints>
@@ -4360,7 +4384,7 @@
                                                                             <constraint firstAttribute="height" constant="50" id="OpM-Av-OnT"/>
                                                                             <constraint firstAttribute="width" constant="50" id="iDf-L3-ILl"/>
                                                                         </constraints>
-                                                                        <state key="normal" image="share_whatssapp"/>
+                                                                        <state key="normal" image="icon_whatsapp"/>
                                                                         <connections>
                                                                             <action selector="shareWhatsappButtonTapped:" destination="B7w-1x-f3i" eventType="touchUpInside" id="KPn-f0-cby"/>
                                                                         </connections>
@@ -4585,6 +4609,7 @@
         <image name="Signup-Button" width="344" height="48"/>
         <image name="backarrow" width="28" height="20"/>
         <image name="btn_contactame" width="218" height="85"/>
+        <image name="btn_deletePost" width="34" height="34"/>
         <image name="btn_save" width="414" height="73"/>
         <image name="edit" width="6" height="24"/>
         <image name="home" width="20" height="22"/>
@@ -4597,17 +4622,17 @@
         <image name="icon_lost_inactive" width="56" height="56"/>
         <image name="icon_male_inactive" width="56" height="56"/>
         <image name="icon_otherpet_inactive" width="56" height="56"/>
+        <image name="icon_whatsapp" width="64" height="64"/>
         <image name="lock" width="20" height="22"/>
         <image name="mail" width="22" height="18"/>
         <image name="placeholder" width="307" height="198"/>
         <image name="post" width="24" height="20"/>
         <image name="post-activated" width="24" height="20"/>
-        <image name="share_whatssapp" width="51" height="51"/>
         <image name="user" width="17" height="20"/>
         <image name="user-activated" width="17" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pni-8x-Ytt"/>
+        <segue reference="Ijo-3c-81G"/>
         <segue reference="iTs-gF-5AG"/>
         <segue reference="Cfd-dG-A8c"/>
     </inferredMetricsTieBreakers>

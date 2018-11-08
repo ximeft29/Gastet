@@ -32,15 +32,25 @@ class AdoptionCollectionViewCell: UICollectionViewCell {
     
     func set(postadoption: PostsAdoption) {
         
-        ImageService.getImage(withUrl: postadoption.photoUrladoption) { (image) in
+        self.postedAdoptionUIImage.image = nil
+            ImageService.getImage(withUrl: postedphoto) { (image) in
+                self.postedAdoptionUIImage.image = image
+            }
+            
+   
 
-            self.postedAdoptionUIImage.image = image
+        self.userAdoptionImage.image = nil
+        
+        if let photourl = postadoption.authoradoption.photoUrl {
+            
+            ImageService.getImage(withUrl: photourl) { (image) in
+                
+                self.userAdoptionImage.image = image
+                
+            }
+            
         }
 
-        ImageService.getImage(withUrl: postadoption.authoradoption.photoUrl) { (image) in
-
-            self.userAdoptionImage.image = image
-        }
         
         commentsAdoptionLabel.text = postadoption.commentsadoption
         breedAdoptionLabel.text = postadoption.breedadoption

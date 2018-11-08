@@ -29,6 +29,7 @@ class ProfileUserPosts: NSObject {
     
     //Timestamp
     var timestamp: Date
+    var timestampDouble: TimeInterval
     
     func getDateFormattedString() -> String {
         let formatter = DateFormatter()
@@ -36,7 +37,7 @@ class ProfileUserPosts: NSObject {
         return formatter.string(from: self.timestamp)
     }
     
-    init(name: String, address: String, breed: String, phone: String, photoUrl: URL, city: String, municipality: String, petType: String, gender: String, timestamp: Date, postType: String, comments: String) {
+    init(name: String, address: String, breed: String, phone: String, photoUrl: URL, city: String, municipality: String, petType: String, gender: String, timestamp: Date, postType: String, comments: String, timestampDouble: TimeInterval) {
         
         self.breed = breed
         self.phone = phone
@@ -50,6 +51,7 @@ class ProfileUserPosts: NSObject {
         self.comments = comments
         self.name = name
         self.address = address
+        self.timestampDouble = timestampDouble
         
     }
 }

@@ -12,7 +12,7 @@ class UserProfile {
     
     var uid: String
     var username: String
-    var photoUrl: URL
+    var photoUrl: URL?
     
     init(uid: String, username: String, photoUrl: URL) {
         self.uid = uid

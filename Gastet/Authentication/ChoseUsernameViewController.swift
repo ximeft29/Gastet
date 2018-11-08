@@ -46,10 +46,29 @@ class ChoseUsernameViewController: UIViewController {
             let newUserReference = reference.child(uid!)
             newUserReference.setValue(["username": self.userTextField.text!])
         }
-        
+        //Invita amigos
+        let shareMessage = "Hola! Me acabo de inscribir al app de Gastet para poder reportar una mascota. Me podrías ayudar a pasar la voz al meterte al app y compartir mi publicación por whatsapp? Te paso el link del app: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+        shareWhatssapp(message: shareMessage)
+
+        //segue
         performSegue(withIdentifier: "toHome", sender: self)
         
  
+    }
+    
+    //whatsapp
+    
+    func shareWhatssapp(message: String) {
+
+        let msg = message
+        let urlWhats = "whatsapp://send?text=\(msg)"
+        if  let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            if let whatsappURL = NSURL(string: urlString) {
+                if  UIApplication.shared.canOpenURL(whatsappURL as URL ) {
+                    UIApplication.shared.open(whatsappURL as URL)
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
