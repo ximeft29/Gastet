@@ -136,7 +136,7 @@ class ProfileUsersSelectedPostViewController: UIViewController {
         case "found":
             postTypeLabel.text = "Encontrado"
             postTypeImage.image = UIImage(named: "postType_found.png")
-            titleAddressLabel.text = "Donde lo encontre...."
+            titleAddressLabel.text = "Encontrado en: "
             nameLabel.text = selectedpostsuser?.breed
             breedLabel.isHidden = true
             callToActionLabel.text = "Es tuyo?"

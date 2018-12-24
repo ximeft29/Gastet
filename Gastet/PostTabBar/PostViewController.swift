@@ -32,11 +32,15 @@ class PostViewController: UIViewController, UITextViewDelegate{
     //VARS
     var lost = Bool()
     var selectedImage : UIImage!
+    var username: String?
+    var photoUrl: URL?
     
     
     var selectedPostCategory: PostCategory?
     var selectedPet: PetKind?
     var selectedGender: Gender?
+    var currentUser = UserService.currentUserProfile
+    
     
     //@IBOUTLETS
     
@@ -190,13 +194,27 @@ class PostViewController: UIViewController, UITextViewDelegate{
         
     }
     
+    //Fetch User Information to send Author Information to Firebase
     
+    func fetchUser() {
+        
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value) { (snapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                
+                let stringPhotoUrl = dict["photoUrl"] as? String
+                self.photoUrl = URL(string: stringPhotoUrl!)
+                self.username = dict["username"] as? String
+                print(self.photoUrl!)
+                print(self.username!)
+            }
+        }
+        
+    }
     
     //FIREBASE CODE
     
     @IBAction func postButtonPressed(_ sender: Any) {
-       
-
 
             postButton.setTitle("Publicar", for: .normal)
             postButton.isHidden = false
@@ -215,7 +233,11 @@ class PostViewController: UIViewController, UITextViewDelegate{
                         if let downloadUrl = url {
                             let directoryURL : NSURL = downloadUrl as NSURL
                             let urlString:String = directoryURL.absoluteString!
-                            let toId = Auth.auth().currentUser?.uid
+                            guard let currentUser = Auth.auth().currentUser else {
+                                return
+                            }
+                            
+                            let toId = currentUser.uid
                             var dataToSend: [String: Any]
                             switch self.selectedPostCategory! {
                             case .lost:
@@ -223,8 +245,8 @@ class PostViewController: UIViewController, UITextViewDelegate{
                                     
                                     "author": [
                                         "userid": toId,
-                                        "username": UserService.currentUserProfile?.username,
-                                        "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
+                                        "username": self.username,
+                                        "profilePhotoUrl": self.photoUrl?.absoluteString
                                     ],
                                     "photoUrl": urlString,
                                     "postType": self.selectedPostCategory!.rawValue,
@@ -237,18 +259,19 @@ class PostViewController: UIViewController, UITextViewDelegate{
                                     "address": self.address.text!,
                                     "phone": self.phone.text!,
                                     "timestamp": ServerValue.timestamp(),
-                                    "comments": self.commentsTextView.text!
+                                    "comments": self.commentsTextView.text!,
+                                    "userid": toId
                                 ]
                                 
                                 break
                                 
                             case .found:
                                 dataToSend = [
-                                    
+
                                     "author": [
                                         "userid": toId,
-                                        "username": UserService.currentUserProfile?.username,
-                                        "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
+                                        "username": self.username,
+                                        "profilePhotoUrl": self.photoUrl?.absoluteString
                                     ],
                                     "photoUrl": urlString,
                                     "postType": self.selectedPostCategory!.rawValue,
@@ -260,7 +283,8 @@ class PostViewController: UIViewController, UITextViewDelegate{
                                     "address": self.address.text!,
                                     "phone": self.phone.text!,
                                     "timestamp": ServerValue.timestamp(),
-                                    "comments": self.commentsTextView.text!
+                                    "comments": self.commentsTextView.text!,
+                                    "userid": toId
                                 ]
                                 break
                                 
@@ -269,8 +293,8 @@ class PostViewController: UIViewController, UITextViewDelegate{
                                     
                                     "author": [
                                         "userid": toId,
-                                        "username": UserService.currentUserProfile?.username,
-                                        "profilePhotoUrl": UserService.currentUserProfile?.photoUrl.absoluteString
+                                        "username": self.username,
+                                        "profilePhotoUrl": self.photoUrl?.absoluteString
                                     ],
                                     "photoUrl": urlString,
                                     "postType": self.selectedPostCategory!.rawValue,
@@ -281,7 +305,8 @@ class PostViewController: UIViewController, UITextViewDelegate{
                                     "municipality": self.muncipalityButton.currentTitle! ,
                                     "phone": self.phone.text!,
                                     "timestamp": ServerValue.timestamp(),
-                                    "comments": self.commentsTextView.text!
+                                    "comments": self.commentsTextView.text!,
+                                    "userid": toId
                                 ]
                                 break
                                 
@@ -314,7 +339,7 @@ class PostViewController: UIViewController, UITextViewDelegate{
         ref = Database.database().reference()
         let postsReference = ref.child("posts")
         let newPostId = postsReference.childByAutoId().key
-        let newPostReference = postsReference.child(newPostId)
+        let newPostReference = postsReference.child(newPostId!)
         //current user information
         newPostReference.setValue(data) { (error, ref) in
             if error != nil {
@@ -356,7 +381,7 @@ class PostViewController: UIViewController, UITextViewDelegate{
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     //FUNCTIONS - to Hide button until information is inputed
     
     func enablePostButton() {
@@ -476,6 +501,8 @@ class PostViewController: UIViewController, UITextViewDelegate{
         imagePosted.addGestureRecognizer(tapGesture)
         imagePosted.isUserInteractionEnabled = true
         
+        //User Info
+        fetchUser()
         
         self.view.backgroundColor = UIColor.white
         scrollView.delegate = self

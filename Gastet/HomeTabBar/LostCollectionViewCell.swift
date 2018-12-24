@@ -8,10 +8,17 @@
 
 import UIKit
 import FBSDKShareKit
+import SDWebImage
+import FirebaseDatabase
+import FirebaseAuth
 
 class LostCollectionViewCell: UICollectionViewCell {
     
+    //Comments View
+    @IBOutlet weak var commentsView: UIView!
+    @IBOutlet weak var commentsLabel: UILabel!
 
+    
     // UserView
     @IBOutlet weak var usernameLostLabel: UILabel!
     @IBOutlet weak var userLostImage: UIImageView!
@@ -28,50 +35,57 @@ class LostCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var breedLostLabel: UILabel!
     @IBOutlet weak var phoneLostTextView: UITextView!
     @IBOutlet weak var adressLostLabel: UILabel!
-
-
+    
+    
 //    PostInformation PetType/Gender Pictures
     @IBOutlet weak var petTypeLostImage: UIImageView!
     @IBOutlet weak var genderLostImage: UIImageView!
 
+    //Variables
+    var homeVC: HomeViewController?
+    var postRef: DatabaseReference!
+    var commentsCount: String?
+
     
     
+    var post: Posts? {
+        didSet {
+            updateLostPosts()
+            countComments()
+        }
+    }
     
-    func set(post: Posts) {
+    var user: UserProfile? {
+        didSet {
+            setupUserInfo()
+        }
+    }
+
+    func updateLostPosts() {
         
+        //Timestamp
         func getDateFormattedString() -> String {
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM d, HH:mm"
-            return formatter.string(from: post.timestamp)
+            return formatter.string(from: post!.timestamp!)
         }
+        
+        //Images
         
         self.postedLostUIImage.image = nil
-        ImageService.getImage(withUrl: post.photoUrl) { (image) in
-            self.postedLostUIImage.image = image
+        if let postedPhotoUrl = post?.photoUrl {
+            postedLostUIImage.sd_setImage(with: postedPhotoUrl, completed: nil)
         }
         
-        self.userLostImage.image = nil
+        adressLostLabel.text = "Ultima vez visto en " + (post?.address!)!
+        nameLostLabel.text = post?.name
+        breedLostLabel.text = post?.breed
+        phoneLostTextView.text = post?.phone
+        cityLostLabel.text = post?.city
+        municipalityLostLabel.text = post?.municipality
+        timestampLostLabel.text = "\(post!.getDateFormattedString())"
         
-        if let photoUrl = post.author.photoUrl {
-            
-            ImageService.getImage(withUrl: photoUrl) { (image) in
-                self.userLostImage.image = image
-            }
-            
-        }
-        
-
-        
-        adressLostLabel.text = "Ultima vez visto en " + post.address!
-        nameLostLabel.text = post.name
-        breedLostLabel.text = post.breed
-        phoneLostTextView.text = post.phone
-        cityLostLabel.text = post.city
-        municipalityLostLabel.text = post.municipality
-        usernameLostLabel.text = post.author.username
-        timestampLostLabel.text = "\(post.getDateFormattedString())"
-        
-        switch post.petType{
+        switch post?.petType{
             
         case "dog":
            petTypeLostImage.image = UIImage(named: "petType_dog.png")
@@ -86,7 +100,7 @@ class LostCollectionViewCell: UICollectionViewCell {
             break
         }
         
-        switch post.genderType {
+        switch post?.genderType {
         case "male":
            genderLostImage.image = UIImage(named: "gender_male.png")
             break
@@ -96,7 +110,73 @@ class LostCollectionViewCell: UICollectionViewCell {
         default:
             break
         }
+    }
+    
+    func setupUserInfo() {
+        
+        
+        if let uid = post?.userid {
+            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+                
+                if let dict = snapshot.value as? [String: Any] {
+                    let user = UserProfile.transformUser(dict: dict)
+                    self.usernameLostLabel.text = user.username
+                    if let userPhotoUrl = user.photoUrl {
+                        let photoUrl = URL(string: userPhotoUrl)
+                        self.userLostImage.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "user-placeholder.jpg"), options: .refreshCached, completed: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func countComments() {
+        
+        
+        let postCommentRef = Database.database().reference().child("post-comments").child((post?.postid)!)
+        postCommentRef.observe(.value) { (snapshot) in
+            let binaryUInt = snapshot.childrenCount
+            let commentsCountString = String(binaryUInt)
+            self.commentsCount = commentsCountString
+            
+            switch binaryUInt {
+            case 0 :
+                self.commentsLabel.text = "comenta aquí"
+                break
+            case 1 :
+                self.commentsLabel.text = "1 comentario"
+                break
+            default:
+                self.commentsLabel.text = "\(commentsCountString) comentarios"
+                break
+                
+            }
+            
+        }
         
     }
+
+    override func awakeFromNib() {
+         usernameLostLabel.text = ""
+        
+        //Make Comments View Clickable
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.commentsViewPressed))
+        commentsView.addGestureRecognizer(tapGesture)
+        commentsView.isUserInteractionEnabled = true
+    }
+    
+    @objc func commentsViewPressed() {
+        print("View was touched! Yay")
+        
+        if let id = post?.postid {
+            homeVC?.performSegue(withIdentifier: "commentSegue", sender: id)
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userLostImage.image = UIImage(named: "user-placeholder.jpg")
+    }
+    
     }
 

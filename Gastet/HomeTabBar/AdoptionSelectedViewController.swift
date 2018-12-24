@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AdoptionSelectedViewController: UIViewController {
 
     //VARIABLES
-    var postsadoption: PostsAdoption?
+    var posts: Posts?
     
     //@IBOUTLETS
     @IBOutlet weak var scrollView: UIScrollView!
+    
     
     //Data
     
@@ -45,7 +47,7 @@ class AdoptionSelectedViewController: UIViewController {
     
     @IBAction func contactmeButtonTapped(_ sender: UIButton) {
         
-        let phoneNumber = postsadoption?.phoneadoption
+        let phoneNumber = posts?.phone
         if let callNumber = phoneNumber, let aURL = NSURL(string: "telprompt://\(callNumber)") {
             
             
@@ -64,20 +66,20 @@ class AdoptionSelectedViewController: UIViewController {
     
     @IBAction func shareWhattsappButtonTapped(_ sender: UIButton) {
         
-        switch postsadoption?.petTypeAdoption {
+        switch posts?.petType {
         case "dog":
-            let shareMessage = "Hola! Tenemos un perro en adopción que es de raza \(postsadoption!.breedadoption!). Ayudenme a encontrarle una casa! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            let shareMessage = "Hola! Tenemos un perro en adopción que es de raza \(posts!.breed!). Ayudenme a encontrarle una casa! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
             shareWhatssapp(message: shareMessage)
             
             break
             
         case "cat":
-            let shareMessage = "Hola! Encontre a un gato en adopción que es de raza \(postsadoption!.breedadoption!). Ayudenme a encontrarle una casa! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            let shareMessage = "Hola! Encontre a un gato en adopción que es de raza \(posts!.breed!). Ayudenme a encontrarle una casa! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
             shareWhatssapp(message: shareMessage)
             break
             
         case "other":
-            let shareMessage = "Hola! Encontre a una mascota en adopción que es de raza \(postsadoption!.breedadoption!). Ayudenme a encontrarle una casa!Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            let shareMessage = "Hola! Encontre a una mascota en adopción que es de raza \(posts!.breed!). Ayudenme a encontrarle una casa!Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
             shareWhatssapp(message: shareMessage)
             break
         default:
@@ -102,12 +104,12 @@ class AdoptionSelectedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Author
+        setupUserInfo()
         
         //scroll view
         scrollView.delegate = self
-        
-        
-        
+
         //navbar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
@@ -115,7 +117,7 @@ class AdoptionSelectedViewController: UIViewController {
         
         self.adoptionImage.image = nil
         
-        ImageService.getImage(withUrl:(postsadoption?.photoUrladoption)! ) { (image) in
+        ImageService.getImage(withUrl:(posts?.photoUrl)! ) { (image) in
             
             self.adoptionImage.image = image
             
@@ -127,7 +129,7 @@ class AdoptionSelectedViewController: UIViewController {
         self.postTypeImage.image = UIImage.init(named: "postType_adoption.png")
         
         //PetType
-        switch postsadoption?.petTypeAdoption{
+        switch posts?.petType{
             
         case "dog":
             petTypeLabel.text = "Perro"
@@ -145,10 +147,10 @@ class AdoptionSelectedViewController: UIViewController {
             break
         }
         
-        self.breedLabel.text =  postsadoption?.breedadoption
+        self.breedLabel.text =  posts?.breed
         
         //Gender
-        switch postsadoption?.genderTypeAdoption {
+        switch posts?.genderType {
             
         case "male":
             genderLabel.text = "Macho"
@@ -162,26 +164,34 @@ class AdoptionSelectedViewController: UIViewController {
             break
         }
         
-        //Username
-        self.userLabel.text = postsadoption?.authoradoption.username
-        
-        self.userProfilePicture.image = nil
-        ImageService.getImage(withUrl: (postsadoption?.authoradoption.photoUrl)!) { (image) in
-            
-            self.userProfilePicture.image = image
-        }
-        
         
         //Address
-        self.cityLabel.text = postsadoption?.cityadoption
-        self.municipalityLabel.text = postsadoption?.municipalityadoption
+        self.cityLabel.text = posts?.city
+        self.municipalityLabel.text = posts?.municipality
         
         //Comments
-        self.commentsTextView.text = postsadoption?.commentsadoption
+        self.commentsTextView.text = posts?.comments
 
-
-        // Do any additional setup after loading the view.
     }
+    
+    func setupUserInfo() {
+        
+        if let uid = posts?.userid {
+            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+                
+                if let dict = snapshot.value as? [String: Any] {
+                    let user = UserProfile.transformUser(dict: dict)
+                    self.userLabel.text = user.username
+                    if let userPhotoUrl = user.photoUrl {
+                        let photoUrl = URL(string: userPhotoUrl)
+                        self.userProfilePicture.sd_setImage(with: photoUrl, completed: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import Firebase
 
 class FoundSelectedViewController: UIViewController {
 
     //Vars
-    var postsfound: PostsFound?
+    var posts: Posts?
     
     
     //@IBOUTLETS
@@ -47,7 +49,7 @@ class FoundSelectedViewController: UIViewController {
     
     
     @IBAction func contactmeButtonTapped(_ sender: UIButton) {
-        let phoneNumber = postsfound?.phonefound
+        let phoneNumber = posts?.phone
         if let callNumber = phoneNumber, let aURL = NSURL(string: "telprompt://\(callNumber)") {
             
             
@@ -67,20 +69,20 @@ class FoundSelectedViewController: UIViewController {
     
     @IBAction func shareWhattsappButtonTapped(_ sender: UIButton) {
         
-        switch postsfound?.petTypeFound {
+        switch posts?.petType {
         case "dog":
-            let shareMessage = "Hola! Encontre a un perro que es de raza \(postsfound!.breedfound!). La ultima vez que lo vimos fue en \(postsfound!.addressfound!). Ayudenme a encontrar su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            let shareMessage = "Hola! Encontre a un perro que es de raza \(posts!.breed!). La ultima vez que lo vimos fue en \(posts!.address!). Ayudenme a encontrar su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
             shareWhatssapp(message: shareMessage)
             
             break
             
         case "cat":
-            let shareMessage = "Hola! Encontre a un gato que es de raza \(postsfound!.breedfound!). La ultima vez que lo vimos fue en \(postsfound!.addressfound!). Ayudenme a encontrar a su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            let shareMessage = "Hola! Encontre a un gato que es de raza \(posts!.breed!). La ultima vez que lo vimos fue en \(posts!.address!). Ayudenme a encontrar a su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
             shareWhatssapp(message: shareMessage)
             break
             
         case "other":
-            let shareMessage = "Hola! Encontre a una mascota que es de raza \(postsfound!.breedfound!). La ultima vez que lo vimos fue en \(postsfound!.addressfound!). Ayudenme a encontrar a su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
+            let shareMessage = "Hola! Encontre a una mascota que es de raza \(posts!.breed!). La ultima vez que lo vimos fue en \(posts!.address!). Ayudenme a encontrar a su dueño porfavor! Subi la foto con toda la información a Gastet. Pueden verlo aquí: https://itunes.apple.com/mx/app/gastet/id1407059324?l=en&mt=8"
             shareWhatssapp(message: shareMessage)
             break
         default:
@@ -106,6 +108,10 @@ class FoundSelectedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Author
+        setupUserInfo()
+        
+        
         //scroll view
         scrollView.delegate = self
         
@@ -117,7 +123,7 @@ class FoundSelectedViewController: UIViewController {
         
         self.foundImage.image = nil
         
-        ImageService.getImage(withUrl:(postsfound?.photoUrlfound)! ) { (image) in
+        ImageService.getImage(withUrl:(posts?.photoUrl)! ) { (image) in
             
             self.foundImage.image = image
             
@@ -129,7 +135,7 @@ class FoundSelectedViewController: UIViewController {
         self.postTypeImage.image = UIImage.init(named: "postType_found.png")
         
         //PetType
-        switch postsfound?.petTypeFound {
+        switch posts?.petType {
             
         case "dog":
             petTypeLabel.text = "Perro"
@@ -147,10 +153,10 @@ class FoundSelectedViewController: UIViewController {
             break
         }
         
-        self.breedLabel.text =  postsfound?.breedfound
+        self.breedLabel.text =  posts?.breed
         
         //Gender
-        switch postsfound?.genderTypeFound {
+        switch posts?.genderType {
        
         case "male":
             genderLabel.text = "Macho"
@@ -165,23 +171,35 @@ class FoundSelectedViewController: UIViewController {
         }
         
         //Username
-        self.userLabel.text = postsfound?.authorfound.username
-        
-        self.userProfilePicture.image = nil
-        ImageService.getImage(withUrl: (postsfound?.authorfound.photoUrl)!) { (image) in
-            
-            self.userProfilePicture.image = image
-        }
         
         
         //Address
-        self.cityLabel.text = postsfound?.cityfound
-        self.municipalityLabel.text = postsfound?.municipalityfound
-        self.addressLabel.text = postsfound?.addressfound
+        self.cityLabel.text = posts?.city
+        self.municipalityLabel.text = posts?.municipality
+        self.addressLabel.text = posts?.address
         
         //Comments
-        self.commentsTextView.text = postsfound?.comments
+        self.commentsTextView.text = posts?.comments
         
+    }
+    
+    
+    
+    func setupUserInfo() {
+        
+        if let uid = posts?.userid {
+            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+                
+                if let dict = snapshot.value as? [String: Any] {
+                    let user = UserProfile.transformUser(dict: dict)
+                    self.userLabel.text = user.username
+                    if let userPhotoUrl = user.photoUrl {
+                        let photoUrl = URL(string: userPhotoUrl)
+                        self.userProfilePicture.sd_setImage(with: photoUrl, completed: nil)
+                    }
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

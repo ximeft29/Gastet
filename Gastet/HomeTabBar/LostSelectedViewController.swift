@@ -9,6 +9,7 @@
 import UIKit
 import Social
 import FBSDKShareKit
+import FirebaseDatabase
 
 class LostSelectedViewController: UIViewController {
 
@@ -163,6 +164,10 @@ class LostSelectedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Author
+        setupUserInfo()
+        
+        
         //navbar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
@@ -219,15 +224,6 @@ class LostSelectedViewController: UIViewController {
         default:
             break
         }
-        
-        //Username
-        
-        self.userProfilePicture.image = nil
-        ImageService.getImage(withUrl: (posts?.author.photoUrl)!) { (image) in
-            
-            self.userProfilePicture.image = image
-        }
-        self.userLabel.text = posts?.author.username
 
         //Address
         self.cityLabel.text = posts?.city
@@ -237,6 +233,23 @@ class LostSelectedViewController: UIViewController {
         //Comments
         self.commentsTextView.text = posts?.comments
         
+    }
+    
+    func setupUserInfo() {
+        
+        if let uid = posts?.userid {
+            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+                
+                if let dict = snapshot.value as? [String: Any] {
+                    let user = UserProfile.transformUser(dict: dict)
+                    self.userLabel.text = user.username
+                    if let userPhotoUrl = user.photoUrl {
+                        let photoUrl = URL(string: userPhotoUrl)
+                        self.userProfilePicture.sd_setImage(with: photoUrl, completed: nil)
+                    }
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

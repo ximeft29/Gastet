@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import SDWebImage
+import FirebaseDatabase
+ 
 class FoundCollectionViewCell: UICollectionViewCell {
     
     
@@ -28,38 +30,54 @@ class FoundCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var phoneFoundTextView: UITextView!
     @IBOutlet weak var adressFoundLabel: UILabel!
     
+    //Comments
+    @IBOutlet weak var commentsView: UIView!
+    @IBOutlet weak var commentsLabel: UILabel!
+    
     //PostInformation PetType/Gender Pictures
     @IBOutlet weak var petTypeFoundImage: UIImageView!
     @IBOutlet weak var genderTypeFoundImage: UIImageView!
 
-    func set(postfound: PostsFound) {
+    
+    //Variables
+    var homeVC: HomeViewController?
+    var commentsCount: String?
+    
+    var post: Posts? {
+        didSet {
+            updateFoundPosts()
+            countComments()
+        }
+    }
+    
+    var user: UserProfile? {
+        didSet {
+            setupUserInfo()
+        }
+    }
+    
+    func updateFoundPosts() {
+        
+        func getDateFormattedString() -> String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM d, HH:mm"
+            return formatter.string(from: post!.timestamp!)
+        }
         
         self.postedFoundUIImage.image = nil
-        ImageService.getImage(withUrl: postfound.photoUrlfound) { (image) in
-            self.postedFoundUIImage.image = image
+        if let postedPhotoUrl = post?.photoUrl {
+            //sd_setImage --> comes from import SDWebImage cocoa pod
+            postedFoundUIImage.sd_setImage(with: postedPhotoUrl, completed: nil)
         }
         
-            
-        self.userFoundImage.image = nil
+        adressFoundLabel.text = "Ultima vez visto en " + (post?.address!)!
+        breedFoundLabel.text = post?.breed
+        phoneFoundTextView.text = post?.phone
+        cityFoundLabel.text = post?.city
+        municipalityFoundLabel.text = post?.municipality
+        timestampFoundLabel.text = "\(post!.getDateFormattedString())"
         
-        if let photourl = postfound.authorfound.photoUrl {
-            
-            ImageService.getImage(withUrl: photourl) { (image) in
-                self.userFoundImage.image = image
-            }
-            
-        }
-        
-        adressFoundLabel.text = "Se encontro en " + postfound.addressfound!
-        breedFoundLabel.text = postfound.breedfound
-        phoneFoundTextView.text = postfound.phonefound
-        cityFoundLabel.text = postfound.cityfound
-        municipalityFoundLabel.text = postfound.municipalityfound
-        usernameFoundLabel.text = postfound.authorfound.username
-        timestampFoundLabel.text = "\(postfound.getDateFormattedString())"
-        
-
-        switch postfound.petTypeFound{
+        switch post?.petType{
             
         case "dog":
             petTypeFoundImage.image = UIImage(named: "petType_dog.png")
@@ -74,7 +92,7 @@ class FoundCollectionViewCell: UICollectionViewCell {
             break
         }
         
-        switch postfound.genderTypeFound {
+        switch post?.genderType {
         case "male":
             genderTypeFoundImage.image = UIImage(named: "gender_male.png")
             break
@@ -86,4 +104,65 @@ class FoundCollectionViewCell: UICollectionViewCell {
         }
         
     }
+    
+    func setupUserInfo() {
+        
+        if let uid = post?.userid {
+            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+                
+                if let dict = snapshot.value as? [String: Any] {
+                    let user = UserProfile.transformUser(dict: dict)
+                    self.usernameFoundLabel.text = user.username
+                    if let userPhotoUrl = user.photoUrl {
+                        let photoUrl = URL(string: userPhotoUrl)
+                        self.userFoundImage.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "user-placeholder.jpg"), options: .refreshCached, completed: nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func countComments() {
+        
+        
+        let postCommentRef = Database.database().reference().child("post-comments").child((post?.postid)!)
+        postCommentRef.observe(.value) { (snapshot) in
+            let binaryUInt = snapshot.childrenCount
+            let commentsCountString = String(binaryUInt)
+            self.commentsCount = commentsCountString
+            
+            switch binaryUInt {
+            case 0 :
+                self.commentsLabel.text = "comenta aquí"
+                break
+            case 1 :
+                self.commentsLabel.text = "1 comentario"
+                break
+            default:
+                self.commentsLabel.text = "\(commentsCountString) comentarios"
+                break
+                
+            }
+            
+        }
+        
+    }
+    
+    override func awakeFromNib() {
+        
+        //Make Comments View Clickable
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.commentsViewPressed))
+        commentsView.addGestureRecognizer(tapGesture)
+        commentsView.isUserInteractionEnabled = true
+        
+    }
+    
+    @objc func commentsViewPressed() {
+        print("View was touched! Yay")
+        
+        if let id = post?.postid {
+            homeVC?.performSegue(withIdentifier: "commentSegue", sender: id)
+        }
+    }
+    
 }

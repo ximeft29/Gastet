@@ -20,10 +20,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     //VARS
     var postsuser = [ProfileUserPosts]()
+    var users = [UserProfile]()
     
     //Refresher
     var refresher: UIRefreshControl = UIRefreshControl()
-
+    
     //@IBOUTLETS
     
         //labels & buttons
@@ -35,6 +36,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var postsView: UIView!
     @IBOutlet weak var postsCollectionView: UICollectionView!
+    
+    //Gradient
+    let colorTop = UIColor(displayP3Red: 224/255, green: 181/255, blue: 107/255, alpha: 1)
+    let colorDown = UIColor(displayP3Red: 190/255, green: 126/255, blue: 57/255, alpha: 1)
+
     
     //@IBACTIONS
     
@@ -72,14 +78,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
         setupNavigationBarItems()
 
-//        observeUserPosts()
         observeUserPosts()
         
         //Refresher
         refresher.addTarget(self, action: #selector(postsCollectionView.reloadData), for: UIControlEvents.valueChanged)
         postsCollectionView.addSubview(refresher)
     
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -156,48 +160,26 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let uid = Auth.auth().currentUser?.uid
         let postsRef = Database.database().reference().child("posts").queryOrdered(byChild: "author/userid")
         postsRef.queryEqual(toValue: uid!).observe(.value) { (snapshot) in
-
-            print("Hola")
-            print(snapshot)
             var tempPost = [ProfileUserPosts]()
-
             for child in snapshot.children {
+                
                 if let childSnapshot = child as? DataSnapshot {
-
-                    let dict = childSnapshot.value as? [String: Any]
-
-                    //Post Picture
-                    let photoUrl = dict!["photoUrl"] as? String
-                    let url = URL(string: photoUrl!)
-
-                    //Info Post
-                    let comments = dict!["comments"] as? String
-                    let name = dict!["name"] as? String
-                    let address = dict!["address"] as? String
-                    let city = dict!["city"] as? String
-                    let municipality = dict!["municipality"] as? String
-                    let breed = dict!["breed"] as? String
-                    let phoneuser = dict!["phone"] as? String
-                    let postType = dict!["postType"] as? String
-                    let petType = dict!["petType"] as? String
-                    let gender = dict!["gender"] as? String
-                    let timestampadoption = dict!["timestamp"] as? Double
-                    let date = Date(timeIntervalSince1970: timestampadoption!/1000)
-
-                    let post = ProfileUserPosts(name: name ?? "", address: address ?? "", breed: breed!, phone: phoneuser!, photoUrl: url!, city: city!, municipality: municipality!, petType: petType!, gender: gender!, timestamp: date, postType: postType!, comments: comments!, timestampDouble: timestampadoption!)
-
-                    tempPost.insert(post, at: 0)
-                }
-
-                DispatchQueue.main.async {
-                    self.postsuser = tempPost
-                    self.postsCollectionView.reloadData()
-                    self.refresher.endRefreshing()
-                }
+                    
+                        let dict = childSnapshot.value as? [String: Any]
+                        let key = childSnapshot.key as String
+                        print("Key esta aquí:" + key)
+                        let profilePost = ProfileUserPosts.transformPost(dict: dict!, key: key)
+                        tempPost.insert(profilePost, at: 0)
+                    
+                        DispatchQueue.main.async {
+                            self.postsuser = tempPost
+                            self.postsCollectionView.reloadData()
+                            self.refresher.endRefreshing()
+                        }
             }
         }
     }
-
+}
     
     
     //ALERTS
@@ -217,7 +199,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
- 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "commentSegue" {
+            let commentVC = segue.destination as! CommentViewController
+            let postId = sender as! String
+            commentVC.postIdNew = postId
+        }
+    }
 
 }
 
@@ -235,6 +225,12 @@ extension ProfileViewController: UICollectionViewDataSource,UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PostsCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "postsCell", for: indexPath) as! PostsCollectionViewCell
 
+        //make commentsView Clickable
+        cell.profileVC = self
+        
+        //Gradient
+        cell.commentsView.setGradientBackground(colorOne: colorTop, colorTwo: colorDown)
+        
         cell.set(post: postsuser[indexPath.row])
         cell.deletePostButton.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
         cell.deletePostButton.tag = indexPath.row
@@ -250,7 +246,6 @@ extension ProfileViewController: UICollectionViewDataSource,UICollectionViewDele
                 if let posts = snapshot.value as? [String: AnyObject] {
                     for (key, postReference) in posts {
                         if let post = postReference as? [String: Any], let timestamp = post["timestamp"] as? TimeInterval, timestamp == self.postsuser[sender.tag].timestampDouble {
-                            
                             Database.database().reference().child("posts").child(key).removeValue(completionBlock: { (error, _) in
                                 DispatchQueue.main.async {
                                     ProgressHUD.showSuccess("Tu imagen ha sido borrada...")
@@ -265,12 +260,19 @@ extension ProfileViewController: UICollectionViewDataSource,UICollectionViewDele
         }
     }
 }
-    
-    
+
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "profileUsersSelectedPostViewController") as? ProfileUsersSelectedPostViewController
         self.navigationController?.pushViewController(vc!, animated: true)
         vc?.selectedpostsuser = postsuser[indexPath.row]
+        
+        func commentsViewPressed() {
+            print("Comments view pressed")
+            performSegue(withIdentifier: "commentSegue", sender: self)
+            
+        }
+        
     }
 }
 
