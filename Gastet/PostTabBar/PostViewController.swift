@@ -27,19 +27,34 @@ enum Gender: String {
     case male, female
 }
 
-class PostViewController: UIViewController, UITextViewDelegate{
+enum Reward: String {
+    case withReward
+    case withoutReward
+    
+}
+
+enum ResponsibleAdoption: String {
+    case yes
+    case no
+}
+
+class PostViewController: UIViewController, UITextViewDelegate {
  
     //VARS
     var lost = Bool()
     var selectedImage : UIImage!
     var username: String?
     var photoUrl: URL?
+    var rewardQuantityIntToDatabase: Int?
     
     
     var selectedPostCategory: PostCategory?
     var selectedPet: PetKind?
     var selectedGender: Gender?
+    var selectedReward: Reward?
+    var responsibleAdoption: ResponsibleAdoption?
     var currentUser = UserService.currentUserProfile
+
     
     
     //@IBOUTLETS
@@ -59,16 +74,27 @@ class PostViewController: UIViewController, UITextViewDelegate{
     @IBOutlet weak var catButton: UIButton!
     @IBOutlet weak var otherPetButton: UIButton!
     
+    //Reward View
+    @IBOutlet weak var rewardView: UIView!
+    @IBOutlet weak var rewardYesButton: UIButton!
+    @IBOutlet weak var rewardNoButton: UIButton!
+    @IBOutlet weak var rewardQuantityView: UIView!
+    @IBOutlet weak var rewardQuantityTextField: UITextField!
+    
+    
     //name textfield
     
-
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var petNameTextField: UITextField!
-    
+
     //gender View
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
+    
+    @IBOutlet weak var responsibleAdoptionView: UIView!
+    @IBOutlet weak var responsibleAdoptionYesButton: UIButton!
+    @IBOutlet weak var responsibleAdoptionNoButton: UIButton!
+    
     
     //breed View
     @IBOutlet weak var breed: UITextField!
@@ -89,7 +115,6 @@ class PostViewController: UIViewController, UITextViewDelegate{
     //comments
     @IBOutlet weak var commentsTextView: UITextView!
     
-
     //post whole ad
     @IBOutlet weak var postButton: UIButton!
     
@@ -104,6 +129,9 @@ class PostViewController: UIViewController, UITextViewDelegate{
         otherPetStackView.isHidden = false
         nameView.isHidden = false
         addressView.isHidden = false
+        rewardView.isHidden = false
+        rewardQuantityView.isHidden = true
+        responsibleAdoptionView.isHidden = true
         enablePostButton()
     }
     
@@ -116,6 +144,9 @@ class PostViewController: UIViewController, UITextViewDelegate{
         otherPetStackView.isHidden = false
         nameView.isHidden = true
         addressView.isHidden = false
+        rewardView.isHidden = true
+        rewardQuantityView.isHidden = true
+        responsibleAdoptionView.isHidden = true
         enablePostButton()
     }
     
@@ -127,6 +158,9 @@ class PostViewController: UIViewController, UITextViewDelegate{
         otherPetStackView.isHidden = true
         nameView.isHidden = true
         addressView.isHidden = true
+        rewardView.isHidden = true
+        rewardQuantityView.isHidden = true
+        responsibleAdoptionView.isHidden = false
         enablePostButton()
     
     }
@@ -151,12 +185,32 @@ class PostViewController: UIViewController, UITextViewDelegate{
     }
 
     @IBAction func otherPetPressedButton(_ sender: UIButton) {
-         selectedPet = .other
+        selectedPet = .other
         dogButton.setImage(UIImage(named: "icon_dog_inactive.png"), for: .normal)
           catButton.setImage(UIImage(named: "icon_cat_inactive.png"), for: .normal)
           otherPetButton.setImage(UIImage(named: "icon_otherpet_active.png"), for: .normal)
         enablePostButton()
     }
+    
+    //@IBACTIONS - Reward
+    @IBAction func rewardYesButtonPressed(_ sender: UIButton) {
+        selectedReward = .withReward
+        rewardYesButton.setImage(UIImage(named: "checkmark_active.png"), for: .normal)
+        rewardNoButton.setImage(UIImage(named: "cross_inactive.png"), for: .normal)
+        rewardQuantityView.isHidden = false
+        
+    }
+    
+    
+    @IBAction func rewardNoButtonPressed(_ sender: UIButton) {
+        selectedReward = .withoutReward
+        rewardYesButton.setImage(UIImage(named: "checkmark_inactive.png"), for: .normal)
+        rewardNoButton.setImage(UIImage(named: "cross_active.png"), for: .normal)
+        rewardQuantityView.isHidden = true
+    }
+    
+    
+ 
     
     //@IBACTIONS - gender
     
@@ -174,6 +228,22 @@ class PostViewController: UIViewController, UITextViewDelegate{
         enablePostButton()
     }
     
+    //@IBACTION - ResponsibleAdoption
+    
+    @IBAction func responsibleAdoptionYesButtonPressed(_ sender: UIButton) {
+        responsibleAdoption = .yes
+        responsibleAdoptionYesButton.setImage(UIImage(named: "checkmark_active.png"), for: .normal)
+        responsibleAdoptionNoButton.setImage(UIImage(named: "cross_inactive.png"), for: .normal)
+        enablePostButton()
+    }
+    
+    @IBAction func responsibleAdoptionNoButtonPressed(_ sender: UIButton) {
+        responsibleAdoption = .no
+        responsibleAdoptionYesButton.setImage(UIImage(named: "checkmark_inactive.png"), for: .normal)
+        responsibleAdoptionNoButton.setImage(UIImage(named: "cross_active.png"), for: .normal)
+        enablePostButton()
+    }
+    
     
     //IBActions - City
     
@@ -182,7 +252,6 @@ class PostViewController: UIViewController, UITextViewDelegate{
     }
     
     @IBAction func municipalityButtonPressed(_ sender: UIButton) {
-        
         enablePostButton()
     }
     
@@ -190,6 +259,7 @@ class PostViewController: UIViewController, UITextViewDelegate{
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
    
+    rewardQuantity()
     enablePostButton()
         
     }
@@ -252,6 +322,8 @@ class PostViewController: UIViewController, UITextViewDelegate{
                                     "postType": self.selectedPostCategory!.rawValue,
                                     "petType": self.selectedPet!.rawValue,
                                     "name": self.nameTextField.text!,
+                                    "reward": self.selectedReward!.rawValue,
+                                    "rewardQuantity": self.rewardQuantityIntToDatabase!,
                                     "gender": self.selectedGender!.rawValue,
                                     "breed": self.breed.text!,
                                     "city" : self.cityButton.currentTitle! ,
@@ -300,6 +372,7 @@ class PostViewController: UIViewController, UITextViewDelegate{
                                     "postType": self.selectedPostCategory!.rawValue,
                                     "petType": self.selectedPet!.rawValue,
                                     "gender": self.selectedGender!.rawValue,
+                                    "responsibleAdoption": self.responsibleAdoption!.rawValue,
                                     "breed": self.breed.text!,
                                     "city" : self.cityButton.currentTitle! ,
                                     "municipality": self.muncipalityButton.currentTitle! ,
@@ -325,10 +398,6 @@ class PostViewController: UIViewController, UITextViewDelegate{
             else {
                 ProgressHUD.showError("Tienes que subir una foto...")
             }
-            
-        
-        
-
     }
     
 // FUNCTION - ALERT
@@ -350,27 +419,30 @@ class PostViewController: UIViewController, UITextViewDelegate{
             ProgressHUD.showSuccess("Tu imagen ha sido publicada!")
             
             //set to empty fields
-            self.imagePosted.image = UIImage(named: "placeholder.png")
-            self.changeImageLostButton.setImage(UIImage(named:"icon_lost_inactive.png"), for: .normal)
-            self.changeImageFoundButton.setImage(UIImage(named:"icon_found_inactive.png"), for: .normal)
-            self.changeImageAdoptButton.setImage(UIImage(named: "icon_adoption_inactive.png"), for: .normal)
-            self.dogButton.setImage(UIImage(named: "icon_dog_inactive.png"), for: .normal)
-            self.catButton.setImage(UIImage(named: "icon_cat_inactive.png"), for: .normal)
-            self.otherPetButton.setImage(UIImage(named: "icon_otherpet_inactive.png"), for: .normal)
-            self.maleButton.setImage(UIImage(named: "icon_male_inactive.png"), for: .normal)
-            self.femaleButton.setImage(UIImage(named: "icon_female_inactive.png"), for: .normal)
-            self.nameTextField.text = ""
-            self.cityButton.setTitle("Cuidad", for: .normal)
-            self.cityButton.setTitleColor(UIColor.lightGray, for: .normal)
-            self.muncipalityButton.setTitle("Municipio", for: .normal)
-            self.muncipalityButton.setTitleColor(UIColor.gray, for: .normal)
-            self.address.text = ""
-            self.breed.text = ""
-            self.phone.text = ""
-            self.commentsTextView.text = ""
-            
+            self.empty()
+  
             //TO HOME VIEW CONTROLLER
             self.tabBarController?.selectedIndex = 0
+        }
+    }
+    
+    func rewardQuantity() {
+        
+        let rewardQuantityInt = Int(self.rewardQuantityTextField.text!)
+        
+        switch self.selectedReward {
+        case .withReward?:
+            //Queremos igualar el valor del textfield a una variable para luego enviarla a Firebase
+            rewardQuantityIntToDatabase = rewardQuantityInt
+            print("Aqui esta el reward Quantity: \(rewardQuantityIntToDatabase)")
+            break
+            
+        case .withoutReward?:
+            rewardQuantityIntToDatabase = 0
+            break
+            
+        default:
+            break
         }
     }
 
@@ -380,6 +452,53 @@ class PostViewController: UIViewController, UITextViewDelegate{
             self.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func empty() {
+        
+        //Placeholder
+        self.imagePosted.image = UIImage(named: "placeholder.png")
+        
+        //PostType
+        self.changeImageLostButton.setImage(UIImage(named:"icon_lost_inactive.png"), for: .normal)
+        self.changeImageFoundButton.setImage(UIImage(named:"icon_found_inactive.png"), for: .normal)
+        self.changeImageAdoptButton.setImage(UIImage(named: "icon_adoption_inactive.png"), for: .normal)
+        
+        //PetType
+        self.dogButton.setImage(UIImage(named: "icon_dog_inactive.png"), for: .normal)
+        self.catButton.setImage(UIImage(named: "icon_cat_inactive.png"), for: .normal)
+        self.otherPetButton.setImage(UIImage(named: "icon_otherpet_inactive.png"), for: .normal)
+        
+        //Gender
+        self.maleButton.setImage(UIImage(named: "icon_male_inactive.png"), for: .normal)
+        self.femaleButton.setImage(UIImage(named: "icon_female_inactive.png"), for: .normal)
+        
+        //ResponsibleAdoption
+        self.responsibleAdoptionYesButton.setImage(UIImage(named: "checkmark_inactive.png"), for: .normal)
+        self.responsibleAdoptionNoButton.setImage(UIImage(named: "cross_inactive.png"), for: .normal)
+        
+        //Reward
+        self.rewardYesButton.setImage(UIImage(named: "checkmark_inactive.png"), for: .normal)
+        self.rewardNoButton.setImage(UIImage(named: "cross_inactive.png"), for: .normal)
+        self.rewardQuantityTextField.text = ""
+        
+        //Name
+        self.nameTextField.text = ""
+        
+        //Address
+        self.cityButton.setTitle("Cuidad", for: .normal)
+        self.cityButton.setTitleColor(UIColor.lightGray, for: .normal)
+        self.muncipalityButton.setTitle("Municipio", for: .normal)
+        self.muncipalityButton.setTitleColor(UIColor.gray, for: .normal)
+        self.address.text = ""
+        
+        //Breed
+        self.breed.text = ""
+        self.phone.text = ""
+        
+        //Comments
+        self.commentsTextView.text = ""
+        
     }
 
     //FUNCTIONS - to Hide button until information is inputed
@@ -400,12 +519,19 @@ class PostViewController: UIViewController, UITextViewDelegate{
             hideButton = true
         }
         
+        if selectedPostCategory == .lost, (address.text?.count)!  < 1 , (selectedReward == nil) {
+            hideButton = true
+        }
         
-        if selectedPostCategory == .lost, (address.text?.count)!  < 1 {
+        if selectedReward == .withReward, (rewardQuantityTextField.text?.count)! < 1 {
             hideButton = true
         }
         
         if selectedPostCategory == .found, (address.text?.count)!  < 1 {
+            hideButton = true
+        }
+        
+        if selectedPostCategory == .adopt, (responsibleAdoption == nil)  {
             hideButton = true
         }
         
@@ -511,6 +637,7 @@ class PostViewController: UIViewController, UITextViewDelegate{
         
         enablePostButton()
         commentsTextViewIsEdited()
+        rewardQuantity()
     
     }
     

@@ -30,6 +30,7 @@ class AdoptionSelectedViewController: UIViewController {
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var commentsTextView: UITextView!
     
+    @IBOutlet weak var responsibleAdoptionLabel: UILabel!
     
     //User
     @IBOutlet weak var userProfilePicture: UIImageView!
@@ -101,11 +102,34 @@ class AdoptionSelectedViewController: UIViewController {
         }
     }
     
+    func responsibleAdoption() {
+        
+        if posts?.responsibleAdoption == nil {
+            responsibleAdoptionLabel.isHidden = true
+        }
+        
+        else {
+            switch posts?.responsibleAdoption {
+            case "yes":
+                responsibleAdoptionLabel.text = "Esta vacunado y desparacitado"
+                break
+            case "no":
+                responsibleAdoptionLabel.text = "No es adopción responsable"
+                break
+            default:
+                break
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Author
         setupUserInfo()
+        
+        //Responsible Adoption
+        responsibleAdoption()
         
         //scroll view
         scrollView.delegate = self

@@ -31,7 +31,9 @@ class LostSelectedViewController: UIViewController {
     @IBOutlet weak var genderImage: UIImageView!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    
+    @IBOutlet weak var rewardImage: UIImageView!
+    @IBOutlet weak var rewardLabel: UILabel!
+    @IBOutlet weak var rewardStackView: UIStackView!
     
     
     //User
@@ -136,6 +138,33 @@ class LostSelectedViewController: UIViewController {
         }
     }
     
+    func reward() {
+        
+        if posts?.reward == nil {
+            rewardLabel.isHidden = true
+            rewardImage.isHidden = true
+            rewardStackView.isHidden = true
+            
+        }
+        
+        else {
+            
+            switch posts?.reward {
+            case "withReward":
+                rewardImage.image = UIImage(named: "icon_reward.png")
+                break
+            case "withoutReward":
+                rewardImage.isHidden = true
+                rewardLabel.isHidden = true
+                rewardStackView.isHidden = true
+                break
+            default:
+                break
+            }
+        }
+        
+    }
+    
     
     @IBAction func callMeButtonTapped(_ sender: UIButton) {
       
@@ -167,6 +196,8 @@ class LostSelectedViewController: UIViewController {
         //Author
         setupUserInfo()
         
+        //Reward
+        reward()
         
         //navbar
         self.navigationController?.setNavigationBarHidden(true, animated: false)

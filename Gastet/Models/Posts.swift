@@ -20,6 +20,7 @@ class Posts {
     var likes: Dictionary<String, Any>?
     var isLiked : Bool?
     
+    
     //UserView
     var uid: String?
     var author: UserProfile?
@@ -45,6 +46,11 @@ class Posts {
     var petType: String?
     var genderType: String?
     var comments: String?
+    var responsibleAdoption: String?
+    
+    //Reward
+    var reward: String?
+    var rewardQuantity: Int?
 
 }
 
@@ -81,6 +87,9 @@ extension Posts {
         post.comments = dict["comments"] as? String
         post.petType = dict["petType"] as? String
         post.genderType = dict["gender"] as? String
+        post.reward = dict["reward"] as? String
+        post.rewardQuantity = dict["rewardQuantity"] as? Int
+        post.responsibleAdoption = dict["responsibleAdoption"] as? String
         let timestamp = dict["timestamp"] as? Double
         post.timestamp = Date(timeIntervalSince1970: timestamp!/1000)
         
